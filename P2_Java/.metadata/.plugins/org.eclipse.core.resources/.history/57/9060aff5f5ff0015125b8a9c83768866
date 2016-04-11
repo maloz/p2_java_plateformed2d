@@ -1,0 +1,47 @@
+package ch.hearc.p2.game.character;
+
+import java.util.HashMap;
+
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
+import ch.hearc.p2.game.enums.Facing;
+
+public abstract class Character {
+
+	protected float x;
+	protected float y;
+	protected Facing facing;
+	protected HashMap<Facing, Animation> movingAnimations;
+	protected long lastTimeMoved;
+	private HashMap<Facing, Image> sprites;
+
+	public Character(float x, float y) throws SlickException {
+		this.x = x;
+		this.y = y;
+		// in case we forget to set the image, we don't want the game to crash,
+		// but it still has to be obvious that something was forgotten
+		setSprite(new Image("dataTuto/img/placeholder_sprite.png"));
+		facing = Facing.RIGHT;
+	}
+
+	public float getX() {
+		return x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public void render() {
+		sprites.get(facing).draw(x - 2, y - 2);
+	}
+
+	protected void setSprite(Image i) {
+		sprites = new HashMap<Facing, Image>();
+		sprites.put(Facing.RIGHT, i);
+		sprites.put(Facing.LEFT, i.getFlippedCopy(true, false));
+	}
+
+}

@@ -1,0 +1,18 @@
+package ch.hearc.p2.game.level;
+
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
+
+public class Level {
+
+	private TiledMap map;
+
+	public Level(String level) throws SlickException {
+		map = new TiledMap("dataTuto/levels/" + level + ".tmx");
+	}
+
+	public void render() {
+		map.render(0, 0);
+	}
+
+}

@@ -1,0 +1,5 @@
+package ch.hearc.p2.game.character;
+
+public class Character {
+
+}
