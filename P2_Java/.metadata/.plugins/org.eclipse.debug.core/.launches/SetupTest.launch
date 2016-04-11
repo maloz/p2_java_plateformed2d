@@ -8,4 +8,5 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ch.hearc.p2.game.SetupTest"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Plateformer2D"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.library.path=lib/natives"/>
 </launchConfiguration>
