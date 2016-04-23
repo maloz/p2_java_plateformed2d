@@ -12,6 +12,8 @@ import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController;
 import ch.hearc.p2.game.controller.PlayerController;
 import ch.hearc.p2.game.level.Level;
+import ch.hearc.p2.game.level.object.Objective;
+import ch.hearc.p2.game.physics.Physics;
 
 public class LevelState extends BasicGameState {
 
@@ -19,33 +21,40 @@ public class LevelState extends BasicGameState {
 	private String startinglevel;
 	private Player player;
 	private PlayerController playerController;
+	private Physics physics;
 
 	public LevelState(String startingLevel) {
 		this.startinglevel = startingLevel;
 	}
 
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
-		// once we initialize our level, we want to load the right level
-		level = new Level(startinglevel);
 
 		// at the start of the game we don't have a player yet
-		player = new Player(128, 416);
-		level.addCharacter(player);
+		player = new Player(128, 415);
+
+		// once we initialize our level, we want to load the right level
+		level = new Level(startinglevel, player);
 
 		// and we create a controller, for now we use the
 		// MouseAndKeyBoardPlayerController
 		playerController = new MouseAndKeyBoardPlayerController(player);
+
+		physics = new Physics();
 	}
 
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
 		// every update we have to handle the input from the player
 		playerController.handleInput(container.getInput(), delta);
+		physics.handlePhysics(level, delta);
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.scale(Game.SCALE, Game.SCALE);
 		// render the level
 		level.render();
+
+		g.drawString("Scraps collected: " + Game.SCRAPS_COLLECTED, 20, 20);
+
 	}
 
 	// this method is overriden from basicgamestate and will trigger once you

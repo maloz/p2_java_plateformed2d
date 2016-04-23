@@ -18,7 +18,9 @@ public class Game extends StateBasedGame {
 	// 1280x720
 	// so our base scale is not 1 but 1.25 actually
 	public static final float SCALE = (float) (1.25 * ((double) WINDOW_WIDTH / 1280));
-	public static final String GAME_NAME = "Platformer";
+	public static final String GAME_NAME = "Gravity Platformer";
+
+	public static int SCRAPS_COLLECTED = 0;
 
 	public Game() {
 		super(GAME_NAME);

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.level.Level"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.Game"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Character"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Player"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.controller.PlayerController"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.enums.Facing"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.AirTile"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.SolidTile"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.physics.BoundingShape"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.physics.AABoundingRect"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.Level"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.physics.Physics"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.LevelObject"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.Tile"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Animation"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.SlickException"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Player"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Objective"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.Game"/>
 </qualifiedTypeNameHistroy>

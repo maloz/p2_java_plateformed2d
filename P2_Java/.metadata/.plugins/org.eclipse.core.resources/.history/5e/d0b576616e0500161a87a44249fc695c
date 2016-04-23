@@ -1,0 +1,27 @@
+package ch.hearc.p2.game.physics;
+
+import ch.hearc.p2.game.level.Level;
+
+public class Physics {
+
+	private final float gravity = 0.0015f;
+
+	public void handlePhysics(Level level, int delta) {
+
+	}
+
+	private boolean checkCollision(LevelObject obj, Tile[][] mapTiles) {
+		// get only the tiles that matter
+		ArrayList<Tile> tiles = obj.getBoundingShape().getTilesOccupying(mapTiles);
+		for (Tile t : tiles) {
+			// if this tile has a bounding shape
+			if (t.getBoundingShape() != null) {
+				if (t.getBoundingShape().checkCollision(obj.getBoundingShape())) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+}

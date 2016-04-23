@@ -1,0 +1,11 @@
+package ch.hearc.p2.game.physics;
+
+public class Physics {
+
+	private final float gravity = 0.0015f;
+
+	public void handlePhysics(Level level, int delta) {
+
+	}
+
+}
