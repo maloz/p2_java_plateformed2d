@@ -2,6 +2,8 @@ package ch.hearc.p2.game.physics;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.tiled.TiledMap;
+
 import ch.hearc.p2.game.level.tile.Tile;
 
 public class AABoundingRect extends BoundingShape {
@@ -28,6 +30,13 @@ public class AABoundingRect extends BoundingShape {
 		this.y += y;
 	}
 
+	public boolean checkCollision(AABoundingRect rect, TiledMap map) {
+
+		return !(rect.x > this.x + width || rect.x + rect.width < this.x || rect.y > this.y + height
+				|| rect.y + rect.height < this.y);
+
+	}
+
 	public boolean checkCollision(AABoundingRect rect) {
 		return !(rect.x > this.x + width || rect.x + rect.width < this.x || rect.y > this.y + height
 				|| rect.y + rect.height < this.y);
@@ -37,11 +46,12 @@ public class AABoundingRect extends BoundingShape {
 		ArrayList<Tile> occupiedTiles = new ArrayList<Tile>();
 
 		// we go from the left of the rect towards to right of the rect, making
-		// sure we round upwards to a multiple of 32 or we might miss a few
+		// sure we round upwards to a multiple of 128 or we might miss a few
 		// tiles
-		for (int i = (int) x; i <= x + width + (32 - width % 32); i += 32) {
-			for (int j = (int) y; j <= y + height + (32 - height % 32); j += 32) {
-				occupiedTiles.add(tiles[i / 32][j / 32]);
+		for (int i = (int) x; i <= x + width + (128 - width % 128); i += 128) {
+			for (int j = (int) y; j <= y + height + (128 - height % 128); j += 128) {
+				occupiedTiles.add(tiles[i / 128][j / 128]);
+
 			}
 		}
 		return occupiedTiles;
@@ -51,8 +61,8 @@ public class AABoundingRect extends BoundingShape {
 		ArrayList<Tile> tilesUnderneath = new ArrayList<Tile>();
 		int j = (int) (y + height + 1);
 
-		for (int i = (int) x; i <= x + width + (32 - width % 32); i += 32) {
-			tilesUnderneath.add(tiles[i / 32][j / 32]);
+		for (int i = (int) x; i <= x + width + (128 - width % 128); i += 128) {
+			tilesUnderneath.add(tiles[i / 128][j / 128]);
 		}
 
 		return tilesUnderneath;

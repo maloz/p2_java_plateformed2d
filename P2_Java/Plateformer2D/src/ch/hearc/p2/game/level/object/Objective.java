@@ -5,6 +5,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import ch.hearc.p2.game.level.LevelObject;
+import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Objective extends LevelObject {
 
@@ -14,13 +15,14 @@ public class Objective extends LevelObject {
 		super(x, y);
 
 		// add the right animation for this objective
-		animation = new Animation(new Image[] { new Image("data/img/objects/scrap_part/scrap_part_1.png"),
-				new Image("data/img/objects/scrap_part/scrap_part_2.png"),
-				new Image("data/img/objects/scrap_part/scrap_part_3.png"),
-				new Image("data/img/objects/scrap_part/scrap_part_4.png") }, new int[] { 200, 125, 125, 200 });
-		animation.setPingPong(true);
+		animation = new Animation(
+				new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/tochLit.png"),
+						new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/tochLit2.png") },
+				125);
+		boundingShape = new AABoundingRect(x, y, 40, 70);
+		// animation.setPingPong(true);
 
-		// we will just keep the default boundingrect of 32x32 for the objective
+		// we will just keep the default boundingrect of 70x70 for the objective
 	}
 
 	public void render(float offset_x, float offset_y) {

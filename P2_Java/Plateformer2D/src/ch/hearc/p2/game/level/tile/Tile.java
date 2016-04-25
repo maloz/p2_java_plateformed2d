@@ -6,12 +6,14 @@ public class Tile {
 
 	protected int x;
 	protected int y;
+	protected String type;
 
 	protected BoundingShape boundingShape;
 
-	public Tile(int x, int y) {
+	public Tile(int x, int y, String type) {
 		this.x = x;
 		this.y = y;
+		this.type = type;
 		boundingShape = null;
 	}
 
@@ -27,4 +29,7 @@ public class Tile {
 		return y;
 	}
 
+	public String getType() {
+		return type;
+	}
 }

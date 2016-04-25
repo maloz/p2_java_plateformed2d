@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Plateformer2D/src/ch/hearc/p2/game/Game.java"/>
+<listEntry value="/Plateformer2D/src/ch/hearc/p2/game/WindowGame.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ch.hearc.p2.game.Game"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ch.hearc.p2.game.WindowGame"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Plateformer2D"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.library.path=lib/natives"/>
 </launchConfiguration>

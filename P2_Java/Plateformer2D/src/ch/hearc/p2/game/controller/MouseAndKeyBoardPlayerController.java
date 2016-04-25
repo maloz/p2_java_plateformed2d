@@ -3,6 +3,7 @@ package ch.hearc.p2.game.controller;
 import ch.hearc.p2.game.character.Player;
 
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 
 public class MouseAndKeyBoardPlayerController extends PlayerController {
 
@@ -13,6 +14,13 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	public void handleInput(Input i, int delta) {
 		// handle any input from the keyboard
 		handleKeyboardInput(i, delta);
+
+		try {
+			handleMouseInput(i, delta);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void handleKeyboardInput(Input i, int delta) {
@@ -30,6 +38,19 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
 		if (i.isKeyDown(Input.KEY_SPACE)) {
 			player.jump();
+		}
+		if (i.isKeyDown(Input.KEY_ESCAPE)) {
+
+		}
+	}
+
+	private void handleMouseInput(Input i, int delta) throws SlickException {
+		// pas 1920 et 1080 mais map.height et map.width
+		// int charScreenCenterX = (int) (1920/2 - player.getX());
+		// int charScreenCenterY = (int) (1080/2 - player.getY());
+
+		if (i.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+			// Player shoot
 		}
 	}
 

@@ -7,10 +7,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import ch.hearc.p2.game.Game;
+import ch.hearc.p2.game.WindowGame;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController;
 import ch.hearc.p2.game.controller.PlayerController;
+import ch.hearc.p2.game.hud.Hud;
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.physics.Physics;
@@ -22,6 +23,8 @@ public class LevelState extends BasicGameState {
 	private Player player;
 	private PlayerController playerController;
 	private Physics physics;
+	private StateBasedGame sbg;
+	private Hud hud;
 
 	public LevelState(String startingLevel) {
 		this.startinglevel = startingLevel;
@@ -29,8 +32,11 @@ public class LevelState extends BasicGameState {
 
 	public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 
+		this.sbg = sbg;
+
+		hud = new Hud();
 		// at the start of the game we don't have a player yet
-		player = new Player(128, 415);
+		player = new Player(128, 200);
 
 		// once we initialize our level, we want to load the right level
 		level = new Level(startinglevel, player);
@@ -39,7 +45,17 @@ public class LevelState extends BasicGameState {
 		// MouseAndKeyBoardPlayerController
 		playerController = new MouseAndKeyBoardPlayerController(player);
 
-		physics = new Physics();
+		physics = new Physics(startinglevel);
+
+		level.addLevelObject(new Objective(400, 70));
+		level.addLevelObject(new Objective(500, 70));
+		level.addLevelObject(new Objective(600, 70));
+		level.addLevelObject(new Objective(700, 70));
+		level.addLevelObject(new Objective(800, 70));
+		level.addLevelObject(new Objective(1200, 70));
+
+		hud.init();
+
 	}
 
 	public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
@@ -49,20 +65,34 @@ public class LevelState extends BasicGameState {
 	}
 
 	public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.scale(Game.SCALE, Game.SCALE);
+		g.scale(WindowGame.SCALE, WindowGame.SCALE);
 		// render the level
 		level.render();
+		hud.render(g, player);
+		if (player.getLife() == 0) {
+			g.drawString("TU AS PERDU", 950, 500);
 
-		g.drawString("Scraps collected: " + Game.SCRAPS_COLLECTED, 20, 20);
+			sbg.enterState(1);
+		}
 
+		/*
+		 * for(Tile t :
+		 * player.getBoundingShape().getGroundTiles(level.getTiles())){
+		 * g.setColor(new Color(255,130,90,200)); g.drawRect(t.getX()*128,
+		 * t.getY()*128, 128, 128); }
+		 */
 	}
 
 	// this method is overriden from basicgamestate and will trigger once you
 	// press any key on your keyboard
 	public void keyPressed(int key, char code) {
 		// if the key is escape, close our application
+
+	}
+
+	public void keyReleased(int key, char code) {
 		if (key == Input.KEY_ESCAPE) {
-			System.exit(0);
+			sbg.enterState(1);
 		}
 	}
 

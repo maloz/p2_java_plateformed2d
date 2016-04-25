@@ -2,17 +2,26 @@ package ch.hearc.p2.game.physics;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
+
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
-import ch.hearc.p2.game.Game;
 import ch.hearc.p2.game.character.Character;
 import ch.hearc.p2.game.character.Player;
 
 public class Physics {
 
-	private final float gravity = 0.0015f;
+	private final float gravity = 0.0023f;
+	private String level;
+	private TiledMap map;
+
+	public Physics(String startinglevel) throws SlickException {
+		this.level = startinglevel;
+		map = new TiledMap("ressources/map/" + level + ".tmx");
+	}
 
 	public void handlePhysics(Level level, int delta) {
 		handleCharacters(level, delta);
@@ -29,7 +38,6 @@ public class Physics {
 
 			handleGameObject(c, level, delta);
 
-			// special cases for the player
 			if (c instanceof Player) {
 
 				ArrayList<LevelObject> removeQueue = new ArrayList<LevelObject>();
@@ -43,7 +51,8 @@ public class Physics {
 						if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
 							// we have to remove the object from the level, and
 							// add something to the score
-							Game.SCRAPS_COLLECTED++;
+							// WindowGame.SCRAPS_COLLECTED++;
+							c.setLife(c.getLife() - 1);
 							removeQueue.add(obj);
 						}
 					}
@@ -51,8 +60,8 @@ public class Physics {
 
 				level.removeObjects(removeQueue);
 			}
-
 		}
+
 	}
 
 	private void handleLevelObjects(Level level, int delta) {
@@ -163,7 +172,7 @@ public class Physics {
 		for (Tile t : tiles) {
 			// if this tile has a bounding shape
 			if (t.getBoundingShape() != null) {
-				if (t.getBoundingShape().checkCollision(obj.getBoundingShape())) {
+				if (t.getBoundingShape().checkCollision(obj.getBoundingShape(), map)) {
 					return true;
 				}
 			}
@@ -176,7 +185,7 @@ public class Physics {
 		// known as the ground tiles
 		ArrayList<Tile> tiles = obj.getBoundingShape().getGroundTiles(mapTiles);
 
-		// we lower the the bounding object a bit so we can check if we are
+		// we lower the bounding object a bit so we can check if we are
 		// actually a bit above the ground
 		obj.getBoundingShape().movePosition(0, 1);
 
@@ -185,7 +194,7 @@ public class Physics {
 			if (t.getBoundingShape() != null) {
 				// if the ground and the lowered object collide, then we are on
 				// the ground
-				if (t.getBoundingShape().checkCollision(obj.getBoundingShape())) {
+				if (t.getBoundingShape().checkCollision(obj.getBoundingShape(), map)) {
 					// don't forget to move the object back up even if we are on
 					// the ground!
 					obj.getBoundingShape().movePosition(0, -1);

@@ -19,8 +19,8 @@ public abstract class LevelObject {
 		this.x = x;
 		this.y = y;
 
-		// default bounding shape is a 32 by 32 box
-		boundingShape = new AABoundingRect(x, y, 32, 32);
+		// default bounding shape is a 70 by 70 box
+		boundingShape = new AABoundingRect(x, y, 128, 128);
 	}
 
 	public void applyGravity(float gravity) {
@@ -85,6 +85,7 @@ public abstract class LevelObject {
 		return boundingShape;
 	}
 
-	public abstract void render(float offset_x, float offset_y);
-
+	public void render(float offset_x, float offset_y) {
+		// animation.draw(x-2-offset_x,y-2-offset_y);
+	}
 }
