@@ -7,16 +7,29 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import net.java.games.input.Component.Identifier.Button;
+
 public class MainScreenGameState extends BasicGameState {
 
 	public static final int ID = 1;
 	private Image background;
+	private Image jouer;
+	private Image niveaux;
+	private Image options;
+	private Image credits;
+	private Image quitter;
 	private StateBasedGame game;
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = game;
 		this.background = new Image("background.jpg");
+		
+		jouer = new Image("ressources/menu/jouer.png");
+		niveaux = new Image("ressources/menu/niveaux.png");
+		options = new Image("ressources/menu/options.png");
+		credits = new Image("ressources/menu/credits.png");
+		quitter = new Image("ressources/menu/quitter.png");
 	}
 
 	/**
@@ -27,24 +40,14 @@ public class MainScreenGameState extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		background.draw(0, 0, container.getWidth(), container.getHeight());
-
-		Image jouer = new Image("ressources/menu/jouer.png");
 		g.drawImage(jouer, container.getWidth() / 2 - 200, 250);
-
-		Image niveaux = new Image("ressources/menu/niveaux.png");
 		g.drawImage(niveaux, container.getWidth() / 2 - 200, 400);
-
-		Image options = new Image("ressources/menu/options.png");
 		g.drawImage(options, container.getWidth() / 2 - 200, 550);
-
-		Image credits = new Image("ressources/menu/credits.png");
 		g.drawImage(credits, container.getWidth() / 2 - 200, 700);
+		g.drawImage(quitter, container.getWidth() / 2 - 200, 850);
 
 	}
 
-	/**
-	 * Passer à l’écran de jeu à l'appui de n'importe quel touche.
-	 */
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 	}
@@ -57,6 +60,8 @@ public class MainScreenGameState extends BasicGameState {
 			// Remove l'ancien state et le replace pour un nouveau pour reset
 			// l'état du lvl
 		}
+		
+		
 	}
 
 	/**

@@ -21,8 +21,6 @@ public class Objective extends LevelObject {
 				125);
 		boundingShape = new AABoundingRect(x, y, 40, 70);
 		// animation.setPingPong(true);
-
-		// we will just keep the default boundingrect of 70x70 for the objective
 	}
 
 	public void render(float offset_x, float offset_y) {

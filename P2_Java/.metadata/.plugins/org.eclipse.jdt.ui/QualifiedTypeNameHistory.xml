@@ -27,4 +27,5 @@
 <fullyQualifiedTypeName name="org.newdawn.slick.SlickException"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.hud.Hud"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.tiled.TiledMap"/>
+<fullyQualifiedTypeName name="net.java.games.input.Component.Identifier.Button"/>
 </qualifiedTypeNameHistroy>

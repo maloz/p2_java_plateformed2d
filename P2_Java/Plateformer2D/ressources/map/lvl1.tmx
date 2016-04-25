@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="15" tilewidth="128" tileheight="128" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="15" tilewidth="128" tileheight="128" nextobjectid="51">
  <tileset firstgid="1" name="spritesheet_ground" tilewidth="128" tileheight="128" tilecount="128" columns="8">
   <image source="tuiles/platformer-pack-redux-360-assets/Spritesheets/spritesheet_ground.png" width="1024" height="2048"/>
  </tileset>
@@ -14,19 +14,19 @@
  <tileset firstgid="929" name="Object" tilewidth="128" tileheight="128" tilecount="128" columns="8">
   <image source="tuiles/platformer-pack-redux-360-assets/Spritesheets/spritesheet_tiles.png" width="1024" height="2048"/>
  </tileset>
- <layer name="Mourir" width="25" height="15">
+ <layer name="Limite" width="25" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoC0op7H5o3aM2jFqx+Cwgx54FBAPAA0OAOPcBQAA
+   H4sIAAAAAAAAC2tkYGBoHMWjeBSPYhIxwyBwAy3wFubhgQHFzwdp3AUAAA==
   </data>
  </layer>
  <layer name="CollisionLayer" width="25" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2tkYGBoHMV0xXlAHIeEw2hgvjwQh6NhaplvjsN8UuzgB2J2NFxHobuuMjMw7GWmbliao8UVDOtTOc5G8SimNgYAeaSIydwFAAA=
+   H4sIAAAAAAAACxNgYGBopCEWgOJRO1BxHBIOo7IdMHPD0TC17DDHYjapdvADMTsarqMwPq4yMzDsZaZ+nJujxRcI61PZDlqk2VE7yLODlubTEwMA24+rttwFAAA=
   </data>
  </layer>
  <layer name="Object" width="25" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXYwGNmCH2XeWDdQSo4REX3Xoaa9XgQh8HqQey2UTAKBhIAAFI+cA3cBQAA
+   H4sIAAAAAAAAC2NgGAXYwGNmCH2XeWDdQSo4REX3Xoaa9XgQh8HqQey2UUB9sIaZ9ngLHTA9AAB4wpeU3AUAAA==
   </data>
  </layer>
 </map>
