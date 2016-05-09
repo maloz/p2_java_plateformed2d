@@ -246,5 +246,8 @@ public class Level {
 	// TODO Auto-generated method stub
 	return levelObjects;
     }
+    public TiledMap getMap() {
+	    return map;
+	   }
 
 }

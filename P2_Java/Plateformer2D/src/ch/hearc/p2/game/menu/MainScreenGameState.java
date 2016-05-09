@@ -54,14 +54,36 @@ public class MainScreenGameState extends BasicGameState {
 
 	@Override
 	public void mouseClicked(int button, int x, int y, int clickCount) {
-		if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-				&& y > 250 && y < 340) {
-			game.enterState(0);
-			// Remove l'ancien state et le replace pour un nouveau pour reset
-			// l'état du lvl
+	    if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
+			&& y > 250 && y < 340) {
+		    game.enterState(0);
+		    // Remove l'ancien state et le replace pour un nouveau pour reset
+		    // l'état du lvl
 		}
 		
+		// Menu - niveau
+		if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
+			&& y > 400 && y < 490) {
+		    System.exit(0); //TODO Faire game states
+		}
+
+		// Menu - options
+		if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
+			&& y > 550 && y < 640) {
+		    System.exit(0);
+		}
 		
+		// Menu - credits
+		if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
+			&& y > 700 && y < 790) {
+		    System.exit(0);
+		}
+		
+		// Menu - quitter
+		if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
+			&& y > 850 && y < 940) {
+		    System.exit(0);
+		}
 	}
 
 	/**

@@ -61,6 +61,11 @@ public abstract class Character extends LevelObject {
 	public int getLife() {
 		return life;
 	}
+	
+	public void damage(int value)
+	{
+	    this.life -= value;
+	}
 
 	public void setLife(int life) {
 		this.life = life;

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;abeille&apos; in &apos;ch.hearc.p2.game.state.LevelState&apos; to &apos;abeille2&apos;&#x0D;&#x0A;- Original project: &apos;Plateformer2D&apos;&#x0D;&#x0A;- Original element: &apos;ch.hearc.p2.game.state.LevelState.abeille&apos;&#x0D;&#x0A;- Renamed element: &apos;ch.hearc.p2.game.state.LevelState.abeille2&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;abeille&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;ch.hearc.p2.game.state{LevelState.java[LevelState^abeille" name="abeille2" references="true" setter="false" stamp="1462806840341" textual="false" version="1.0"/>
+</session>

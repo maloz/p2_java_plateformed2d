@@ -16,15 +16,15 @@ public class Projectile extends LevelObject {
 
 	public Projectile(float x, float y) throws SlickException {
 		super(x, y);
-		x_velocity = (float) 1.1;
+		x_velocity = (float) 1.8;
 		y_velocity = 0;
 
 		// add the right animation for this objective
 		animation = new Animation(
-				new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/tochLit.png"),
-						new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/tochLit2.png") },
+				new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/laserPurpleDot.png")},
 				125);
-		boundingShape = new AABoundingRect(x, y, 40, 70);
+		boundingShape = new AABoundingRect(x, y, 10, 10);
+		maximumFallSpeed = (float) 0.1;
 		// animation.setPingPong(true);
 
 		// we will just keep the default boundingrect of 70x70 for the objective
