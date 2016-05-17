@@ -10,9 +10,12 @@ import ch.hearc.p2.game.WindowGame;
 import ch.hearc.p2.game.character.Character;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.object.DeadZone;
+import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.AirTile;
 import ch.hearc.p2.game.level.tile.SolidTile;
 import ch.hearc.p2.game.level.tile.Tile;
+
+
 
 public class Level {
 
@@ -24,12 +27,20 @@ public class Level {
 
     private Tile[][] tiles;
     private Tile[][] limite;
-    private static ArrayList<LevelObject> levelObjects;
-
+    private Tile[][] end;
+    private ArrayList<LevelObject> levelObjects;
+    
     private Image background;
+    
+  //ShakeFields
+    public static final float SHAKE_DECAY = 0.18f;
+    public static final int SHAKE_DELAY = 10;
+    public static final boolean SHAKE_SNAP = false;
+    public static final int SHAKE_INTENSITY = 15;
+   
 
     public Level(String level, Player player) throws SlickException {
-	map = new TiledMap("ressources/map/" + level + ".tmx");
+	map = new TiledMap("ressources/levels/" + level + ".tmx");
 	background = new Image("ressources/map/" + map.getMapProperty("back.png", "back.png"));
 	characters = new ArrayList<Character>();
 	levelObjects = new ArrayList<LevelObject>();
@@ -38,6 +49,7 @@ public class Level {
 	addCharacter(player);
 	loadTileMap();
 	loadLimite();
+	loadEnd();
 
     }
 
@@ -112,9 +124,56 @@ public class Level {
 	    }
 	}
     }
+    
+    private void loadEnd() {
+	// create an array to hold all the tiles in the map
+	end = new Tile[map.getWidth()][map.getHeight()];
+
+	int layerIndex = map.getLayerIndex("End");
+
+	if (layerIndex == -1) {
+	    // TODO we can clean this up later with an exception if we want, but
+	    // because we make the maps ourselfs this will suffice for now
+	    System.err.println("Map does not have the layer \"End\"");
+	    System.exit(0);
+	}
+
+	// loop through the whole map
+	for (int x = 0; x < map.getWidth(); x++) {
+	    for (int y = 0; y < map.getHeight(); y++) {
+
+		// get the tile
+		int tileID = map.getTileId(x, y, layerIndex);
+
+		Tile tile = null;
+
+		// and check what kind of tile it is (
+		switch (map.getTileProperty(tileID, "tileType", "solid")) {
+		case "air":
+		    tile = new AirTile(x, y, "");
+		    break;
+		default:
+		    tile = new SolidTile(x, y, "");
+		    break;
+		}
+		end[x][y] = tile;
+	    }
+	}
+    }
 
     public void addCharacter(Character c) {
 	characters.add(c);
+    }
+    public void removeCharacter(Character c)
+    {
+	characters.remove(c);
+    }
+    public void removeCharacter(ArrayList<Character> list)
+    {
+	for(Character c: list)
+	{
+	    this.removeCharacter(c);
+	}
     }
 
     public ArrayList<Character> getCharacters() {
@@ -132,6 +191,9 @@ public class Level {
     public Tile[][] getLimite() {
 	return limite;
     }
+    public Tile[][] getEnd() {
+  	return end;
+      }
 
     public void render() {
 	// render the map first
@@ -237,11 +299,6 @@ public class Level {
 	levelObjects.add(objective);
     }
 
-    public static void addLevelObject(LevelObject objective, int mouseX, int mouseY) {
-
-	levelObjects.add(objective);
-    }
-
     public ArrayList<LevelObject> getLevelObjects() {
 	// TODO Auto-generated method stub
 	return levelObjects;
@@ -249,5 +306,38 @@ public class Level {
     public TiledMap getMap() {
 	    return map;
 	   }
+
+    public ArrayList<Objective> getObjectives() {
+	ArrayList<Objective> objectives = new ArrayList<Objective>();
+	for(LevelObject obj : levelObjects)
+	{
+	    if(obj instanceof Objective)
+		objectives.add((Objective) obj);
+	}
+	return objectives;
+    }
+
+    public void render(float shakeX, float shakeY) {
+	// render the map first
+		int offset_x = getXOffset();
+		int offset_y = getYOffset();
+		offset_x += shakeX;
+		offset_y += shakeY;
+
+		renderBackground();
+
+		// then render the map
+		map.render(-(offset_x % 128), -(offset_y % 128), offset_x / 128, offset_y / 128, 129, 19);
+
+		// and then render the characters on top of the map
+		for (Character c : characters) {
+		    c.render(offset_x, offset_y);
+		}
+
+		for (LevelObject obj : levelObjects) {
+		    obj.render(offset_x, offset_y);
+		}
+	
+    }
 
 }

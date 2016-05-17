@@ -1,30 +1,33 @@
 package ch.hearc.p2.game.physics;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import ch.hearc.p2.game.character.Abeille;
+import ch.hearc.p2.game.character.Character;
+import ch.hearc.p2.game.character.Ennemie;
+import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.DeadZone;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
 import ch.hearc.p2.game.projectile.Projectile;
-import ch.hearc.p2.game.character.Character;
-import ch.hearc.p2.game.character.Ennemie;
-import ch.hearc.p2.game.character.Player;
+import ch.hearc.p2.game.projectile.ProjectileAbeille;
+import ch.hearc.p2.game.projectile.ProjectilePlayer;
 
 public class Physics {
 
     private final float gravity = 0.0023f;
     private String level;
     private TiledMap map;
+    private boolean isFinished = false;
 
     public Physics(String startinglevel) throws SlickException {
 	this.level = startinglevel;
-	map = new TiledMap("ressources/map/" + level + ".tmx");
+	map = new TiledMap("ressources/levels/" + level + ".tmx");
     }
 
     public void handlePhysics(Level level, int delta) {
@@ -34,39 +37,40 @@ public class Physics {
 
     private void handleCharacters(Level level, int delta) {
 	for (Character c : level.getCharacters()) {
+	    ArrayList<LevelObject> removeQueueC = new ArrayList<LevelObject>();
 
 	    // and now decelerate the character if he is not moving anymore
 	    if (!c.isMoving()) {
 		c.decelerate(delta);
 	    }
-	   
+
 	    handleGameObject(c, level, delta);
 
 	    if (c instanceof Player) {
-
-		 ArrayList<LevelObject> removeQueue = new ArrayList<LevelObject>();
 
 		// we have to check if he collides with anything special, such
 		// as objectives for example
 		for (LevelObject obj : level.getLevelObjects()) {
 
-		    if (obj instanceof Projectile) {
+		    if (obj instanceof ProjectileAbeille) {
 			// in case its an objective and its collides
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
-			    // we have to remove the object from the level, and
-			    // add something to the score
-			    // WindowGame.SCRAPS_COLLECTED++;
 			    c.damage(1);
-			    removeQueue.add(obj);
+			    removeQueueC.add(obj);
 			}
 		    }
 		    if (obj instanceof DeadZone) {
 			c.setLife(0);
 		    }
-		   
+		    if (obj instanceof Objective) {
+			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
+			    ((Player) c).addPoint(((Objective) obj).getValue());
+			    removeQueueC.add(obj);
+			}
+		    }
+
 		}
 
-		level.removeObjects(removeQueue);
 	    }
 	    if (c instanceof Ennemie) {
 		for (LevelObject obj : level.getLevelObjects()) {
@@ -74,26 +78,34 @@ public class Physics {
 		    if (obj instanceof DeadZone) {
 			c.setLife(0);
 		    }
-		    if (obj instanceof Projectile) {
-			c.damage(1);
+
+		    if (obj instanceof ProjectilePlayer) {
+			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
+			    c.damage(1);
+			    removeQueueC.add(obj);
+			}
 		    }
 		}
 	    }
+	    level.removeObjects(removeQueueC);
 	}
 
     }
+
     private ArrayList<LevelObject> removeQueue;
+
     private void handleLevelObjects(Level level, int delta) {
 	removeQueue = new ArrayList<LevelObject>();
-	
+
 	for (LevelObject obj : level.getLevelObjects()) {
 	    handleGameObject(obj, level, delta);
 	}
-	
+
 	level.removeObjects(removeQueue);
     }
 
     private void handleGameObject(LevelObject obj, Level level, int delta) {
+
 	
 	// first update the onGround of the object
 	obj.setOnGround(isOnGroud(obj, level.getTiles()));
@@ -102,9 +114,9 @@ public class Physics {
 	// are about to jump
 	if (!obj.isOnGround() || obj.getYVelocity() < 0)
 	    obj.applyGravity(gravity * delta);
-	else{
+	else {
 	    obj.setYVelocity(0);
-	    if(obj instanceof Projectile)
+	    if (obj instanceof Projectile)
 		removeQueue.add(obj);
 	}
 
@@ -117,6 +129,7 @@ public class Physics {
 	float step_x = 0;
 
 	if (x_movement != 0) {
+	  
 	    step_y = Math.abs(y_movement) / Math.abs(x_movement);
 	    if (y_movement < 0)
 		step_y = -step_y;
@@ -134,7 +147,7 @@ public class Physics {
 		    step_y = -1;
 		else
 		    step_y = 1;
-		
+
 	    }
 	} else if (y_movement != 0) {
 	    // if we only have vertical movement, we can just use a step of 1
@@ -144,10 +157,10 @@ public class Physics {
 		step_y = -1;
 
 	}
-
+	
 	// and then do little steps until we are done moving
 	while (x_movement != 0 || y_movement != 0) {
-
+	 
 	    // we first move in the x direction
 	    if (x_movement != 0) {
 		// when we do a step, we have to update the amount we have to
@@ -164,20 +177,24 @@ public class Physics {
 		// if we collide with any of the bounding shapes of the tiles we
 		// have to revert to our original position
 		if (checkCollision(obj, level.getTiles())) {
-		    if(obj instanceof Projectile){
+		    if (obj instanceof Projectile) {
 			removeQueue.add(obj);
 		    }
 		    obj.setX(obj.getX() - step_x);
 		    obj.setXVelocity(0);
 		    x_movement = 0;
-		} 
+		}
 		if (checkCollision(obj, level.getLimite())) {
-		    if(obj instanceof Player)
+		    if (obj instanceof Player)
 			level.getPlayer().setLife(0);
-		    if(obj instanceof Projectile){
+		    if (obj instanceof Projectile) {
 			removeQueue.add(obj);
 
 		    }
+		}
+		if (checkCollision(obj, level.getEnd())) {
+		    if (obj instanceof Player)
+			isFinished = true;
 		}
 
 	    }
@@ -192,24 +209,27 @@ public class Physics {
 		obj.setY(obj.getY() + step_y);
 
 		if (checkCollision(obj, level.getTiles())) {
-		   if(obj instanceof Projectile){
+		    if (obj instanceof Projectile) {
 			removeQueue.add(obj);
-		   }
+		    }
 		    obj.setY(obj.getY() - step_y);
 		    obj.setYVelocity(0);
 		    y_movement = 0;
 		    break;
 		}
-		if (checkCollision(obj, level.getLimite())) {	    
-		    if(obj instanceof Player)
+		if (checkCollision(obj, level.getLimite())) {
+		    if (obj instanceof Player)
 			level.getPlayer().setLife(0);
-		    if(obj instanceof Projectile)
+		    if (obj instanceof Projectile)
 			removeQueue.add(obj);
 		    break;
 		}
+		if (checkCollision(obj, level.getEnd())) {
+		    if (obj instanceof Player)
+			isFinished = true;
+		}
 	    }
 	}
-	
 
     }
 
@@ -255,6 +275,13 @@ public class Physics {
 	obj.getBoundingShape().movePosition(0, -1);
 
 	return false;
+    }
+
+    public boolean isOver() {
+	return isFinished;
+    }
+    public void setOver(boolean isOver) {
+   	isFinished = isOver;
     }
 
 }

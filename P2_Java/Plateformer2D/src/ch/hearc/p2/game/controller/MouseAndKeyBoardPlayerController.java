@@ -47,17 +47,16 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	}
 
 	private void handleMouseInput(Input i, int delta) throws SlickException {
-
-	int mouseWorldX = level.getXOffset() + i.getMouseX(); // OK
-	int mouseWorldY = level.getYOffset() + i.getMouseY(); // Fausse
-							      // coordonnées
-	System.out.println("MouseW x : " + mouseWorldX);
-	System.out.println("MouseW y : " + mouseWorldY);
-	System.out.println("Player x : " + player.getX());
-	System.out.println("Player y : " + player.getY()); // Valeur bizarre vers le haut de l'écran. Le 0 ne commence pas où il devrait;
-	    	
+ 	
 	if (i.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
-			player.shoot();
+			
+			int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // OK
+			int mouseWorldY = level.getYOffset() + i.getMouseY() - 185; // Fausse
+			player.shoot(mouseWorldX, mouseWorldY);					      // coordonnées
+			//System.out.println("MouseW x : " + mouseWorldX);
+			//System.out.println("MouseW y : " + mouseWorldY);
+			//System.out.println("Player x : " + player.getX());
+			//System.out.println("Player y : " + player.getY()); // Valeur bizarre vers le haut de l'écran. Le 0 ne commence pas où il devrait;
 		}
 	}
 

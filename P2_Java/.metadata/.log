@@ -386,3 +386,294 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 !MESSAGE The 'org.eclipse.ui.startup' extension from 'com.objectaid.uml' does not provide a 'class' attribute.
 This usage is deprecated and a 'class' attribute should be provided.
 The release after Mars (4.5) will no longer support the deprecated usage!
+!SESSION 2016-05-15 16:15:06.148 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_77
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-15 16:15:15.757
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\malo.zollikof'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 2 0 2016-05-15 16:15:15.758
+!MESSAGE The 'org.eclipse.ui.startup' extension from 'com.objectaid.uml' does not provide a 'class' attribute.
+This usage is deprecated and a 'class' attribute should be provided.
+The release after Mars (4.5) will no longer support the deprecated usage!
+!SESSION 2016-05-15 21:00:49.613 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_77
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-15 21:01:00.285
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\malo.zollikof'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 2 0 2016-05-15 21:01:00.398
+!MESSAGE The 'org.eclipse.ui.startup' extension from 'com.objectaid.uml' does not provide a 'class' attribute.
+This usage is deprecated and a 'class' attribute should be provided.
+The release after Mars (4.5) will no longer support the deprecated usage!
+!SESSION 2016-05-16 10:34:09.962 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_77
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-16 10:34:18.462
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\malo.zollikof'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 2 0 2016-05-16 10:34:18.508
+!MESSAGE The 'org.eclipse.ui.startup' extension from 'com.objectaid.uml' does not provide a 'class' attribute.
+This usage is deprecated and a 'class' attribute should be provided.
+The release after Mars (4.5) will no longer support the deprecated usage!
+!SESSION 2016-05-16 14:17:17.479 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_77
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-16 14:17:41.232
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\maloz'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.recommenders.types.rcp 1 3 2016-05-16 16:30:31.409
+!MESSAGE Full project indexing required:
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\charsets.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\access-bridge-64.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\cldrdata.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\dnsns.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\jaccess.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\jfxrt.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\localedata.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\nashorn.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunec.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunjce_provider.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunmscapi.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunpkcs11.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\zipfs.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\jce.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\jfr.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\jsse.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\resources.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\rt.jar
+  [+] B:\Documents\HE-Arc\P2\Java\P2_Java\Plateformer2D\lib\jinput.jar
+  [+] B:\Documents\HE-Arc\P2\Java\P2_Java\Plateformer2D\lib\lwjgl.jar
+  [+] B:\Documents\HE-Arc\P2\Java\P2_Java\Plateformer2D\lib\slick.jar
+  [-] C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\lib\slick.jar
+  [-] C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\lib\lwjgl.jar
+  [-] C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\lib\jinput.jar
+
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.needsRebuild(ProjectTypesIndex.java:170)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.startUp(ProjectTypesIndex.java:126)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2016-05-17 08:28:31.525 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_77
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-17 08:28:40.849
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\malo.zollikof'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 2 0 2016-05-17 08:28:41.099
+!MESSAGE The 'org.eclipse.ui.startup' extension from 'com.objectaid.uml' does not provide a 'class' attribute.
+This usage is deprecated and a 'class' attribute should be provided.
+The release after Mars (4.5) will no longer support the deprecated usage!
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-05-17 08:28:45.719
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: Plateformer2D
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:794)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:115)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:47)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:256)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:186)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:262)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:402)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:556)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:534)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:111)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate$1.run(LaunchConfigurationDelegate.java:430)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2225)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.buildProjects(LaunchConfigurationDelegate.java:437)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.buildForLaunch(LaunchConfigurationDelegate.java:130)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:855)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Contains: Could not delete '/Plateformer2D/bin/map'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:354)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:810)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1831)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:115)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:47)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:256)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:186)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:262)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:402)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:556)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:534)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:111)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate$1.run(LaunchConfigurationDelegate.java:430)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2225)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.buildProjects(LaunchConfigurationDelegate.java:437)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.buildForLaunch(LaunchConfigurationDelegate.java:130)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:855)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles\platformer-pack-redux-360-assets\PNG.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles\platformer-pack-redux-360-assets.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2016-05-17 08:28:45.721
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2016-05-17 08:28:45.721
+!MESSAGE Could not delete '/Plateformer2D/bin/map'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:354)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:358)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:810)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1831)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:115)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:47)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:256)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:186)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:734)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:205)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:245)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:262)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:402)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:556)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:534)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:111)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate$1.run(LaunchConfigurationDelegate.java:430)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2225)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.buildProjects(LaunchConfigurationDelegate.java:437)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.buildForLaunch(LaunchConfigurationDelegate.java:130)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:855)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles\platformer-pack-redux-360-assets\PNG.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles\platformer-pack-redux-360-assets.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles.
+Contains: Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2016-05-17 08:28:45.722
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2016-05-17 08:28:45.722
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-05-17 08:28:45.722
+!MESSAGE Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles\platformer-pack-redux-360-assets\PNG.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-05-17 08:28:45.722
+!MESSAGE Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles\platformer-pack-redux-360-assets.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-05-17 08:28:45.722
+!MESSAGE Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map\tuiles.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2016-05-17 08:28:45.722
+!MESSAGE Could not delete: C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\bin\map.
+
+!ENTRY org.eclipse.recommenders.types.rcp 1 3 2016-05-17 10:21:37.966
+!MESSAGE Full project indexing required:
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\charsets.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\access-bridge-64.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\cldrdata.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\dnsns.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\jaccess.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\jfxrt.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\localedata.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\nashorn.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunec.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunjce_provider.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunmscapi.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\sunpkcs11.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\ext\zipfs.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\jce.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\jfr.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\jsse.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\resources.jar
+  [*] C:\Program Files\Java\jre1.8.0_77\lib\rt.jar
+  [+] C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\lib\jinput.jar
+  [+] C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\lib\lwjgl.jar
+  [+] C:\Users\malo.zollikof\Documents\HE-ARC\ProjetP2\Java\p2_java_plateformed2d\P2_Java\Plateformer2D\lib\slick.jar
+  [-] B:\Documents\HE-Arc\P2\Java\P2_Java\Plateformer2D\lib\jinput.jar
+  [-] B:\Documents\HE-Arc\P2\Java\P2_Java\Plateformer2D\lib\lwjgl.jar
+  [-] B:\Documents\HE-Arc\P2\Java\P2_Java\Plateformer2D\lib\slick.jar
+
+!STACK 0
+org.eclipse.recommenders.utils.Logs$LogTraceException
+	at org.eclipse.recommenders.utils.Logs$LogTraceException.newTrace(Logs.java:381)
+	at org.eclipse.recommenders.utils.Logs.log(Logs.java:134)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.needsRebuild(ProjectTypesIndex.java:170)
+	at org.eclipse.recommenders.internal.types.rcp.ProjectTypesIndex.startUp(ProjectTypesIndex.java:126)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)

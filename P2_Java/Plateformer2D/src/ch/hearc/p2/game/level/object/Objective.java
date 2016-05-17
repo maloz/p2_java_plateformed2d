@@ -9,22 +9,26 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Objective extends LevelObject {
 
-	protected Animation animation;
+    protected Animation animation;
+    private int value;
 
-	public Objective(float x, float y) throws SlickException {
-		super(x, y);
+    public Objective(float x, float y) throws SlickException {
+	super(x, y);
+	value = 1;
 
-		// add the right animation for this objective
-		animation = new Animation(
-				new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/tochLit.png"),
-						new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/tochLit2.png") },
-				125);
-		boundingShape = new AABoundingRect(x, y, 40, 70);
-		// animation.setPingPong(true);
-	}
+	// add the right animation for this objective
+	animation = new Animation(
+		new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Items/coinGold.png")},
+		125);
+	boundingShape = new AABoundingRect(x, y, 60, 70);
+    }
 
-	public void render(float offset_x, float offset_y) {
-		animation.draw(x - 2 - offset_x, y - 2 - offset_y);
-	}
+    public void render(float offset_x, float offset_y) {
+	animation.draw(x - 2 - offset_x, y - 2 - offset_y);
+    }
+    public int getValue()
+    {
+	return value;
+    }
 
 }

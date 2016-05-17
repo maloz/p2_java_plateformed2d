@@ -12,11 +12,12 @@ import ch.hearc.p2.game.projectile.Projectile;
 
 public class Ennemie extends Character {
 
-
+    protected List<LevelObject> toAddList;
+    
     public Ennemie(float x, float y) throws SlickException {
 	
 	super(x, y);
-	
+	toAddList = new LinkedList<LevelObject>();
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	setSprite(new Image(
@@ -39,11 +40,19 @@ public class Ennemie extends Character {
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x + 20, y);
+	boundingShape.updatePosition(x + 20, y+70);
     }
 
     public void shoot() throws SlickException {
 	
+    }
+
+    public List<LevelObject> getToAddList() {
+	return toAddList;
+    }
+    public void clearList()
+    {
+	toAddList.clear();
     }
     
 

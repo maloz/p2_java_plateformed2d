@@ -9,12 +9,26 @@ import ch.hearc.p2.game.character.Player;
 public class Hud {
 
 	private Image[] life;
+	private Image[] numbers;
+	private Image coin;
 
 	public void init() throws SlickException {
-		this.life = new Image[3];
+		life = new Image[3];
 		life[0] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudHeart_full.png");
 		life[1] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudHeart_half.png");
 		life[2] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudHeart_empty.png");
+		numbers = new Image[10];
+		numbers[0] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud0.png");
+		numbers[1] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud1.png");
+		numbers[2] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud2.png");
+		numbers[3] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud3.png");
+		numbers[4] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud4.png");
+		numbers[5] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud5.png");
+		numbers[6] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud6.png");
+		numbers[7] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud7.png");
+		numbers[8] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud8.png");
+		numbers[9] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud9.png");
+		coin = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudCoin.png");
 	}
 
 	public void render(Graphics g, Player p) {
@@ -60,6 +74,29 @@ public class Hud {
 			break;
 
 		}
+		int point = p.getPoint();
+		int x = 1680;
+		if(point == 0)
+		    g.drawImage(numbers[0], x, 18);
+		while (point > 0) {
+		    g.drawImage(numbers[point%10], x, 18);
+		    point = point / 10;
+		    x -= 80;
+		}
+		g.drawImage(coin, 1780 ,20);
+		
+		
+		int munition = p.getWeapon().getMunition();
+		x = 150;
+		if(munition == 0)
+		    g.drawImage(numbers[0], x, 950);
+		while (munition > 0) {
+		    g.drawImage(numbers[munition%10], x, 950);
+		    munition = munition / 10;
+		    x -= 80;
+		}
+		
+		
 		// g.drawImage(playerbars, 20, 20);
 	}
 

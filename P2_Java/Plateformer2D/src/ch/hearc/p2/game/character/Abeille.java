@@ -11,14 +11,14 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 import ch.hearc.p2.game.projectile.Projectile;
 import ch.hearc.p2.game.projectile.ProjectileAbeille;
 
-public class Abeille extends Character {
+public class Abeille extends Ennemie {
 
-    private List<LevelObject> toAddList;
+    
     
     public Abeille(float x, float y) throws SlickException {
 	
 	super(x, y);
-	toAddList = new LinkedList<LevelObject>();
+	
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	setSprite(new Image(
@@ -48,25 +48,22 @@ public class Abeille extends Character {
 	int randomX = -5 + (int)(Math.random() * 5); 
 	int randomY = 0 + (int)(Math.random() * 5); 
 	
-	toAddList.add(new ProjectileAbeille(x+50,y+50, randomX, randomY));
+	toAddList.add(new ProjectileAbeille(x+10,y+10, randomX, randomY)); 
     }
-    public List<LevelObject> getToAddList()
-    {
-	return toAddList;
-    }
-    public void clearList()
-    {
-	toAddList.clear();
-    }
-    
+
     public void moveRandom()
     {
 	int randomNum = 0 + (int)(Math.random() * 50); 
 	int randomWay = 0 + (int)(Math.random() * 2); 
-	if(randomWay < 1)
+	if(randomWay < 1){
 	    moveLeft(randomNum);
-	else
+	    //this.y += randomNum;
+	}
+	else{
 	    moveRight(randomNum);
+	   // this.y -= randomNum;
+	}
+	
     }
 
 }
