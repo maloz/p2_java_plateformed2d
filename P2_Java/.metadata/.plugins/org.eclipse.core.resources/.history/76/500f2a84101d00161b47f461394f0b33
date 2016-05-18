@@ -1,0 +1,131 @@
+package ch.hearc.p2.game.character;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
+
+import ch.hearc.p2.game.enums.Facing;
+import ch.hearc.p2.game.level.LevelObject;
+import ch.hearc.p2.game.physics.AABoundingRect;
+import ch.hearc.p2.game.projectile.Projectile;
+import ch.hearc.p2.game.weapon.Weapon;
+
+public class Player extends Character {
+
+    private List<LevelObject> toAddList = new LinkedList<LevelObject>();
+    private Weapon weapon;
+    private int point;
+    private boolean key;
+    private Sound jump;
+
+    public Player(float x, float y) throws SlickException {
+	super(x, y);
+	point = 0;
+	key = false;
+	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
+
+	sprites = setSprite(
+		new Image("ressources/character/player/blue/p2_walk01.png"),
+		sprites);
+	movingAnimations = setMovingAnimation(
+		new Image[] {
+			new Image(
+				"ressources/character/player/blue/p2_walk01.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk01.png") },
+		100, movingAnimations);
+
+	boundingShape = new AABoundingRect(x, y, 80, 128);
+
+	accelerationSpeed = 0.002f;
+	maximumSpeed = 0.55f;
+	maximumFallSpeed = 0.6f;
+	decelerationSpeed = 0.001f;
+	life = 6;
+	weapon = new Weapon(0, 0, 100);
+	jump = new Sound("ressources/jump.ogg");
+    }
+
+    public void updateBoundingShape() {
+	boundingShape.updatePosition(x + 20, y + 128);
+	weapon.setPlayerFacing(this.facing);
+    }
+
+    public void shoot(int mouseX, int mouseY) throws SlickException {
+
+	float velocityX = (float) 0.07;
+	float velocityY = (float) 0.15;
+	double angle = Math.atan(Math.abs(mouseY - y) / Math.abs(mouseX - x));	
+	velocityY *= angle;
+	if (mouseX - x < 0) // Clique à gauche du joueur
+	{
+	    if (mouseY - y < 0) // Clique en dessous du joueur
+		velocityY *= 1;
+	    else
+		velocityY *= -1;
+
+	} else // Clique à droite du joueur
+	{
+	    if (mouseY - y < 0) // Clique en dessous du joueur
+		velocityY *= 1;
+	    else
+		velocityY *= -1;
+	}
+
+	weapon.shoot(x, y, mouseX, mouseY);
+	this.facing = weapon.getWay();
+	weapon.setPlayerFacing(this.facing);
+	if (facing == Facing.RIGHT)
+	    x_velocity -= velocityX;
+	else
+	    x_velocity += velocityX;
+	y_velocity = velocityY;
+    }
+
+    public List<LevelObject> getToAddList() {
+	return toAddList;
+    }
+
+    public void clearList() {
+	toAddList.clear();
+    }
+
+    public Weapon getWeapon() {
+	return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+	this.weapon = weapon;
+    }
+
+    public void addPoint(int i) {
+	point += i;
+    }
+
+    public void setPoint(int i) {
+	point = i;
+    }
+
+    public int getPoint() {
+	return point;
+    }
+
+    public void jump() {
+	if (onGround)
+	    y_velocity = -1f;
+	jump.play(1, (float) 0.5);
+    }
+    public void setKey(boolean key)
+    {
+	this.key = key;
+    }
+    public boolean hasKey()
+    {
+	return key;
+    }
+
+}
