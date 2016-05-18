@@ -54,7 +54,7 @@ public class Weapon extends LevelObject {
 	if (munition > 0) {
 	    // Calcul de la vélocité X et Y
 	    float velocityX = (float) 3.3;
-	    float velocityY = (float) 3.3;
+	    float velocityY = (float) 4;
 	    double angle = Math.atan(Math.abs(mouseY - playerY) / Math.abs(mouseX - playerX));
 	    float angleProj = (float) angle;
 	    velocityY *= angle;
@@ -86,9 +86,9 @@ public class Weapon extends LevelObject {
 
 	    }
 	    if (way == Facing.RIGHT)
-		toAddList.add(new ProjectilePlayer(x + 10, y, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(15)))));
+		toAddList.add(new ProjectilePlayer(x + 10, y, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
 	    else
-		toAddList.add(new ProjectilePlayer(x - 110, y, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(15)))));
+		toAddList.add(new ProjectilePlayer(x - 80, y, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
 	    munition--;
 	    
 	    tir.play();

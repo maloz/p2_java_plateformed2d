@@ -32,7 +32,7 @@ public class Abeille extends Ennemie {
 	hitedSprites = setSprite(bee, hitedSprites);
 	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee }, 80, hitedMovingAnimations);
 
-	boundingShape = new AABoundingRect(x, y, 45, 45);
+	boundingShape = new AABoundingRect(x, y, 50, 50);
 	deadPicture = new Image("ressources/character/ennemi/bee_dead.png");
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
@@ -42,7 +42,7 @@ public class Abeille extends Ennemie {
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x + 20, y);
+	boundingShape.updatePosition(x , y);
     }
 
     public void shoot() throws SlickException {

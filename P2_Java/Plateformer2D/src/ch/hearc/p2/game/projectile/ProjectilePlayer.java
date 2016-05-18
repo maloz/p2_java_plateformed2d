@@ -18,10 +18,10 @@ public class ProjectilePlayer extends Projectile {
 	this.y_velocity = y_velocity;
 	this.angle = angle;
 
-	bullet = new Image("ressources/tiles/item/laserRed02.png");
+	bullet = new Image("ressources/tiles/item/fireball.png");
 	bullet.setCenterOfRotation(bullet.getWidth()/2, bullet.getHeight()/2);
 	bullet.setRotation((float) Math.toDegrees(angle) - 90);
-	boundingShape = new AABoundingRect(x, y, 40, 30);
+	boundingShape = new AABoundingRect(x, y, 20, 20);
 	maximumFallSpeed = (float) 0;
 
     }
