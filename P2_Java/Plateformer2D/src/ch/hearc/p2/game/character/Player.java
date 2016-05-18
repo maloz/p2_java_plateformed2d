@@ -71,7 +71,7 @@ public class Player extends Character {
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
 	maximumFallSpeed = 0.6f;
-	decelerationSpeed = 0.001f;
+	decelerationSpeed = 0.0025f;
 	life = 6;
 	weapon = new Weapon(0, 0, 100);
 	jump = new Sound("ressources/audio/sound/jump.ogg");

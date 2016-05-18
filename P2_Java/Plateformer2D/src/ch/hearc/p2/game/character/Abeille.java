@@ -32,10 +32,10 @@ public class Abeille extends Ennemie {
 	hitedSprites = setSprite(bee, hitedSprites);
 	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee }, 80, hitedMovingAnimations);
 
-	boundingShape = new AABoundingRect(x, y, 50, 50);
+	boundingShape = new AABoundingRect(x, y, 56, 48);
 	deadPicture = new Image("ressources/character/ennemi/bee_dead.png");
-	accelerationSpeed = 0.002f;
-	maximumSpeed = 0.55f;
+	accelerationSpeed = 0.003f;
+	maximumSpeed = 0.6f;
 	maximumFallSpeed = 0.0f;
 	decelerationSpeed = 0.001f;
 	life = 5;

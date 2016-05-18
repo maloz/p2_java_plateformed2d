@@ -65,15 +65,13 @@ public class Physics {
 		    }
 		    if (obj instanceof Objective) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
-			    if(obj instanceof Coin)
+			    if (obj instanceof Coin)
 				((Player) c).addPoint(((Coin) obj).getValue());
-			    if(obj instanceof Key)
+			    if (obj instanceof Key)
 				((Player) c).setKey(true);
 			    removeQueueC.add(obj);
-			    
 			}
 		    }
-
 		}
 
 	    }
@@ -162,7 +160,7 @@ public class Physics {
 		step_y = -1;
 
 	}
-
+	
 	// and then do little steps until we are done moving
 	while (x_movement != 0 || y_movement != 0) {
 
