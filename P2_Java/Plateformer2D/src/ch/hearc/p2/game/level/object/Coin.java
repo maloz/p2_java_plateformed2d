@@ -16,8 +16,8 @@ public class Coin extends Objective {
 	value = 1;
 
 	// add the right animation for this objective
-	image =	new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Items/coinGold.png");
-	boundingShape = new AABoundingRect(x, y, 60, 70);
+	image =	new Image("ressources/tiles/item/coinGold.png");
+	boundingShape = new AABoundingRect(x, y, 50, 70);
     }
     public int getValue()
     {

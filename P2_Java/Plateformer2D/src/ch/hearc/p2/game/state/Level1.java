@@ -27,6 +27,7 @@ import ch.hearc.p2.game.hud.Hud;
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.Coin;
+import ch.hearc.p2.game.level.object.Key;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.menu.PauseGameState;
 import ch.hearc.p2.game.physics.Physics;
@@ -47,7 +48,6 @@ public class Level1 extends BasicGameState {
     private StateBasedGame sbg;
     private Hud hud;
     private int timer;
-    private Image cursor;
     private Music musiclvl1;
     private boolean isPause;
     
@@ -71,21 +71,25 @@ public class Level1 extends BasicGameState {
     }
 
     public void initialisation() throws SlickException {
-	cursor = new Image("ressources/viseur.png");
-	ennemies = new ArrayList<Ennemie>();
+		ennemies = new ArrayList<Ennemie>();
 	objectives = new ArrayList<Objective>();
 	hud = new Hud();
 	timer = 0;
 	// at the start of the game we don't have a player yet
-	player = new Player(128, 650);
+	player = new Player(1*70, 16*70);
 	
 	//Remplis ennmis
-	ennemies.add(new Abeille(600, 200));
-	ennemies.add(new Abeille(1200, 200));
-	ennemies.add(new Abeille(1800, 200));
+	ennemies.add(new Abeille(5*70, 5*70));
+	ennemies.add(new Abeille(26*7, 9*7));
+	ennemies.add(new Abeille(38*7, 9*70));
 	
 	//Remplis Objectifs
-	objectives.add(new Coin(150, 150));
+	objectives.add(new Coin(8*70, 6*70));
+	objectives.add(new Coin(23*70, 5*70));
+	objectives.add(new Coin(37*70, 10*70));
+	objectives.add(new Coin(35*70, 17*70));
+	objectives.add(new Key(6*70, 7*70));
+	
 
 	weapon = player.getWeapon();
 
@@ -107,7 +111,7 @@ public class Level1 extends BasicGameState {
 
 	level.addLevelObject(weapon);
 	
-	musiclvl1 = new Music("ressources/lvl1.ogg");
+	musiclvl1 = new Music("ressources/audio/music/lvl1.ogg");
 	isPause = false;
 	
 	hud.init();
@@ -117,11 +121,9 @@ public class Level1 extends BasicGameState {
 	if(isPause == true){
 	    musiclvl1.resume();
 	    isPause = false;
-	    container.setMouseCursor(cursor, 0, 0);
 	}
 	else if(musiclvl1.playing() == false){
 	    musiclvl1.loop();
-	    container.setMouseCursor(cursor, 0, 0);
 	}
 	// Pour gérer les entrées clavier
 	playerController.handleInput(container.getInput(), delta);
@@ -130,8 +132,8 @@ public class Level1 extends BasicGameState {
 	physics.handlePhysics(level, delta);
 
 	// Pour que l'arme suive le perso
-	weapon.setX(player.getX() + 80);
-	weapon.setY(player.getY() + 165);
+	weapon.setX(player.getX()+40);
+	weapon.setY(player.getY()+30);
 
 	// Pour voir si le player a tiré (donc si l'arme doit tirer) et ajouter les projectiles au niveau
 	List<LevelObject> toAdd = weapon.getToAddList();
@@ -189,7 +191,7 @@ public class Level1 extends BasicGameState {
 	// Pour voir si le niveau est fini
 	if (physics.isOver() == true) {
 	    // System.out.println("Level finished, loading lvl2");
-	    if(objectives.isEmpty()){
+	    if(player.hasKey()){
 		initialisation();
 		sbg.enterState(102, new FadeOutTransition(), new FadeInTransition());
 	    }
@@ -252,15 +254,14 @@ public class Level1 extends BasicGameState {
     }
 
     public void keyReleased(int key, char code) {
-	/*if (key == Input.KEY_ESCAPE) {
+	if (key == Input.KEY_ESCAPE) {
 	    PauseGameState.setID(ID);
 	    musiclvl1.pause();
 	    isPause = true;
 	    sbg.enterState(50);
-	}*/
+	}
 	
     }
-
     public int getID() {
 	// this is the id for changing states
 	return ID;

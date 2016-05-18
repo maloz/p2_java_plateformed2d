@@ -1,5 +1,6 @@
 package ch.hearc.p2.game.character;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class Player extends Character {
     private int point;
     private boolean key;
     private Sound jump;
+    private HashMap<Facing, Image> jumpSprite;
+    private HashMap<Facing, Image> standSprite;
+    
 
     public Player(float x, float y) throws SlickException {
 	super(x, y);
@@ -29,18 +33,40 @@ public class Player extends Character {
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	sprites = setSprite(
-		new Image(
-			"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"),
+		new Image("ressources/character/player/blue/p2_walk01.png"),
 		sprites);
 	movingAnimations = setMovingAnimation(
 		new Image[] {
 			new Image(
-				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"),
+				"ressources/character/player/blue/p2_walk01.png"),
 			new Image(
-				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk2.png") },
-		100, movingAnimations);
+				"ressources/character/player/blue/p2_walk02.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk03.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk04.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk05.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk06.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk07.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk08.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk09.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk10.png"),
+			new Image(
+				"ressources/character/player/blue/p2_walk11.png")},
+		50, movingAnimations);
+	
+	jumpSprite = setSprite(
+		new Image("ressources/character/player/blue/p2_jump.png"), jumpSprite);
+	standSprite = setSprite(
+		new Image("ressources/character/player/blue/p2_stand.png"), standSprite);
 
-	boundingShape = new AABoundingRect(x, y, 80, 128);
+	boundingShape = new AABoundingRect(x, y, 60, 90);
 
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
@@ -48,11 +74,11 @@ public class Player extends Character {
 	decelerationSpeed = 0.001f;
 	life = 6;
 	weapon = new Weapon(0, 0, 100);
-	jump = new Sound("ressources/jump.ogg");
+	jump = new Sound("ressources/audio/sound/jump.ogg");
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x + 20, y + 128);
+	boundingShape.updatePosition(x+5, y+2);
 	weapon.setPlayerFacing(this.facing);
     }
 
@@ -116,17 +142,50 @@ public class Player extends Character {
     }
 
     public void jump() {
-	if (onGround)
+	if (onGround){
 	    y_velocity = -1f;
-	jump.play(1, (float) 0.5);
+	    jump.play(1, (float) 0.5);
+	}
+	
     }
+    
     public void setKey(boolean key)
     {
 	this.key = key;
     }
+    
     public boolean hasKey()
     {
 	return key;
     }
+    
+    public void render(int offset_x, int offset_y) {
+
+   	time1 = System.currentTimeMillis();
+   	
+   	if (dead == false && hited == false) {
+   	    if (movingAnimations != null && moving && onGround == true) {
+   		movingAnimations.get(facing).draw(x - offset_x, y - offset_y);
+   	    } else if(movingAnimations != null && onGround == false){
+   		jumpSprite.get(facing).draw(x - offset_x, y - offset_y);
+   	    }
+   	    else{
+   		standSprite.get(facing).draw(x - offset_x, y - offset_y);
+   	    }
+   	} else if(hited == true && dead == false)
+   	{
+   	    
+   	    if (hitedMovingAnimations != null && moving) {
+   		hitedMovingAnimations.get(facing).draw(x - offset_x, y - offset_y);
+   	    } else {
+   		hitedSprites.get(facing).draw(x - offset_x, y - offset_y);
+   	    }   
+   	    if(time1 - time2 > 50)
+   		    hited = false;
+   	}
+   	else
+   	    deadPicture.draw(x -offset_x, y - offset_y);
+   	
+       }
 
 }

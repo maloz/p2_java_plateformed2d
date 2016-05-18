@@ -12,6 +12,7 @@ import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.Coin;
 import ch.hearc.p2.game.level.object.DeadZone;
+import ch.hearc.p2.game.level.object.Key;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
 import ch.hearc.p2.game.projectile.Projectile;
@@ -27,7 +28,7 @@ public class Physics {
 
     public Physics(String startinglevel) throws SlickException {
 	this.level = startinglevel;
-	map = new TiledMap("ressources/levels/" + level + ".tmx");
+	map = new TiledMap("ressources/level/" + level + ".tmx");
     }
 
     public void handlePhysics(Level level, int delta) {
@@ -62,10 +63,14 @@ public class Physics {
 		    if (obj instanceof DeadZone) {
 			c.setLife(0);
 		    }
-		    if (obj instanceof Coin) {
+		    if (obj instanceof Objective) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
-			    ((Player) c).addPoint(((Coin) obj).getValue());
+			    if(obj instanceof Coin)
+				((Player) c).addPoint(((Coin) obj).getValue());
+			    if(obj instanceof Key)
+				((Player) c).setKey(true);
 			    removeQueueC.add(obj);
+			    
 			}
 		    }
 
@@ -252,7 +257,6 @@ public class Physics {
 	// we get the tiles that are directly "underneath" the characters, also
 	// known as the ground tiles
 	ArrayList<Tile> tiles = obj.getBoundingShape().getGroundTiles(mapTiles);
-
 	// we lower the bounding object a bit so we can check if we are
 	// actually a bit above the ground
 	obj.getBoundingShape().movePosition(0, 1);

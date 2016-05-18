@@ -6,7 +6,7 @@ public class SolidTile extends Tile {
 
 	public SolidTile(int x, int y, String type) {
 		super(x, y, type);
-		boundingShape = new AABoundingRect(x * 128, y * 128, 128, 128);
+		boundingShape = new AABoundingRect(x * 70, y * 70, 70, 70);
 	}
 
 }

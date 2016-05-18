@@ -14,8 +14,8 @@ public class Key extends Objective {
 	super(x, y);
 
 	// add the right animation for this objective
-	image = new Image("");
-	boundingShape = new AABoundingRect(x, y, 60, 70);
+	image = new Image("ressources/tiles/item/keyRed.png");
+	boundingShape = new AABoundingRect(x, y, 45, 50);
     }
 
 

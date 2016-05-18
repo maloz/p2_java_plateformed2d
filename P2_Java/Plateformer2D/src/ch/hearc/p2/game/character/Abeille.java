@@ -20,30 +20,25 @@ public class Abeille extends Ennemie {
 	dead = false;
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
-	sprites = setSprite(new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
+	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"),
 		sprites);
 	movingAnimations = setMovingAnimation(
-		new Image[] { new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
-			new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee_move.png") },
+		new Image[] { new Image("ressources/character/ennemi/bee.png"),
+			new Image("ressources/character/ennemi/bee_fly.png") },
 		80, movingAnimations);
 
-	Image bee = new Image("ressources/bee.png");
-	Image bee2 = new Image("ressources/bee_move.png");
-	int filter =  SGL.GL_LINEAR;
-	bee.setFilter(filter);
-	//bee.setAlpha(0);
-	bee2.setFilter(filter);
-	//bee2.setAlpha(0);
-	hitedSprites = setSprite(bee, hitedSprites);
-	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee2 }, 80, hitedMovingAnimations);
+	Image bee = new Image("ressources/character/ennemi/bee_hit.png");
 
-	boundingShape = new AABoundingRect(x, y, 100, 100);
-	deadPicture = new Image("ressources/bee_dead.png");
+	hitedSprites = setSprite(bee, hitedSprites);
+	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee }, 80, hitedMovingAnimations);
+
+	boundingShape = new AABoundingRect(x, y, 45, 45);
+	deadPicture = new Image("ressources/character/ennemi/bee_dead.png");
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
 	maximumFallSpeed = 0.0f;
 	decelerationSpeed = 0.001f;
-	life = 13;
+	life = 5;
     }
 
     public void updateBoundingShape() {

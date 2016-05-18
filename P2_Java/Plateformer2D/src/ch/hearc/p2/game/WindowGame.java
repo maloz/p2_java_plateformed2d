@@ -31,7 +31,7 @@ public class WindowGame extends StateBasedGame {
     // 1280x720 is our base, we use 32x32 tiles but we want it to be 40x40 at
     // 1280x720
     // so our base scale is not 1 but 1.25 actually
-    public static final float SCALE = (float) 1;
+    public static final float SCALE = (float) 1.4;
     public static final String GAME_NAME = "Gravity Platformer";
 
     public WindowGame() {

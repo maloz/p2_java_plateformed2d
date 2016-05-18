@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="15" tilewidth="128" tileheight="128" nextobjectid="51">
- <tileset firstgid="1" name="spritesheet_ground" tilewidth="128" tileheight="128" tilecount="128" columns="8">
-  <image source="../map/tuiles/platformer-pack-redux-360-assets/Spritesheets/spritesheet_ground.png" width="1024" height="2048"/>
- </tileset>
- <tileset firstgid="129" name="grassy_tileset" tilewidth="32" tileheight="32" tilecount="800" columns="20">
-  <image source="../../data/img/tilesets/grassy_tileset.png" width="640" height="1280"/>
-  <tile id="0">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="20" tilewidth="70" tileheight="70" nextobjectid="51">
+ <tileset firstgid="1" name="sheet" tilewidth="70" tileheight="70" tilecount="98" columns="14">
+  <image source="../tiles/map/sheet.png" width="980" height="490"/>
+  <tile id="84">
    <properties>
     <property name="tileType" value="air"/>
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="929" name="Object" tilewidth="128" tileheight="128" tilecount="128" columns="8">
-  <image source="../map/tuiles/platformer-pack-redux-360-assets/Spritesheets/spritesheet_tiles.png" width="1024" height="2048"/>
+ <tileset firstgid="99" name="tiles_spritesheet" tilewidth="70" tileheight="70" spacing="2" tilecount="156" columns="12">
+  <image source="../tiles/map/tiles_spritesheet.png" width="914" height="936"/>
  </tileset>
- <layer name="Limite" width="25" height="15">
+ <tileset firstgid="255" name="spritesheet" tilewidth="70" tileheight="70" spacing="1" tilecount="49" columns="7">
+  <image source="../tiles/map/spritesheet.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="304" name="grayy" tilewidth="32" tileheight="32" tilecount="800" columns="20">
+  <image source="../tiles/map/grassy_tileset.png" width="640" height="1280"/>
+ </tileset>
+ <layer name="Limite" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2tkYGBoHMWjeBSPYhIxwwDYyTGKicYAkMy5rtwFAAA=
+   H4sIAAAAAAAAC+3DQQ0AAAwDoTNZ/1YmYx9IWDVVVVX19QGGCOYCoA8AAA==
   </data>
  </layer>
- <layer name="CollisionLayer" width="25" height="15">
+ <layer name="CollisionLayer" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NgYGDgoDEWAOJGGmKBIWhHHBIOQ2JTww6YWeE4MKV2mOMxm1g7+IGYHQ3XURgfV5kZGPYyUz/OzdHiC4T1qWzHUEq7w90OWpoPw1uYaY8BfTbu/NwFAAA=
+   H4sIAAAAAAAAC+3UMQ4AEAyF4Q42FiMXcgL3vwqLRQyVRj3S4dv7a6oQUflEfZx1YLEOLCc6QpcW8mMdXF6h48abcvY8zPMg3cdqP9ydIXVIoHbs3g5Kh/TmUTqktDpO/3+2Dyw7HU5Ao4M7SzQqGpr3Cp6gDwAA
   </data>
  </layer>
- <layer name="Object" width="25" height="15">
+ <layer name="Object" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXYwGNmCH2XeWDdQSo4REX3Xoaa9XgQh8HqQey2UUB9sIaZ9njLMMEAPnh6ydwFAAA=
+   H4sIAAAAAAAACwtlYGAIHcWjeBBjhkHgBmr6w3YQuIUaOIxE9Xw0UkuO+lGMG5sPAjdQA4fQ0OzR9EZfPBretA0TaplFTTfxDoIwBmFXLGL2g8BdpOJgLGIOg8Bd6NiFQn8k4dHrTIT9sPaZNZS2IsHtyHZjcycLBZhQGKDjMBw0OhaEYlLcJziK6YIBQdiwm6APAAA=
   </data>
  </layer>
- <layer name="End" width="25" height="15" visible="0">
+ <layer name="End" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2tkYGBoHML4CTPt7XhDBztG8SgexaOYmhgA1kXfvdwFAAA=
+   H4sIAAAAAAAAC+3OQQ0AMAgEsDOJrwlALCa2hCx99N9KUgA8cRYcbugFBwCA3w0x+FvioA8AAA==
   </data>
  </layer>
 </map>

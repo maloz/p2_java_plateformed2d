@@ -20,14 +20,7 @@ public class Ennemie extends Character {
 	toAddList = new LinkedList<LevelObject>();
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
-	sprites = setSprite(new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
-		sprites);
-	movingAnimations = setMovingAnimation(
-		new Image[] { new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
-			new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee_move.png") },
-		60, movingAnimations);
-
-	boundingShape = new AABoundingRect(x, y, 100, 100);
+	boundingShape = new AABoundingRect(x, y, 45, 45);
 
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;

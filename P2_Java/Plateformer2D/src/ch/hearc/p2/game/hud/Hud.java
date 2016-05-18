@@ -14,21 +14,21 @@ public class Hud {
 
 	public void init() throws SlickException {
 		life = new Image[3];
-		life[0] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudHeart_full.png");
-		life[1] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudHeart_half.png");
-		life[2] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudHeart_empty.png");
+		life[0] = new Image("ressources/hud/hudHeart_full.png");
+		life[1] = new Image("ressources/hud/hudHeart_half.png");
+		life[2] = new Image("ressources/hud/hudHeart_empty.png");
 		numbers = new Image[10];
-		numbers[0] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud0.png");
-		numbers[1] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud1.png");
-		numbers[2] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud2.png");
-		numbers[3] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud3.png");
-		numbers[4] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud4.png");
-		numbers[5] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud5.png");
-		numbers[6] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud6.png");
-		numbers[7] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud7.png");
-		numbers[8] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud8.png");
-		numbers[9] = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hud9.png");
-		coin = new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/HUD/hudCoin.png");
+		numbers[0] = new Image("ressources/hud/hud0.png");
+		numbers[1] = new Image("ressources/hud/hud1.png");
+		numbers[2] = new Image("ressources/hud/hud2.png");
+		numbers[3] = new Image("ressources/hud/hud3.png");
+		numbers[4] = new Image("ressources/hud/hud4.png");
+		numbers[5] = new Image("ressources/hud/hud5.png");
+		numbers[6] = new Image("ressources/hud/hud6.png");
+		numbers[7] = new Image("ressources/hud/hud7.png");
+		numbers[8] = new Image("ressources/hud/hud8.png");
+		numbers[9] = new Image("ressources/hud/hud9.png");
+		coin = new Image("ressources/hud/hudCoin.png");
 	}
 
 	public void render(Graphics g, Player p) {

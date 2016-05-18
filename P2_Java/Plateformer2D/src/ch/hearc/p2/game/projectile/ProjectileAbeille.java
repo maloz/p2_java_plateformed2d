@@ -16,7 +16,7 @@ public class ProjectileAbeille extends Projectile {
 	this.y_velocity = y_velocity;
 
 	// add the right animation for this objective
-	projectile = new Image("ressources/fireball.png");
+	projectile = new Image("ressources/tiles/item/fireball.png");
 	projectile = projectile.getScaledCopy(0.75f);
 	boundingShape = new AABoundingRect(x, y, 15, 15);
 	maximumFallSpeed = (float) 1;

@@ -40,8 +40,8 @@ public class Level {
    
 
     public Level(String level, Player player) throws SlickException {
-	map = new TiledMap("ressources/levels/" + level + ".tmx");
-	background = new Image("ressources/map/" + map.getMapProperty("back.png", "back.png"));
+	map = new TiledMap("ressources/level/" + level + ".tmx");
+	background = new Image("ressources/background/" + map.getMapProperty("back.png", "back.png"));
 	characters = new ArrayList<Character>();
 	levelObjects = new ArrayList<LevelObject>();
 
@@ -87,6 +87,7 @@ public class Level {
 		tiles[x][y] = tile;
 	    }
 	}
+	
     }
 
     private void loadLimite() {
@@ -200,7 +201,7 @@ public class Level {
 	renderBackground();
 
 	// then render the map
-	map.render(-(offset_x % 128), -(offset_y % 128), offset_x / 128, offset_y / 128, 129, 19);
+	map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, 71, 19);
 
 	// and then render the characters on top of the map
 	for (Character c : characters) {
@@ -218,7 +219,7 @@ public class Level {
 
 	int half_heigth = (int) (WindowGame.WINDOW_HEIGTH / WindowGame.SCALE / 2);
 
-	int maxY = (int) (map.getHeight() * 128) - half_heigth;
+	int maxY = (int) (map.getHeight() * 70) - half_heigth;
 
 	if (player.getY() < half_heigth) {
 	    offset_y = 0;
@@ -240,7 +241,7 @@ public class Level {
 
 	// next up is the maximum offset, this is the most right side of the
 	// map, minus half of the screen offcourse
-	int maxX = (int) (map.getWidth() * 128) - half_width;
+	int maxX = (int) (map.getWidth() * 70) - half_width;
 
 	// now we have 3 cases here
 	if (player.getX() < half_width) {
@@ -324,7 +325,7 @@ public class Level {
 		renderBackground();
 
 		// then render the map
-		map.render(-(offset_x % 128), -(offset_y % 128), offset_x / 128, offset_y / 128, 129, 19);
+		map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, 71, 19);
 
 		// and then render the characters on top of the map
 		for (Character c : characters) {

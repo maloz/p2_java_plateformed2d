@@ -15,8 +15,8 @@ public class Objective extends LevelObject {
 	super(x, y);
 
 	// add the right animation for this objective
-	image =  new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Items/coinGold.png");
-	boundingShape = new AABoundingRect(x, y, 60, 70);
+	image =  new Image("ressources/tiles/item/coinGold.png");
+	boundingShape = new AABoundingRect(x, y, 35, 35);
     }
 
     public void render(float offset_x, float offset_y) {

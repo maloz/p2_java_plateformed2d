@@ -33,19 +33,19 @@ public class Weapon extends LevelObject {
 	x_velocity = 0;
 	y_velocity = 0;
 
-	arme = new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/raygunBig.png");
+	arme = new Image("ressources/tiles/item/raygunBig.png");
 	
 	boundingShape = new AABoundingRect(x, y, 0, 0);
 	maximumFallSpeed = (float) 0;
-	tir = new Sound("ressources/laser4.ogg");
+	tir = new Sound("ressources/audio/sound/shoot.ogg");
 	random = new Random();
     }
 
     public void render(float offset_x, float offset_y) {
 	if (playerFacing == Facing.RIGHT)
-	    arme.draw(x - 2 - offset_x, y - 2 - offset_y);
+	    arme.draw(x - offset_x, y- offset_y);
 	else {
-	    arme.getFlippedCopy(true, false).draw(x - 110 - offset_x, y - 2 - offset_y);
+	    arme.getFlippedCopy(true, false).draw(x - offset_x - 80, y  - offset_y);
 	}
 
     }

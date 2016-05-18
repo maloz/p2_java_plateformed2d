@@ -21,13 +21,13 @@ public class PauseGameState extends BasicGameState {
     private Image quitter;
     private Image reprendre;
     private StateBasedGame game;
-    private Image cursor;
+   // private Image cursor;
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 	this.game = game;
-	this.background = new Image("background.jpg");
-	cursor = new Image("ressources/hand_cursor.png");
+	this.background = new Image("ressources/background/background.jpg");
+	//cursor = new Image("ressources/cursor/hand_cursor.png");
 	quitter = new Image("ressources/menu/quitter.png");
 	reprendre = new Image("ressources/menu/reprendre.png");
 	
@@ -38,7 +38,7 @@ public class PauseGameState extends BasicGameState {
 	background.draw(0, 0, container.getWidth(), container.getHeight());
 	g.drawImage(quitter, container.getWidth() / 2 - 200, 250);
 	g.drawImage(reprendre, container.getWidth() / 2 - 200, 400);
-	container.setMouseCursor(cursor, 0, 0);
+	//container.setMouseCursor(cursor, 0, 0);
 
     }
 

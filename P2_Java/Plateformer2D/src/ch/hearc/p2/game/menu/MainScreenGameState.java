@@ -31,15 +31,15 @@ public class MainScreenGameState extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = game;
-		this.background = new Image("background.jpg");
-		cursor = new Image("ressources/hand_cursor.png");
+		this.background = new Image("ressources/background/background.jpg");
+		cursor = new Image("ressources/cursor/viseur.png");
 		jouer = new Image("ressources/menu/jouer.png");
 		niveaux = new Image("ressources/menu/niveaux.png");
 		options = new Image("ressources/menu/options.png");
 		credits = new Image("ressources/menu/credits.png");
 		quitter = new Image("ressources/menu/quitter.png");
 		
-		sound = new Music("ressources/music_home.ogg");
+		sound = new Music("ressources/audio/music/home.ogg");
 		
 	}
 

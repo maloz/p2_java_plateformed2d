@@ -17,7 +17,7 @@ public class Projectile extends LevelObject {
 	y_velocity = 0;
 
 	animation = new Animation(
-		new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/laserPurpleDot.png") },
+		new Image[] { new Image("ressources/tiles/item/laserRed02.png") },
 		125);
 	boundingShape = new AABoundingRect(x, y, 10, 10);
 	maximumFallSpeed = (float) 0.1;

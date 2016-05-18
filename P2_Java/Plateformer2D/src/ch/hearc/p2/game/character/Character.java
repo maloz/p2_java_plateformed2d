@@ -24,8 +24,8 @@ public abstract class Character extends LevelObject {
     protected boolean hited;
     protected HashMap<Facing, Image> hitedSprites; 
     protected HashMap<Facing, Animation> hitedMovingAnimations;
-    private long time1;
-    private long time2;
+    protected long time1;
+    protected long time2;
     
     public Character(float x, float y) throws SlickException {
 	super(x, y);
@@ -35,10 +35,10 @@ public abstract class Character extends LevelObject {
 	hited = false;
 	// in case we forget to set the image, we don't want the game to crash,
 	// but it still has to be obvious that something was forgotten
-	sprites = setSprite(new Image("ressources/sprites/p2_walk01.png"), sprites); //image par défaut
-	deadPicture = new Image("ressources/bee_dead.png"); //image par défaut
+	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"), sprites); //image par défaut
+	deadPicture = new Image("ressources/character/ennemi/bee.png"); //image par défaut
 	
-	hitedSprites = setSprite(new Image("ressources/sprites/p2_walk01.png"), hitedSprites); //image par défaut
+	hitedSprites = setSprite(new Image("ressources/character/ennemi/bee_hit.png"), hitedSprites); //image par défaut
 	//hitedMovingAnimations = new Image("ressources/bee_dead.png");
 	
 	

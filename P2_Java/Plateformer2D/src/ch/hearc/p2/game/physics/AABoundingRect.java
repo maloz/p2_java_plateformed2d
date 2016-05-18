@@ -44,13 +44,16 @@ public class AABoundingRect extends BoundingShape {
 
 	public ArrayList<Tile> getTilesOccupying(Tile[][] tiles) {
 		ArrayList<Tile> occupiedTiles = new ArrayList<Tile>();
-
+		//System.out.println(tiles.length);
 		// we go from the left of the rect towards to right of the rect, making
-		// sure we round upwards to a multiple of 128 or we might miss a few
+		// sure we round upwards to a multiple of 70 or we might miss a few
 		// tiles
-		for (int i = (int) x; i <= x + width + (128 - width % 128); i += 128) {
-			for (int j = (int) y; j <= y + height + (128 - height % 128); j += 128) {
-				occupiedTiles.add(tiles[i / 128][j / 128]);
+		for (int i = (int) x; i <= x + width + (70 - width % 70); i += 70) {
+			for (int j = (int) y; j <= y + height + (70 - height % 70); j += 70) {
+			    try{
+				occupiedTiles.add(tiles[i / 70][j / 70]);
+			    }
+			    catch(Exception e){}
 
 			}
 		}
@@ -58,11 +61,16 @@ public class AABoundingRect extends BoundingShape {
 	}
 
 	public ArrayList<Tile> getGroundTiles(Tile[][] tiles) {
+	    	
 		ArrayList<Tile> tilesUnderneath = new ArrayList<Tile>();
 		int j = (int) (y + height + 1);
 
-		for (int i = (int) x; i <= x + width + (128 - width % 128); i += 128) {
-			tilesUnderneath.add(tiles[i / 128][j / 128]);
+		for (int i = (int) x; i <= x + width + (70 - width % 70); i += 70) {
+		    try{
+			tilesUnderneath.add(tiles[(i / 70)][j / 70]);
+		    }
+		    catch(Exception e)
+		    {}
 		}
 
 		return tilesUnderneath;

@@ -34,8 +34,8 @@ public class LevelScreen1GameState extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = game;
-		cursor = new Image("ressources/hand_cursor.png");
-		this.background = new Image("background.jpg");
+		cursor = new Image("ressources/cursor/hand_cursor.png");
+		this.background = new Image("ressources/background/background.jpg");
 		suivant = new Image("ressources/menu/suivant.jpg");
 		//precedent = new Image("ressources/menu/precedent.jpg");
 		retour = new Image("ressources/menu/retour.jpg");
