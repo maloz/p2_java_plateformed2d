@@ -71,7 +71,7 @@ public class Level1 extends BasicGameState {
     }
 
     public void initialisation() throws SlickException {
-		ennemies = new ArrayList<Ennemie>();
+	ennemies = new ArrayList<Ennemie>();
 	objectives = new ArrayList<Objective>();
 	hud = new Hud();
 	timer = 0;
@@ -79,7 +79,7 @@ public class Level1 extends BasicGameState {
 	player = new Player(1*70, 16*70);
 	
 	//Remplis ennmis
-	ennemies.add(new Abeille(5*70, 5*70));
+	ennemies.add(new Abeille(5*70, 6*70));
 	ennemies.add(new Abeille(26*7, 9*7));
 	ennemies.add(new Abeille(38*7, 9*70));
 	
