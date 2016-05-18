@@ -8,7 +8,7 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class ProjectileAbeille extends Projectile {
 
-    protected Animation animation;
+    protected Image projectile;
 
     public ProjectileAbeille(float x, float y, float x_velocity, float y_velocity) throws SlickException {
 	super(x, y);
@@ -16,17 +16,15 @@ public class ProjectileAbeille extends Projectile {
 	this.y_velocity = y_velocity;
 
 	// add the right animation for this objective
-	animation = new Animation(
-		new Image[] {
-			new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/laserPurpleDot.png") },
-		125);
-	boundingShape = new AABoundingRect(x, y, 10, 10);
+	projectile = new Image("ressources/fireball.png");
+	projectile = projectile.getScaledCopy(0.75f);
+	boundingShape = new AABoundingRect(x, y, 15, 15);
 	maximumFallSpeed = (float) 1;
 
     }
 
     public void render(float offset_x, float offset_y) {
-	animation.draw(x - 2 - offset_x, y - 2 - offset_y);
+	projectile.draw(x - 2 - offset_x, y - 2 - offset_y);
     }
 
 }

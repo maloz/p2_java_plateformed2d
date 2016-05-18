@@ -11,118 +11,155 @@ import ch.hearc.p2.game.level.LevelObject;
 
 public abstract class Character extends LevelObject {
 
-	protected HashMap<Facing, Image> sprites;
-	protected int life;
-	protected HashMap<Facing, Animation> movingAnimations;
-	protected Facing facing;
-	protected boolean moving = false;
-	protected float accelerationSpeed = 1;
-	protected float decelerationSpeed = 1;
-	protected float maximumSpeed = 1;
-
-	public Character(float x, float y) throws SlickException {
-		super(x, y);
-		// in case we forget to set the image, we don't want the game to crash,
-		// but it still has to be obvious that something was forgotten
-		setSprite(new Image("ressources/sprites/p2_walk01.png"));
-
-		// default direction will be right
-		facing = Facing.RIGHT;
-	}
-
-	protected void setMovingAnimation(Image[] images, int frameDuration) {
-		movingAnimations = new HashMap<Facing, Animation>();
-
-		// we can just put the right facing in with the default images
-		movingAnimations.put(Facing.RIGHT, new Animation(images, frameDuration));
-
-		Animation facingLeftAnimation = new Animation();
-		for (Image i : images) {
-			facingLeftAnimation.addFrame(i.getFlippedCopy(true, false), frameDuration);
-		}
-		movingAnimations.put(Facing.LEFT, facingLeftAnimation);
-
-	}
-
-	protected void setSprite(Image i) {
-		sprites = new HashMap<Facing, Image>();
-		sprites.put(Facing.RIGHT, i);
-		sprites.put(Facing.LEFT, i.getFlippedCopy(true, false));
-	}
-
-	public boolean isMoving() {
-		return moving;
-	}
-
-	public void setMoving(boolean b) {
-		moving = b;
-	}
-
-	public int getLife() {
-		return life;
-	}
+    protected HashMap<Facing, Image> sprites;
+    protected int life;
+    protected HashMap<Facing, Animation> movingAnimations;
+    protected Facing facing;
+    protected boolean moving = false;
+    protected float accelerationSpeed = 1;
+    protected float decelerationSpeed = 1;
+    protected float maximumSpeed = 1;
+    protected boolean dead;
+    protected Image deadPicture;
+    protected boolean hited;
+    protected HashMap<Facing, Image> hitedSprites; 
+    protected HashMap<Facing, Animation> hitedMovingAnimations;
+    private long time1;
+    private long time2;
+    
+    public Character(float x, float y) throws SlickException {
+	super(x, y);
+	time1 = System.currentTimeMillis();
+	time2 = System.currentTimeMillis();
+	dead = false;
+	hited = false;
+	// in case we forget to set the image, we don't want the game to crash,
+	// but it still has to be obvious that something was forgotten
+	sprites = setSprite(new Image("ressources/sprites/p2_walk01.png"), sprites); //image par défaut
+	deadPicture = new Image("ressources/bee_dead.png"); //image par défaut
 	
-	public void damage(int value)
+	hitedSprites = setSprite(new Image("ressources/sprites/p2_walk01.png"), hitedSprites); //image par défaut
+	//hitedMovingAnimations = new Image("ressources/bee_dead.png");
+	
+	
+	// default direction will be right
+	facing = Facing.RIGHT;
+    }
+
+    protected HashMap<Facing, Animation> setMovingAnimation(Image[] images, int frameDuration, HashMap<Facing, Animation> movingAnim) {
+	movingAnim = new HashMap<Facing, Animation>();
+
+	// we can just put the right facing in with the default images
+	movingAnim.put(Facing.RIGHT, new Animation(images, frameDuration));
+
+	Animation facingLeftAnimation = new Animation();
+	for (Image i : images) {
+	    facingLeftAnimation.addFrame(i.getFlippedCopy(true, false), frameDuration);
+	}
+	movingAnim.put(Facing.LEFT, facingLeftAnimation);
+	return movingAnim;
+
+    }
+
+    protected HashMap<Facing, Image> setSprite(Image i, HashMap<Facing, Image> sprite) {
+	sprite = new HashMap<Facing, Image>();
+	sprite.put(Facing.RIGHT, i);
+	sprite.put(Facing.LEFT, i.getFlippedCopy(true, false));
+	return sprite;
+    }
+
+    public boolean isMoving() {
+	return moving;
+    }
+
+    public void setMoving(boolean b) {
+	moving = b;
+    }
+
+    public int getLife() {
+	return life;
+    }
+
+    public void damage(int value) {
+	this.life -= value;
+    }
+
+    public void setLife(int life) {
+	this.life = life;
+    }
+
+    // move towards x_velocity = 0
+    public void decelerate(int delta) {
+	if (x_velocity > 0) {
+	    x_velocity -= decelerationSpeed * delta;
+	    if (x_velocity < 0)
+		x_velocity = 0;
+	} else if (x_velocity < 0) {
+	    x_velocity += decelerationSpeed * delta;
+	    if (x_velocity > 0)
+		x_velocity = 0;
+	}
+    }
+
+    public void jump() {
+	if (onGround)
+	    y_velocity = -1f;
+    }
+
+    public void moveLeft(int delta) {
+	// if we aren't already moving at maximum speed
+	if (x_velocity > -maximumSpeed) {
+	    // accelerate
+	    x_velocity -= accelerationSpeed * delta;
+	    if (x_velocity < -maximumSpeed) {
+		// and if we exceed maximum speed, set it to maximum speed
+		x_velocity = -maximumSpeed;
+	    }
+	}
+	moving = true;
+	facing = Facing.LEFT;
+    }
+
+    public void moveRight(int delta) {
+	if (x_velocity < maximumSpeed) {
+	    x_velocity += accelerationSpeed * delta;
+	    if (x_velocity > maximumSpeed) {
+		x_velocity = maximumSpeed;
+	    }
+	}
+	moving = true;
+	facing = Facing.RIGHT;
+    }
+
+    public void render(int offset_x, int offset_y) {
+
+	time1 = System.currentTimeMillis();
+	
+	if (dead == false && hited == false) {
+	    if (movingAnimations != null && moving) {
+		movingAnimations.get(facing).draw(x - offset_x, y - offset_y);
+	    } else {
+		sprites.get(facing).draw(x - offset_x, y - offset_y);
+	    }
+	} else if(hited == true && dead == false)
 	{
-	    this.life -= value;
+	    
+	    if (hitedMovingAnimations != null && moving) {
+		hitedMovingAnimations.get(facing).draw(x - offset_x, y - offset_y);
+	    } else {
+		hitedSprites.get(facing).draw(x - offset_x, y - offset_y);
+	    }   
+	    if(time1 - time2 > 50)
+		    hited = false;
 	}
-
-	public void setLife(int life) {
-		this.life = life;
-	}
-
-	// move towards x_velocity = 0
-	public void decelerate(int delta) {
-		if (x_velocity > 0) {
-			x_velocity -= decelerationSpeed * delta;
-			if (x_velocity < 0)
-				x_velocity = 0;
-		} else if (x_velocity < 0) {
-			x_velocity += decelerationSpeed * delta;
-			if (x_velocity > 0)
-				x_velocity = 0;
-		}
-	}
-
-	public void jump() {
-		if (onGround)
-			y_velocity = -1f;
-	}
-
-	public void moveLeft(int delta) {
-		// if we aren't already moving at maximum speed
-		if (x_velocity > -maximumSpeed) {
-			// accelerate
-			x_velocity -= accelerationSpeed * delta;
-			if (x_velocity < -maximumSpeed) {
-				// and if we exceed maximum speed, set it to maximum speed
-				x_velocity = -maximumSpeed;
-			}
-		}
-		moving = true;
-		facing = Facing.LEFT;
-	}
-
-	public void moveRight(int delta) {
-		if (x_velocity < maximumSpeed) {
-			x_velocity += accelerationSpeed * delta;
-			if (x_velocity > maximumSpeed) {
-				x_velocity = maximumSpeed;
-			}
-		}
-		moving = true;
-		facing = Facing.RIGHT;
-	}
-
-	public void render(int offset_x, int offset_y) {
-
-		// draw a moving animation if we have one and we moved within the last
-		// 150 miliseconds
-		if (movingAnimations != null && moving) {
-			movingAnimations.get(facing).draw(x - 2 - offset_x, y - 2 - offset_y);
-		} else {
-			sprites.get(facing).draw(x - 2 - offset_x, y - 2 - offset_y);
-		}
-	}
+	else
+	    deadPicture.draw(x -offset_x, y - offset_y);
+	
+    }
+    public void hit()
+    {
+	time2 = System.currentTimeMillis();
+	hited = true;
+    }
 
 }

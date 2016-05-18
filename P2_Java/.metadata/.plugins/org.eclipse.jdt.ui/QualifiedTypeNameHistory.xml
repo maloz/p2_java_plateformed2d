@@ -36,10 +36,16 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Objective"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.ProjectileAbeille"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Ennemie"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Abeille"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.ProjectilePlayer"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.enums.Facing"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.menu.PauseGameState"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.Grenade"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Sound"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Music"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.menu.GameOver"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Abeille"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.opengl.renderer.SGL"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.enums.Facing"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Coin"/>
 </qualifiedTypeNameHistroy>

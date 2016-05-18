@@ -21,6 +21,7 @@ public class Projectile extends LevelObject {
 		125);
 	boundingShape = new AABoundingRect(x, y, 10, 10);
 	maximumFallSpeed = (float) 0.1;
+	maximumFallSpeed = 0.0f;
 
     }
 

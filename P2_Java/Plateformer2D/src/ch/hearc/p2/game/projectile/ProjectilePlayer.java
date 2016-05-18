@@ -9,23 +9,25 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class ProjectilePlayer extends Projectile {
 
-    protected Animation animation;
+    protected Image bullet;
+    protected float angle;
 
-    public ProjectilePlayer(float x, float y, float x_velocity, float y_velocity) throws SlickException {
+    public ProjectilePlayer(float x, float y, float x_velocity, float y_velocity, float angle) throws SlickException {
 	super(x, y);
 	this.x_velocity = x_velocity;
 	this.y_velocity = y_velocity;
-	
-	animation = new Animation(
-		new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Tiles/laserPurpleDot.png") },
-		125);
-	boundingShape = new AABoundingRect(x, y, 10, 10);
-	maximumFallSpeed = (float) 1.5;
+	this.angle = angle;
+
+	bullet = new Image("ressources/laserRed02.png");
+	bullet.setCenterOfRotation(bullet.getWidth()/2, bullet.getHeight()/2);
+	bullet.setRotation((float) Math.toDegrees(angle) - 90);
+	boundingShape = new AABoundingRect(x, y, 40, 30);
+	maximumFallSpeed = (float) 0;
 
     }
 
     public void render(float offset_x, float offset_y) {
-	animation.draw(x - 2 - offset_x, y - 2 - offset_y);
+	bullet.draw(x - 2 - offset_x, y - 2 - offset_y);
     }
 
 }

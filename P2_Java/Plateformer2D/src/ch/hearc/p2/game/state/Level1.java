@@ -8,7 +8,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -24,16 +26,14 @@ import ch.hearc.p2.game.controller.PlayerController;
 import ch.hearc.p2.game.hud.Hud;
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
+import ch.hearc.p2.game.level.object.Coin;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.menu.PauseGameState;
 import ch.hearc.p2.game.physics.Physics;
 import ch.hearc.p2.game.weapon.Weapon;
 
 public class Level1 extends BasicGameState {
-
-
-    Image particle;
-   
+ 
     private float shakeAmt = 0f;
     private float shakeX = 0f;
     private float shakeY = 0f;
@@ -48,6 +48,8 @@ public class Level1 extends BasicGameState {
     private Hud hud;
     private int timer;
     private Image cursor;
+    private Music musiclvl1;
+    private boolean isPause;
     
     ArrayList<Ennemie> ennemies;
     ArrayList<Objective> objectives;
@@ -64,13 +66,12 @@ public class Level1 extends BasicGameState {
 
     public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 	this.sbg = sbg;
-	particle = new Image("ressources/viseur.png");
 	initialisation();
+
     }
 
     public void initialisation() throws SlickException {
 	cursor = new Image("ressources/viseur.png");
-	
 	ennemies = new ArrayList<Ennemie>();
 	objectives = new ArrayList<Objective>();
 	hud = new Hud();
@@ -84,7 +85,7 @@ public class Level1 extends BasicGameState {
 	ennemies.add(new Abeille(1800, 200));
 	
 	//Remplis Objectifs
-	objectives.add(new Objective(150, 150));
+	objectives.add(new Coin(150, 150));
 
 	weapon = player.getWeapon();
 
@@ -105,11 +106,23 @@ public class Level1 extends BasicGameState {
 	}
 
 	level.addLevelObject(weapon);
-
+	
+	musiclvl1 = new Music("ressources/lvl1.ogg");
+	isPause = false;
+	
 	hud.init();
     }
 
     public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
+	if(isPause == true){
+	    musiclvl1.resume();
+	    isPause = false;
+	    container.setMouseCursor(cursor, 0, 0);
+	}
+	else if(musiclvl1.playing() == false){
+	    musiclvl1.loop();
+	    container.setMouseCursor(cursor, 0, 0);
+	}
 	// Pour gérer les entrées clavier
 	playerController.handleInput(container.getInput(), delta);
 
@@ -138,7 +151,8 @@ public class Level1 extends BasicGameState {
 	    e.clearList();
 
 	    if (e instanceof Abeille) {
-		if (timer % 300 == 0) {
+		
+		if (timer % 800 == 0 && !((Abeille) e).isDead()) {
 		    ((Abeille) e).moveRandom();
 		    e.shoot();
 		}
@@ -148,7 +162,8 @@ public class Level1 extends BasicGameState {
 	// Pour voir si le player est pas mort
 	if (player.getLife() <= 0) {
 	    initialisation();
-	    sbg.enterState(0, new FadeOutTransition(), new FadeInTransition());
+	    musiclvl1.fade(20, 0, true);
+	    sbg.enterState(40, new FadeOutTransition(), new FadeInTransition());
 	}
 
 	// Pour enlever les ennemies morts
@@ -156,7 +171,13 @@ public class Level1 extends BasicGameState {
 	for (Ennemie e : ennemies) {
 
 	    if (e.getLife() <= 0) {
-		removeQueueC.add(e);
+		if(e instanceof Abeille){
+		    ((Abeille) e).setMaximumFallSpeed(0.8f);
+		    ((Abeille) e).dead(true);
+		    e.setXVelocity(0);
+		}
+		else
+		    removeQueueC.add(e);
 	    }
 	}
 	ennemies.removeAll(removeQueueC);
@@ -169,8 +190,8 @@ public class Level1 extends BasicGameState {
 	if (physics.isOver() == true) {
 	    // System.out.println("Level finished, loading lvl2");
 	    if(objectives.isEmpty()){
+		initialisation();
 		sbg.enterState(102, new FadeOutTransition(), new FadeInTransition());
-	    	initialisation();
 	    }
 	    else
 	    {
@@ -187,7 +208,6 @@ public class Level1 extends BasicGameState {
                 shake();
             }
         }
-
     }
 
     public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -198,22 +218,14 @@ public class Level1 extends BasicGameState {
 	else
 	    level.render();
 	hud.render(g, player);
-	container.setMouseCursor(cursor, 0, 0);
-
+	
+	
 	/*
 	 * for(Tile t :
 	 * player.getBoundingShape().getGroundTiles(level.getTiles())){
 	 * g.setColor(new Color(255,130,90,200)); g.drawRect(t.getX()*128,
 	 * t.getY()*128, 128, 128); }
-	 */
-	
-	
-        
-        g.drawImage(particle, 50, 50);
-        
-        g.drawString("Shake X/Y: "+shakeX+", "+shakeY, 50, 30);
-        g.drawString("Shake Amount: "+shakeAmt, 50, 55);
-        
+	 */      
         
         if (shakeX!=0 && shakeY!=0)
             g.translate(-shakeX, -shakeY);
@@ -240,10 +252,13 @@ public class Level1 extends BasicGameState {
     }
 
     public void keyReleased(int key, char code) {
-	if (key == Input.KEY_ESCAPE) {
+	/*if (key == Input.KEY_ESCAPE) {
 	    PauseGameState.setID(ID);
+	    musiclvl1.pause();
+	    isPause = true;
 	    sbg.enterState(50);
-	}
+	}*/
+	
     }
 
     public int getID() {

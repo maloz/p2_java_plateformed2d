@@ -30,7 +30,7 @@ public class PauseGameState extends BasicGameState {
 	cursor = new Image("ressources/hand_cursor.png");
 	quitter = new Image("ressources/menu/quitter.png");
 	reprendre = new Image("ressources/menu/reprendre.png");
-	container.setMouseCursor(cursor, 0, 0);
+	
     }
 
     @Override
@@ -38,6 +38,7 @@ public class PauseGameState extends BasicGameState {
 	background.draw(0, 0, container.getWidth(), container.getHeight());
 	g.drawImage(quitter, container.getWidth() / 2 - 200, 250);
 	g.drawImage(reprendre, container.getWidth() / 2 - 200, 400);
+	container.setMouseCursor(cursor, 0, 0);
 
     }
 

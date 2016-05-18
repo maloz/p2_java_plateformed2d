@@ -4,7 +4,9 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.BlobbyTransition;
@@ -24,6 +26,7 @@ public class MainScreenGameState extends BasicGameState {
 	private Image quitter;
 	private Image cursor;
 	private StateBasedGame game;
+	private Music sound;
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
@@ -35,6 +38,9 @@ public class MainScreenGameState extends BasicGameState {
 		options = new Image("ressources/menu/options.png");
 		credits = new Image("ressources/menu/credits.png");
 		quitter = new Image("ressources/menu/quitter.png");
+		
+		sound = new Music("ressources/music_home.ogg");
+		
 	}
 
 	/**
@@ -56,6 +62,8 @@ public class MainScreenGameState extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+	   if(sound.playing() == false)
+	    sound.loop();
 	}
 
 	@Override

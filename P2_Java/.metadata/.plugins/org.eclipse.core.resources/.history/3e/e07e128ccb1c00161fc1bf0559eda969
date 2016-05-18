@@ -1,0 +1,94 @@
+package ch.hearc.p2.game.character;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
+
+import ch.hearc.p2.game.level.LevelObject;
+import ch.hearc.p2.game.physics.AABoundingRect;
+import ch.hearc.p2.game.projectile.Projectile;
+import ch.hearc.p2.game.weapon.Weapon;
+
+public class Player extends Character {
+
+    private List<LevelObject> toAddList = new LinkedList<LevelObject>();
+    private Weapon weapon;
+    private int point;
+    private Sound jump;
+
+    public Player(float x, float y) throws SlickException {
+	super(x, y);
+	point = 0;
+	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
+
+	setSprite(new Image(
+		"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"), sprites);
+	setMovingAnimation(
+		new Image[] {
+			new Image(
+				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"),
+			new Image(
+				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk2.png") },
+		100);
+
+	boundingShape = new AABoundingRect(x, y, 80, 128);
+
+	accelerationSpeed = 0.002f;
+	maximumSpeed = 0.55f;
+	maximumFallSpeed = 0.6f;
+	decelerationSpeed = 0.001f;
+	life = 6;
+	weapon = new Weapon(0, 0, 100);
+	jump = new Sound("ressources/jump.ogg");
+    }
+
+    public void updateBoundingShape() {
+	boundingShape.updatePosition(x + 20, y + 128);
+	weapon.setPlayerFacing(this.facing);
+    }
+
+    public void shoot(int mouseX, int mouseY) throws SlickException {
+	weapon.shoot(x, y, mouseX, mouseY);
+	this.facing = weapon.getWay();
+	weapon.setPlayerFacing(this.facing);
+    }
+
+    public List<LevelObject> getToAddList() {
+	return toAddList;
+    }
+
+    public void clearList() {
+	toAddList.clear();
+    }
+
+    public Weapon getWeapon() {
+	return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+	this.weapon = weapon;
+    }
+
+    public void addPoint(int i) {
+	point += i;
+    }
+
+    public void setPoint(int i) {
+	point = i;
+    }
+
+    public int getPoint() {
+	return point;
+    }
+
+    public void jump() {
+	if (onGround)
+	    y_velocity = -1f;
+	jump.play(1,(float) 0.5);
+    }
+
+}

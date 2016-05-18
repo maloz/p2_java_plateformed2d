@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
-import ch.hearc.p2.game.character.Abeille;
 import ch.hearc.p2.game.character.Character;
 import ch.hearc.p2.game.character.Ennemie;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
+import ch.hearc.p2.game.level.object.Coin;
 import ch.hearc.p2.game.level.object.DeadZone;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
@@ -62,9 +62,9 @@ public class Physics {
 		    if (obj instanceof DeadZone) {
 			c.setLife(0);
 		    }
-		    if (obj instanceof Objective) {
+		    if (obj instanceof Coin) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
-			    ((Player) c).addPoint(((Objective) obj).getValue());
+			    ((Player) c).addPoint(((Coin) obj).getValue());
 			    removeQueueC.add(obj);
 			}
 		    }
@@ -76,13 +76,16 @@ public class Physics {
 		for (LevelObject obj : level.getLevelObjects()) {
 
 		    if (obj instanceof DeadZone) {
-			c.setLife(0);
+			removeQueueC.add(obj);
 		    }
 
 		    if (obj instanceof ProjectilePlayer) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
-			    c.damage(1);
-			    removeQueueC.add(obj);
+			    if (((Ennemie) c).isDead() == false) {
+				c.damage(1);
+				c.hit();
+				removeQueueC.add(obj);
+			    }
 			}
 		    }
 		}
@@ -106,7 +109,6 @@ public class Physics {
 
     private void handleGameObject(LevelObject obj, Level level, int delta) {
 
-	
 	// first update the onGround of the object
 	obj.setOnGround(isOnGroud(obj, level.getTiles()));
 
@@ -116,8 +118,6 @@ public class Physics {
 	    obj.applyGravity(gravity * delta);
 	else {
 	    obj.setYVelocity(0);
-	    if (obj instanceof Projectile)
-		removeQueue.add(obj);
 	}
 
 	// calculate how much we actually have to move
@@ -129,7 +129,7 @@ public class Physics {
 	float step_x = 0;
 
 	if (x_movement != 0) {
-	  
+
 	    step_y = Math.abs(y_movement) / Math.abs(x_movement);
 	    if (y_movement < 0)
 		step_y = -step_y;
@@ -157,10 +157,10 @@ public class Physics {
 		step_y = -1;
 
 	}
-	
+
 	// and then do little steps until we are done moving
 	while (x_movement != 0 || y_movement != 0) {
-	 
+
 	    // we first move in the x direction
 	    if (x_movement != 0) {
 		// when we do a step, we have to update the amount we have to
@@ -187,10 +187,10 @@ public class Physics {
 		if (checkCollision(obj, level.getLimite())) {
 		    if (obj instanceof Player)
 			level.getPlayer().setLife(0);
-		    if (obj instanceof Projectile) {
+		    if (obj instanceof Projectile)
 			removeQueue.add(obj);
-
-		    }
+		    if (obj instanceof Ennemie)
+			removeQueue.add(obj);
 		}
 		if (checkCollision(obj, level.getEnd())) {
 		    if (obj instanceof Player)
@@ -222,7 +222,8 @@ public class Physics {
 			level.getPlayer().setLife(0);
 		    if (obj instanceof Projectile)
 			removeQueue.add(obj);
-		    break;
+		    if (obj instanceof Ennemie)
+			removeQueue.add(obj);
 		}
 		if (checkCollision(obj, level.getEnd())) {
 		    if (obj instanceof Player)
@@ -280,8 +281,9 @@ public class Physics {
     public boolean isOver() {
 	return isFinished;
     }
+
     public void setOver(boolean isOver) {
-   	isFinished = isOver;
+	isFinished = isOver;
     }
 
 }

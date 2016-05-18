@@ -13,22 +13,19 @@ import ch.hearc.p2.game.projectile.Projectile;
 public class Ennemie extends Character {
 
     protected List<LevelObject> toAddList;
-    
+
     public Ennemie(float x, float y) throws SlickException {
-	
+
 	super(x, y);
 	toAddList = new LinkedList<LevelObject>();
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
-	setSprite(new Image(
-		"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"));
-	setMovingAnimation(
-		new Image[] {
-			new Image(
-				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
-			new Image(
-				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee_move.png") },
-		60);
+	sprites = setSprite(new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
+		sprites);
+	movingAnimations = setMovingAnimation(
+		new Image[] { new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee.png"),
+			new Image("ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Enemies/bee_move.png") },
+		60, movingAnimations);
 
 	boundingShape = new AABoundingRect(x, y, 100, 100);
 
@@ -40,20 +37,27 @@ public class Ennemie extends Character {
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x + 20, y+70);
+	boundingShape.updatePosition(x + 20, y + 70);
     }
 
     public void shoot() throws SlickException {
-	
+
     }
 
     public List<LevelObject> getToAddList() {
 	return toAddList;
     }
-    public void clearList()
-    {
+
+    public void clearList() {
 	toAddList.clear();
     }
-    
+
+    public void dead(Boolean b) {
+	this.dead = true;
+    }
+
+    public Boolean isDead() {
+	return dead;
+    }
 
 }

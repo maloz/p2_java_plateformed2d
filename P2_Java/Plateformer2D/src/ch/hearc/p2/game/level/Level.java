@@ -33,10 +33,10 @@ public class Level {
     private Image background;
     
   //ShakeFields
-    public static final float SHAKE_DECAY = 0.18f;
+    public static final float SHAKE_DECAY = 0.2f;
     public static final int SHAKE_DELAY = 10;
     public static final boolean SHAKE_SNAP = false;
-    public static final int SHAKE_INTENSITY = 15;
+    public static final int SHAKE_INTENSITY = 19;
    
 
     public Level(String level, Player player) throws SlickException {
@@ -170,10 +170,7 @@ public class Level {
     }
     public void removeCharacter(ArrayList<Character> list)
     {
-	for(Character c: list)
-	{
-	    this.removeCharacter(c);
-	}
+	characters.removeAll(list);
     }
 
     public ArrayList<Character> getCharacters() {

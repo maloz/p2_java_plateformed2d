@@ -9,26 +9,19 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Objective extends LevelObject {
 
-    protected Animation animation;
-    private int value;
+    protected Image image;
 
     public Objective(float x, float y) throws SlickException {
 	super(x, y);
-	value = 1;
 
 	// add the right animation for this objective
-	animation = new Animation(
-		new Image[] { new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Items/coinGold.png")},
-		125);
+	image =  new Image("ressources/map/tuiles/platformerGraphicsDeluxe_Updated/Items/coinGold.png");
 	boundingShape = new AABoundingRect(x, y, 60, 70);
     }
 
     public void render(float offset_x, float offset_y) {
-	animation.draw(x - 2 - offset_x, y - 2 - offset_y);
+	image.draw(x - 2 - offset_x, y - 2 - offset_y);
     }
-    public int getValue()
-    {
-	return value;
-    }
+
 
 }

@@ -4,8 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 
+import ch.hearc.p2.game.enums.Facing;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.physics.AABoundingRect;
 import ch.hearc.p2.game.projectile.Projectile;
@@ -16,21 +19,26 @@ public class Player extends Character {
     private List<LevelObject> toAddList = new LinkedList<LevelObject>();
     private Weapon weapon;
     private int point;
-    
+    private boolean key;
+    private Sound jump;
+
     public Player(float x, float y) throws SlickException {
 	super(x, y);
 	point = 0;
+	key = false;
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
-	
-	setSprite(new Image(
-		"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"));
-	setMovingAnimation(
+
+	sprites = setSprite(
+		new Image(
+			"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"),
+		sprites);
+	movingAnimations = setMovingAnimation(
 		new Image[] {
 			new Image(
 				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk1.png"),
 			new Image(
 				"ressources/map/tuiles/platformer-pack-redux-360-assets/PNG/Players/128x256/Blue/alienBlue_walk2.png") },
-		100);
+		100, movingAnimations);
 
 	boundingShape = new AABoundingRect(x, y, 80, 128);
 
@@ -40,24 +48,50 @@ public class Player extends Character {
 	decelerationSpeed = 0.001f;
 	life = 6;
 	weapon = new Weapon(0, 0, 100);
+	jump = new Sound("ressources/jump.ogg");
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x + 20, y+128);
+	boundingShape.updatePosition(x + 20, y + 128);
 	weapon.setPlayerFacing(this.facing);
     }
 
     public void shoot(int mouseX, int mouseY) throws SlickException {
+
+	float velocityX = (float) 0.07;
+	float velocityY = (float) 0.15;
+	double angle = Math.atan(Math.abs(mouseY - y) / Math.abs(mouseX - x));	
+	velocityY *= angle;
+	if (mouseX - x < 0) // Clique à gauche du joueur
+	{
+	    if (mouseY - y < 0) // Clique en dessous du joueur
+		velocityY *= 1;
+	    else
+		velocityY *= -1;
+
+	} else // Clique à droite du joueur
+	{
+	    if (mouseY - y < 0) // Clique en dessous du joueur
+		velocityY *= 1;
+	    else
+		velocityY *= -1;
+	}
+
 	weapon.shoot(x, y, mouseX, mouseY);
 	this.facing = weapon.getWay();
 	weapon.setPlayerFacing(this.facing);
+	if (facing == Facing.RIGHT)
+	    x_velocity -= velocityX;
+	else
+	    x_velocity += velocityX;
+	y_velocity = velocityY;
     }
-    public List<LevelObject> getToAddList()
-    {
+
+    public List<LevelObject> getToAddList() {
 	return toAddList;
     }
-    public void clearList()
-    {
+
+    public void clearList() {
 	toAddList.clear();
     }
 
@@ -68,17 +102,31 @@ public class Player extends Character {
     public void setWeapon(Weapon weapon) {
 	this.weapon = weapon;
     }
-    public void addPoint(int i)
-    {
+
+    public void addPoint(int i) {
 	point += i;
     }
-    public void setPoint(int i)
-    {
+
+    public void setPoint(int i) {
 	point = i;
     }
-    public int getPoint()
-    {
+
+    public int getPoint() {
 	return point;
+    }
+
+    public void jump() {
+	if (onGround)
+	    y_velocity = -1f;
+	jump.play(1, (float) 0.5);
+    }
+    public void setKey(boolean key)
+    {
+	this.key = key;
+    }
+    public boolean hasKey()
+    {
+	return key;
     }
 
 }

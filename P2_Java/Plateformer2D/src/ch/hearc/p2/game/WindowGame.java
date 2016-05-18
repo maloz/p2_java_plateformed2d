@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import ch.hearc.p2.game.menu.GameOver;
 import ch.hearc.p2.game.menu.LevelScreen1GameState;
 import ch.hearc.p2.game.menu.LevelScreen2GameState;
 import ch.hearc.p2.game.menu.MainScreenGameState;
@@ -45,14 +46,15 @@ public class WindowGame extends StateBasedGame {
 	addState(new Level1("lvl1"));
 	addState(new Level2("lvl2"));
 	addState(new PauseGameState());
-	//addState(new Level3("lvl3"));
-	//addState(new Level4("lvl4"));
-	//addState(new Level5("lvl5"));
-	//addState(new Level6("lvl6"));
-	//addState(new Level7("lvl7"));
-	//addState(new Level8("lvl8"));
-	//addState(new Level9("lvl9"));
-	//addState(new Level10("lvl10"));
+	addState(new GameOver());
+	// addState(new Level3("lvl3"));
+	// addState(new Level4("lvl4"));
+	// addState(new Level5("lvl5"));
+	// addState(new Level6("lvl6"));
+	// addState(new Level7("lvl7"));
+	// addState(new Level8("lvl8"));
+	// addState(new Level9("lvl9"));
+	// addState(new Level10("lvl10"));
 	addState(new LevelScreen1GameState());
 	addState(new LevelScreen2GameState());
     }
@@ -63,7 +65,7 @@ public class WindowGame extends StateBasedGame {
 	// set the size of the display to the width and height and fullscreen or
 	// not
 	app.setDisplayMode(WINDOW_WIDTH, WINDOW_HEIGTH, FULLSCREEN);
-	app.setShowFPS(false);
+	app.setShowFPS(true);
 	// this will attempt to create a framerate of approximately 60 frames
 	// per second
 	// app.setTargetFrameRate(100);
