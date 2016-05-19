@@ -81,6 +81,7 @@ public abstract class Character extends LevelObject {
     }
 
     public void damage(int value) {
+	
 	this.life -= value;
     }
 

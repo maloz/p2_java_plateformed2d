@@ -23,15 +23,19 @@ public class Player extends Character {
     private boolean key;
     private Sound jump;
     private HashMap<Facing, Image> jumpSprite;
-    private HashMap<Facing, Image> standSprite;
-    
+    private long damage1;
+    private long damage2;
+   
 
     public Player(float x, float y) throws SlickException {
 	super(x, y);
+	damage1 = System.currentTimeMillis();
+	damage2 = System.currentTimeMillis();
+	
 	point = 0;
 	key = false;
 	sprites = setSprite(
-		new Image("ressources/character/player/blue/p2_walk01.png"),
+		new Image("ressources/character/player/blue/p2_stand.png"),
 		sprites);
 	movingAnimations = setMovingAnimation(
 		new Image[] {
@@ -61,8 +65,7 @@ public class Player extends Character {
 	
 	jumpSprite = setSprite(
 		new Image("ressources/character/player/blue/p2_jump.png"), jumpSprite);
-	standSprite = setSprite(
-		new Image("ressources/character/player/blue/p2_stand.png"), standSprite);
+	hitedSprites = setSprite(new Image("ressources/character/player/blue/p2_stand.png"), hitedSprites); //image par défaut
 
 	boundingShape = new AABoundingRect(x, y, 60, 90);
 
@@ -160,6 +163,7 @@ public class Player extends Character {
     public void render(int offset_x, int offset_y) {
 
    	time1 = System.currentTimeMillis();
+   	damage1 = System.currentTimeMillis();
    	
    	if (dead == false && hited == false) {
    	    if (movingAnimations != null && moving && onGround == true) {
@@ -168,7 +172,7 @@ public class Player extends Character {
    		jumpSprite.get(facing).draw(x - offset_x, y - offset_y);
    	    }
    	    else{
-   		standSprite.get(facing).draw(x - offset_x, y - offset_y);
+   		sprites.get(facing).draw(x - offset_x, y - offset_y);
    	    }
    	} else if(hited == true && dead == false)
    	{
@@ -185,5 +189,11 @@ public class Player extends Character {
    	    deadPicture.draw(x -offset_x, y - offset_y);
    	
        }
+    public void damage(int value) {
+	if(damage1 - damage2 > 500){
+	    this.life -= value;
+	    damage2 = System.currentTimeMillis();
+	}
+      }
 
 }

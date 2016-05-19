@@ -24,7 +24,7 @@ public class Ennemie extends Character {
 
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
-	maximumFallSpeed = 0.0f;
+	maximumFallSpeed = 0.6f;
 	decelerationSpeed = 0.001f;
 	life = 6;
     }

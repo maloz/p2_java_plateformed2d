@@ -25,7 +25,7 @@ public class Bat extends Ennemie {
 	movingAnimations = setMovingAnimation(
 		new Image[] { new Image("ressources/character/ennemi/bat.png"),
 			new Image("ressources/character/ennemi/bat_fly.png") },
-		80, movingAnimations);
+		100, movingAnimations);
 
 	Image bee = new Image("ressources/character/ennemi/bat_hit.png");
 

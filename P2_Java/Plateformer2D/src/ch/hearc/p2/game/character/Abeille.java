@@ -46,8 +46,8 @@ public class Abeille extends Ennemie {
     }
 
     public void shoot() throws SlickException {
-	int randomX = -2  + (int) (Math.random() * 1);
-	int randomY = 0 + (int) (Math.random() * 1);
+	float randomX = (float) (0  + (Math.random() * 0.5));
+	float randomY = (float) (0 +  (Math.random() * 0.5));
 
 	toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX, randomY));
     }

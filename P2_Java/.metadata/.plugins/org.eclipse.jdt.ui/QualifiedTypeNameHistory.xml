@@ -50,4 +50,6 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Coin"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Key"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Bat"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Spider"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,269 @@
+package ch.hearc.p2.game.state;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+
+import ch.hearc.p2.game.WindowGame;
+import ch.hearc.p2.game.character.Abeille;
+import ch.hearc.p2.game.character.Character;
+import ch.hearc.p2.game.character.Ennemie;
+import ch.hearc.p2.game.character.Player;
+import ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController;
+import ch.hearc.p2.game.controller.PlayerController;
+import ch.hearc.p2.game.hud.Hud;
+import ch.hearc.p2.game.level.Level;
+import ch.hearc.p2.game.level.LevelObject;
+import ch.hearc.p2.game.level.object.Coin;
+import ch.hearc.p2.game.level.object.Key;
+import ch.hearc.p2.game.level.object.Objective;
+import ch.hearc.p2.game.menu.PauseGameState;
+import ch.hearc.p2.game.physics.Physics;
+import ch.hearc.p2.game.weapon.Weapon;
+
+public class Level extends BasicGameState {
+ 
+    private float shakeAmt = 0f;
+    private float shakeX = 0f;
+    private float shakeY = 0f;
+    
+    
+    private Level level;
+    private String startinglevel;
+    private Player player;
+    private PlayerController playerController;
+    private Physics physics;
+    private StateBasedGame sbg;
+    private Hud hud;
+    private int timer;
+    private Music musiclvl1;
+    private boolean isPause;
+    
+    ArrayList<Ennemie> ennemies;
+    ArrayList<Objective> objectives;
+
+    private int shakeTime = Level.SHAKE_DELAY;
+    private Weapon weapon;
+
+    public static final int ID = 101;
+
+    public Level(String startingLevel) {
+	this.startinglevel = startingLevel;
+	
+    }
+
+    public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
+	this.sbg = sbg;
+	initialisation();
+    }
+
+    public void initialisation() throws SlickException {
+	ennemies = new ArrayList<Ennemie>();
+	objectives = new ArrayList<Objective>();
+	hud = new Hud();
+	timer = 0;
+	// at the start of the game we don't have a player yet
+	player = new Player(1*70, 16*70);
+	
+	//Remplis ennmis
+	ennemies.add(new Abeille(5*70, 6*70));
+	ennemies.add(new Abeille(26*70, 9*70));
+	ennemies.add(new Abeille(38*70, 9*70));
+	
+	//Remplis Objectifs
+	objectives.add(new Coin(8*70, 6*70));
+	objectives.add(new Coin(23*70, 5*70));
+	objectives.add(new Coin(37*70, 10*70));
+	objectives.add(new Coin(35*70, 17*70));
+	objectives.add(new Key(6*70, 7*70));
+	
+
+	weapon = player.getWeapon();
+
+	// once we initialize our level, we want to load the right level
+	level = new Level(startinglevel, player);
+
+	// and we create a controller, for now we use the
+	// MouseAndKeyBoardPlayerController
+	playerController = new MouseAndKeyBoardPlayerController(player, level);
+
+	physics = new Physics(startinglevel);
+
+	for (Ennemie e : ennemies) {
+	    level.addCharacter(e);
+	}
+	for (Objective o : objectives) {
+	    level.addLevelObject(o);
+	}
+
+	level.addLevelObject(weapon);
+	
+	musiclvl1 = new Music("ressources/audio/music/lvl1.ogg");
+	isPause = false;
+	
+	hud.init();
+    }
+
+    public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
+	if(isPause == true){
+	    musiclvl1.resume();
+	    isPause = false;
+	}
+	else if(musiclvl1.playing() == false){
+	    musiclvl1.loop();
+	}
+	// Pour gérer les entrées clavier
+	playerController.handleInput(container.getInput(), delta);
+
+	// Pour gérer la physique
+	physics.handlePhysics(level, delta);
+
+	// Pour que l'arme suive le perso
+	weapon.setX(player.getX()+40);
+	weapon.setY(player.getY()+30);
+
+	// Pour voir si le player a tiré (donc si l'arme doit tirer) et ajouter les projectiles au niveau
+	List<LevelObject> toAdd = weapon.getToAddList();
+	for (LevelObject obj : toAdd) {
+	    level.addLevelObject(obj);
+	    shakeAmt = Level.SHAKE_INTENSITY;
+            shake();
+	}
+	weapon.clearList();
+
+	// Pour gérer les ennemies
+	for (Ennemie e : ennemies) {
+	    List<LevelObject> toAddList = e.getToAddList();
+	    for (LevelObject obj : toAddList) {
+		level.addLevelObject(obj);
+	    }
+	    e.clearList();
+
+	    if (e instanceof Abeille) {
+		
+		if (timer % 800 == 0 && !((Abeille) e).isDead()) {
+		    ((Abeille) e).moveRandom();
+		    e.shoot();
+		}
+	    }
+	}
+
+	// Pour voir si le player est pas mort
+	if (player.getLife() <= 0) {
+	    initialisation();
+	    musiclvl1.fade(20, 0, true);
+	    sbg.enterState(40, new FadeOutTransition(), new FadeInTransition());
+	}
+
+	// Pour enlever les ennemies morts
+	ArrayList<Character> removeQueueC = new ArrayList<Character>();
+	for (Ennemie e : ennemies) {
+
+	    if (e.getLife() <= 0) {
+		if(e instanceof Abeille){
+		    ((Abeille) e).setMaximumFallSpeed(0.8f);
+		    ((Abeille) e).dead(true);
+		    e.setXVelocity(0);
+		}
+		else
+		    removeQueueC.add(e);
+	    }
+	}
+	ennemies.removeAll(removeQueueC);
+	level.removeCharacter(removeQueueC);
+	
+	//Pour voir les objectifs restant
+	objectives = level.getObjectives();
+
+	// Pour voir si le niveau est fini
+	if (physics.isOver() == true) {
+	    // System.out.println("Level finished, loading lvl2");
+	    if(player.hasKey()){
+		initialisation();
+		sbg.enterState(102, new FadeOutTransition(), new FadeInTransition());
+	    }
+	    else
+	    {
+		physics.setOver(false);
+	    }
+	}
+
+	timer++;
+	
+	if (shakeAmt>0f) {
+            shakeTime -= delta;
+            //new shakeX/Y
+            if (shakeTime <= 0) {
+                shake();
+            }
+        }
+    }
+
+    public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
+	g.scale(WindowGame.SCALE, WindowGame.SCALE);
+	
+	if (shakeX!=0 && shakeY!=0)
+	    level.render(shakeX, shakeY);
+	else
+	    level.render();
+	hud.render(g, player);
+	
+	
+	/*
+	 * for(Tile t :
+	 * player.getBoundingShape().getGroundTiles(level.getTiles())){
+	 * g.setColor(new Color(255,130,90,200)); g.drawRect(t.getX()*128,
+	 * t.getY()*128, 128, 128); }
+	 */      
+        
+        if (shakeX!=0 && shakeY!=0)
+            g.translate(-shakeX, -shakeY);
+    }
+    
+    private void shake() {
+        shakeX = (float)(Math.random()*shakeAmt);
+        shakeY = (float)(Math.random()*shakeAmt);
+        if (Level.SHAKE_SNAP) {
+            shakeX = (int)shakeX;
+            shakeY = (int)shakeY;
+        }
+        shakeTime = Level.SHAKE_DELAY;
+        shakeAmt -= Level.SHAKE_DECAY*Level.SHAKE_INTENSITY;
+        if (shakeAmt<0f)
+            shakeAmt = 0f;
+    }
+
+    // this method is overriden from basicgamestate and will trigger once you
+    // press any key on your keyboard
+    public void keyPressed(int key, char code) {
+	// if the key is escape, close our application
+
+    }
+
+    public void keyReleased(int key, char code) {
+	if (key == Input.KEY_ESCAPE) {
+	    PauseGameState.setID(ID);
+	    musiclvl1.pause();
+	    isPause = true;
+	    sbg.enterState(50);
+	}
+	
+    }
+    public int getID() {
+	// this is the id for changing states
+	return ID;
+    }
+
+}
