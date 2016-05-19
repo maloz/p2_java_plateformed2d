@@ -16,7 +16,7 @@ public class Level2 extends LevelState {
 	super(startingLevel);
 	ID = 102;
 	this.startinglevel = startingLevel;
-	nextLevel = 0;
+	nextLevel = 103;
 
     }
 

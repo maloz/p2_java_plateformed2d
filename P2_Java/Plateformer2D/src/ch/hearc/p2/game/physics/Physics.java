@@ -162,12 +162,22 @@ public class Physics {
 		    step_y = 1;
 
 	    }
+	    if (checkCollision(obj, level.getTiles())) {
+		if (obj instanceof Projectile) {
+		    // removeQueue.add(obj);
+		}
+	    }
 	} else if (y_movement != 0) {
 	    // if we only have vertical movement, we can just use a step of 1
 	    if (y_movement > 0)
 		step_y = 1;
 	    else
 		step_y = -1;
+	    if (checkCollision(obj, level.getTiles())) {
+		if (obj instanceof Projectile) {
+		    // removeQueue.add(obj);
+		}
+	    }
 
 	}
 
@@ -191,7 +201,6 @@ public class Physics {
 		// have to revert to our original position
 		if (checkCollision(obj, level.getTiles())) {
 		    if (obj instanceof Projectile) {
-			removeQueue.add(obj);
 		    }
 		    obj.setX(obj.getX() - step_x);
 		    obj.setXVelocity(0);
@@ -243,6 +252,12 @@ public class Physics {
 			isFinished = true;
 		}
 	    }
+	}
+	if (obj instanceof Projectile) {
+	    if (obj.isOnGround() == true)
+		removeQueue.add(obj);
+	    if (obj.getYVelocity() == 0 || obj.getXVelocity() == 0)
+		removeQueue.add(obj);
 	}
 
     }

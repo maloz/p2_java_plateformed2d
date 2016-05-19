@@ -20,12 +20,9 @@ public class Abeille extends Ennemie {
 	dead = false;
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
-	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"),
-		sprites);
-	movingAnimations = setMovingAnimation(
-		new Image[] { new Image("ressources/character/ennemi/bee.png"),
-			new Image("ressources/character/ennemi/bee_fly.png") },
-		80, movingAnimations);
+	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"), sprites);
+	movingAnimations = setMovingAnimation(new Image[] { new Image("ressources/character/ennemi/bee.png"),
+		new Image("ressources/character/ennemi/bee_fly.png") }, 80, movingAnimations);
 
 	Image bee = new Image("ressources/character/ennemi/bee_hit.png");
 
@@ -42,29 +39,26 @@ public class Abeille extends Ennemie {
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x , y);
+	boundingShape.updatePosition(x, y);
     }
 
     public void shoot() throws SlickException {
-	float randomX = (float) (0  + (Math.random() * 0.5));
-	float randomY = (float) (0 +  (Math.random() * 0.5));
+
+	float randomX = rand.nextInt((1 - (-1)) + 1) + (-1);
+	float randomY = rand.nextInt((1 - (-1)) + 1) + (-1);
 
 	toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX, randomY));
     }
 
     public void moveRandom() {
-	int randomNum = 0 + (int) (Math.random() * 50);
-	int randomWay = 0 + (int) (Math.random() * 2);
+	float randomNum = rand.nextInt(50 + 1);
+	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);
 	if (randomWay < 1) {
-	    moveLeft(randomNum);
-	    // this.y += randomNum;
+	    moveLeft((int) randomNum);
 	} else {
-	    moveRight(randomNum);
-	    // this.y -= randomNum;
+	    moveRight((int) randomNum);
 	}
 
     }
-
-
 
 }

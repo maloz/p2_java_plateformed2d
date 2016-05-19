@@ -46,21 +46,19 @@ public class Bat extends Ennemie {
     }
 
     public void shoot() throws SlickException {
-	int randomX = -2  + (int) (Math.random() * 1);
-	int randomY = 0 + (int) (Math.random() * 1);
+	float randomX = rand.nextInt((1 - (-1)) + 1) + (-1);
+	float randomY = rand.nextInt((1 - (-1)) + 1) + (-1);
 
 	toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX, randomY));
     }
 
     public void moveRandom() {
-	int randomNum = 0 + (int) (Math.random() * 40);
-	int randomWay = 0 + (int) (Math.random() * 2);
+	float randomNum = rand.nextInt(50 + 1);
+	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);
 	if (randomWay < 1) {
-	    moveLeft(randomNum);
-	    this.y += randomNum/4;
+	    moveLeft((int) randomNum);
 	} else {
-	    moveRight(randomNum);
-	    this.y -= randomNum/4;
+	    moveRight((int) randomNum);
 	}
 
     }

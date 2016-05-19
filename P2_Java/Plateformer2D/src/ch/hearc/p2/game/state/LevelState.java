@@ -167,9 +167,7 @@ public abstract class LevelState extends BasicGameState {
 		    e.moveRandom();
 		    e.shoot();
 		}
-
 	    }
-
 	}
 
 	// Pour voir si le player est pas mort

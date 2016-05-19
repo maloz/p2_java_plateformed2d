@@ -10,18 +10,10 @@ import ch.hearc.p2.game.menu.LevelScreen1GameState;
 import ch.hearc.p2.game.menu.LevelScreen2GameState;
 import ch.hearc.p2.game.menu.MainScreenGameState;
 import ch.hearc.p2.game.menu.PauseGameState;
-import ch.hearc.p2.game.state.LevelState;
-import ch.hearc.p2.game.state.Level2;
 import ch.hearc.p2.game.state.Level1;
-import ch.hearc.p2.game.state.Level10;
 import ch.hearc.p2.game.state.Level2;
 import ch.hearc.p2.game.state.Level3;
 import ch.hearc.p2.game.state.Level4;
-import ch.hearc.p2.game.state.Level5;
-import ch.hearc.p2.game.state.Level6;
-import ch.hearc.p2.game.state.Level7;
-import ch.hearc.p2.game.state.Level8;
-import ch.hearc.p2.game.state.Level9;
 
 public class WindowGame extends StateBasedGame {
 
@@ -47,6 +39,8 @@ public class WindowGame extends StateBasedGame {
 	addState(new MainScreenGameState());
 	addState(new Level1("lvl1"));
 	addState(new Level2("lvl2"));
+	addState(new Level3("lvl3"));
+	addState(new Level4("lvl4"));
 	addState(new PauseGameState());
 	addState(new GameOver());
 	// addState(new Level3("lvl3"));

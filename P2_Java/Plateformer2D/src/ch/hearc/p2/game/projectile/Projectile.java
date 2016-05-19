@@ -19,7 +19,7 @@ public class Projectile extends LevelObject {
 	animation = new Animation(
 		new Image[] { new Image("ressources/tiles/item/laserRed02.png") },
 		125);
-	boundingShape = new AABoundingRect(x, y, 10, 10);
+	boundingShape = new AABoundingRect(x, y, 15, 15);
 	maximumFallSpeed = (float) 0.1;
 	maximumFallSpeed = 0.0f;
 

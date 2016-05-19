@@ -2,6 +2,7 @@ package ch.hearc.p2.game.character;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -13,10 +14,12 @@ import ch.hearc.p2.game.projectile.Projectile;
 public class Ennemie extends Character {
 
     protected List<LevelObject> toAddList;
+    protected Random rand;
 
     public Ennemie(float x, float y) throws SlickException {
 
 	super(x, y);
+	rand = new Random();
 	toAddList = new LinkedList<LevelObject>();
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
@@ -55,8 +58,9 @@ public class Ennemie extends Character {
 
     public void moveRandom() {
 	// TODO Auto-generated method stub
-	
+
     }
+
     public void setMaximumFallSpeed(float maximumFallSpeed) {
 	this.maximumFallSpeed = maximumFallSpeed;
     }

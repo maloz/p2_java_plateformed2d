@@ -52,12 +52,12 @@ public class Spider extends Ennemie {
     }
 
     public void moveRandom() {
-	int randomNum = 0 + (int) (Math.random() * 50);
-	int randomWay = 0 + (int) (Math.random() * 2);
+	float randomNum = rand.nextInt(50 + 1);
+	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);
 	if (randomWay < 1) {
-	    moveLeft(randomNum);
+	    moveLeft((int) randomNum);
 	} else {
-	    moveRight(randomNum);
+	    moveRight((int) randomNum);
 	}
 
     }
