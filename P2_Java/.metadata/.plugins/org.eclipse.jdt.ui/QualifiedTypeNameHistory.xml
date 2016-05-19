@@ -49,4 +49,5 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.enums.Facing"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Coin"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Key"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Bat"/>
 </qualifiedTypeNameHistroy>

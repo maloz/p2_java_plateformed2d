@@ -30,8 +30,6 @@ public class Player extends Character {
 	super(x, y);
 	point = 0;
 	key = false;
-	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
-
 	sprites = setSprite(
 		new Image("ressources/character/player/blue/p2_walk01.png"),
 		sprites);
@@ -71,7 +69,7 @@ public class Player extends Character {
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
 	maximumFallSpeed = 0.6f;
-	decelerationSpeed = 0.0025f;
+	decelerationSpeed = 0.002f;
 	life = 6;
 	weapon = new Weapon(0, 0, 100);
 	jump = new Sound("ressources/audio/sound/jump.ogg");
@@ -84,8 +82,8 @@ public class Player extends Character {
 
     public void shoot(int mouseX, int mouseY) throws SlickException {
 
-	float velocityX = (float) 0.07;
-	float velocityY = (float) 0.15;
+	float velocityX = (float) 0.12;
+	float velocityY = (float) 0.12;
 	double angle = Math.atan(Math.abs(mouseY - y) / Math.abs(mouseX - x));	
 	velocityY *= angle;
 	if (mouseX - x < 0) // Clique à gauche du joueur

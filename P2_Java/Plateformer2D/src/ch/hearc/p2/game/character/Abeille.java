@@ -65,8 +65,6 @@ public class Abeille extends Ennemie {
 
     }
 
-    public void setMaximumFallSpeed(float maximumFallSpeed) {
-	this.maximumFallSpeed = maximumFallSpeed;
-    }
+
 
 }

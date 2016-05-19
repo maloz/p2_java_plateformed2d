@@ -80,7 +80,7 @@ public class Level1 extends BasicGameState {
 	
 	//Remplis ennmis
 	ennemies.add(new Abeille(5*70, 6*70));
-	ennemies.add(new Abeille(26*7, 9*7));
+	ennemies.add(new Abeille(26*7, 9*70));
 	ennemies.add(new Abeille(38*7, 9*70));
 	
 	//Remplis Objectifs

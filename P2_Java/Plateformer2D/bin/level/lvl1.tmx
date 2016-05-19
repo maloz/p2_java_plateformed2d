@@ -17,12 +17,12 @@
  <tileset firstgid="304" name="grayy" tilewidth="32" tileheight="32" tilecount="800" columns="20">
   <image source="../tiles/map/grassy_tileset.png" width="640" height="1280"/>
  </tileset>
- <layer name="Limite" width="50" height="20" visible="0">
+ <layer name="Limite" width="50" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3DQQ0AAAwDoTNZ/1YmYx9IWDVVVVX19QGGCOYCoA8AAA==
   </data>
  </layer>
- <layer name="CollisionLayer" width="50" height="20" visible="0">
+ <layer name="CollisionLayer" width="50" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3UMQ4AEAyF4Q42FiMXcgL3vwqLRQyVRj3S4dv7a6oQUflEfZx1YLEOLCc6QpcW8mMdXF6h48abcvY8zPMg3cdqP9ydIXVIoHbs3g5Kh/TmUTqktDpO/3+2Dyw7HU5Ao4M7SzQqGpr3Cp6gDwAA
   </data>
@@ -32,7 +32,7 @@
    H4sIAAAAAAAACwtlYGAIHcWjeBBjhkHgBmr6w3YQuIUaOIxE9Xw0UkuO+lGMG5sPAjdQA4fQ0OzR9EZfPBretA0TaplFTTfxDoIwBmFXLGL2g8BdpOJgLGIOg8Bd6NiFQn8k4dHrTIT9sPaZNZS2IsHtyHZjcyclgFAYoOMwJJoBicZn/igYXAAAWE3vzKAPAAA=
   </data>
  </layer>
- <layer name="End" width="50" height="20" visible="0">
+ <layer name="End" width="50" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3OQQ0AMAgEsDOJrwlALCa2hCx99N9KUgA8cRYcbugFBwCA3w0x+FvioA8AAA==
   </data>

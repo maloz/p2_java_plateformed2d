@@ -25,7 +25,6 @@ public class LevelScreen1GameState extends BasicGameState {
 	private Image niveau9;
 	private Image niveau10;
 	private Image suivant;
-	private Image cursor;
 	//private Image precedent;
 	private Image retour;
 	
@@ -34,7 +33,6 @@ public class LevelScreen1GameState extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = game;
-		cursor = new Image("ressources/cursor/hand_cursor.png");
 		this.background = new Image("ressources/background/background.jpg");
 		suivant = new Image("ressources/menu/suivant.jpg");
 		//precedent = new Image("ressources/menu/precedent.jpg");
@@ -66,7 +64,6 @@ public class LevelScreen1GameState extends BasicGameState {
 		g.drawImage(niveau10, 1350, 480);
 		g.drawImage(retour, 550, 750);
 		g.drawImage(suivant, 1030, 750);
-		container.setMouseCursor(cursor, 0, 0);
 
 	}
 

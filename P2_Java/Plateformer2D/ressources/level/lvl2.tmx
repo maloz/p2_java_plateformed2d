@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="15" tilewidth="70" tileheight="70" nextobjectid="51">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="20" tilewidth="70" tileheight="70" nextobjectid="51">
  <tileset firstgid="1" name="sheet" tilewidth="70" tileheight="70" tilecount="98" columns="14">
   <image source="../tiles/map/sheet.png" width="980" height="490"/>
   <tile id="84">
    <properties>
-    <property name="air" value="0"/>
+    <property name="tileType" value="air"/>
    </properties>
   </tile>
  </tileset>
@@ -14,24 +14,32 @@
  <tileset firstgid="255" name="spritesheet" tilewidth="70" tileheight="70" spacing="1" tilecount="49" columns="7">
   <image source="../tiles/map/spritesheet.png" width="512" height="512"/>
  </tileset>
- <layer name="Limite" width="25" height="15">
+ <tileset firstgid="304" name="grayy" tilewidth="32" tileheight="32" tilecount="800" columns="20">
+  <image source="../tiles/map/grassy_tileset.png" width="640" height="1280"/>
+ </tileset>
+ <layer name="Limite" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACwtlYGAIHcWjeBSP4lE8rDAAhDCgw9wFAAA=
+   H4sIAAAAAAAAC+3PMQ0AAAgEsTeJCfwLQAQkLB2631WSAgAAgGO98N3+8THRk5SzoA8AAA==
   </data>
  </layer>
- <layer name="CollisionLayer" width="25" height="15">
+ <layer name="CollisionLayer" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACwtlYGAIHcWjeBSP4lE8rDAAhDCgw9wFAAA=
+   H4sIAAAAAAAAC+2WMQ6AIAxFuQnEyQHUxaN4/6vIAEnTGIK1FIuavLX29ZvWYIwJg3Ao5/eQZ4q4xCbk4SO2guWDeVA9PMixBNdMqdiOeeCH0nueI9y7b5grxhXQdD9GuYNUD7if74B3eU+3Vu+1yj3yPnlaG/cn7cFVW7PHHNkTtTW4PeD31CIPKQ/urFvfD/hfAOntcdVTibUSSY8TURvM96APAAA=
   </data>
  </layer>
- <layer name="Object" width="25" height="15">
+ <layer name="Object" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEw3AAAv2wkb9wFAAA=
+   H4sIAAAAAAAACwtlYGAIHcU48Q8i6cGOh5M/2BhR3S3CSBt/1NDQH4TMJsfuYCgmxz2gMEXmiyDxlRjJM5NcjOwPfzQ3dNDRHdT0hx8J+tgJhDcheWrgUigGsQOhmFQztAi4k5D8YMFD2R/I+VoTiX0BTR0v4+D2BzXx9AGyl4HE8CVVPam4G4gXk6GP1HSiPEjTFanu4sOhnpbtBErchQuL0iE+yKmnSXUXMenwLQUY2RxeqF2w8vQ/he5CxsjlsjUONVkUYHLjEOQPmL+fI4nD/I7eZhzF1McAK3ZraqAPAAA=
   </data>
  </layer>
- <layer name="End" width="25" height="15">
+ <layer name="End" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACwtlYGAIHcWjeBSP4lE8rDAAhDCgw9wFAAA=
+   H4sIAAAAAAAAC+3OQQ0AMAgEsDOJxwlAICa2hCx99N9KUgAAAA+dBYcbesGBfw3Wcne0oA8AAA==
+  </data>
+ </layer>
+ <layer name="Object2" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3VsQkAIBADwF/yt3F4F/hOkQh3kCpNulQBwF3rsCdbDwF4IfU/Unfxnw1kAmABoA8AAA==
   </data>
  </layer>
 </map>

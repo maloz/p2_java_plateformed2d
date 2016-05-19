@@ -86,9 +86,9 @@ public class Weapon extends LevelObject {
 
 	    }
 	    if (way == Facing.RIGHT)
-		toAddList.add(new ProjectilePlayer(x + 10, y, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
+		toAddList.add(new ProjectilePlayer(x + 50, y+30, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
 	    else
-		toAddList.add(new ProjectilePlayer(x - 80, y, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
+		toAddList.add(new ProjectilePlayer(x - 90, y+30, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
 	    munition--;
 	    
 	    tir.play();

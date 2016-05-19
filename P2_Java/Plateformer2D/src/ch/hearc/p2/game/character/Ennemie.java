@@ -53,4 +53,12 @@ public class Ennemie extends Character {
 	return dead;
     }
 
+    public void moveRandom() {
+	// TODO Auto-generated method stub
+	
+    }
+    public void setMaximumFallSpeed(float maximumFallSpeed) {
+	this.maximumFallSpeed = maximumFallSpeed;
+    }
+
 }
