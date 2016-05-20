@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Character"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.controller.PlayerController"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.AirTile"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.SolidTile"/>
@@ -54,4 +53,9 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.ProjectileAbeille"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.state.Level3"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.ControllerListener"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.KeyListener"/>
+<fullyQualifiedTypeName name="org.lwjgl.input.Controllers"/>
+<fullyQualifiedTypeName name="org.lwjgl.input.Controller"/>
 </qualifiedTypeNameHistroy>

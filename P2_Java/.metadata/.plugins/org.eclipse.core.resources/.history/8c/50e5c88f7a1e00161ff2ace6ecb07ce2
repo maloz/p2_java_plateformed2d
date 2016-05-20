@@ -1,0 +1,52 @@
+package ch.hearc.p2.game.controller;
+
+import ch.hearc.p2.game.character.Player;
+import ch.hearc.p2.game.level.Level;
+
+import org.lwjgl.input.Controllers;
+import org.newdawn.slick.ControllerListener;
+import org.newdawn.slick.Input;
+
+public abstract class PlayerController implements ControllerListener {
+
+    protected Player player;
+    protected Level level;
+
+    public PlayerController(Player player, Level level) {
+	this.player = player;
+	this.level = level;
+    }
+
+    public abstract void handleInput(Input i, int delta);
+    
+    @Override
+    public void controllerLeftPressed(int controller) { }
+
+    @Override
+    public void controllerLeftReleased(int controller) { }
+
+    @Override
+    public void controllerRightPressed(int controller) { }
+
+    @Override
+    public void controllerRightReleased(int controller) { }
+
+    @Override
+    public void controllerUpPressed(int controller) { }
+
+    @Override
+    public void controllerUpReleased(int controller) { }
+
+    @Override
+    public void controllerDownPressed(int controller) { }
+
+    @Override
+    public void controllerDownReleased(int controller) { }
+
+    @Override
+    public void controllerButtonPressed(int controller, int button) { }
+
+    @Override
+    public void controllerButtonReleased(int controller, int button) { }
+
+}
