@@ -19,27 +19,27 @@
  </tileset>
  <layer name="Limite" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3PMQ0AAAgEsTeJCfwLQAQkLB2631WSAgAAgGO98N3+8THRk5SzoA8AAA==
-  </data>
- </layer>
- <layer name="CollisionLayer" width="50" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2WMQ6AIAxFuQnGyQGMi0fx/leRAZKmMQRqaQE1eWvp6ydFb4zxk3ANzu8hzxpYIoeQhwvYAvYP5kH1cCDHHFwzpWIV88Afpfc0R7h3e5grZskw0vsxyztI9YD7uQa8yzXdWp1rB/dI++RtbdyftAdX7dIaPXpsgTOi5QHvE2ce0nuXu3ZrD/hfANH2eOoph1TWNefcyh6rg6APAAA=
+   H4sIAAAAAAAAC+3NoQEAAAgDoD3pW95sNhhtBDKVpAAAAIClD1/fAEBVyHOgDwAA
   </data>
  </layer>
  <layer name="Object" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACwtlYGAIHcU48Q8i6cGOh5M/2BhR3S3CSBt/1NDQH4TMJsfuYCgmxz2gMEXmiyDxlRjJM5NcjOwPfzQ3dNDRHdT0hx8J+tgJhDcheWrgUigGsQOhmFQztAi4k5D8YMFD2R/I+VoTiX0BTR0v4+D2BzXx9AGyl4HE8CVVPam4G4gXk6GP1HSiPEjTFanu4sOhnprtBHLqN1zuwoVF6RgfvFC7YOXQfyq6i5h0+JYCTK6fSc0fyOWyNQ41WRRgSvwBi7/nSOKwOERvM45i6mMAkJPO8KAPAAA=
+   H4sIAAAAAAAACwtlYGAIHcUE8Q8S+bjEBhqP+oNyrMw4PPzBR0V/kOpPavpDiwh/UMuvA52uhoI/RIlwoyYd0x65mJh0RYyagcbEhPVQ8MdwiQ9i8jk16xhaYWLyOTFqBhoTU6aOllf0wWyMiLDuhoqJoLlZiXFo5A9q4JM48EC7i1TchwMPtLsGOwYAk+Guw6APAAA=
+  </data>
+ </layer>
+ <layer name="CollisionLayer" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC/vNwMDwe5jg0EGMh4s/SPHrQLuDmv6QY2RgEIdiASS2FOPAu3MwxMcSIJ6BhDeQqP8yEB9Hwico9IcaMF64gVgeSkug8QVpFG/E5OWhkD+Gij/Q0x0I9wxBfxATH8TG2UC7dTj5A71cguGh5g987Q10vw1VfxDK64PZH/jkh4I/yFEzmPxBin9x+QNbOUEpxuUOmPxuAu7FZR6hNEevvhkxao5jMQ9f2Ay0P3DFJbHlL7J6AHcGtn6gDwAA
   </data>
  </layer>
  <layer name="End" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3OIQEAMAwDsJqcxwm4wJsYKAgIzyQZAACg0hYcLryCA7T74FJkLqAPAAA=
+   H4sIAAAAAAAAC+3OIQEAMAwDsJqcxwm4wJsYKAgIzyQZKm3B4cIrOAAAALT7YKonxaAPAAA=
   </data>
  </layer>
  <layer name="Object2" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3VsQkAIBADwF/yt3F4F/hOkQh3kCpNulQBwF3rsCdbDwF4IfU/Unfxnw1kAmABoA8AAA==
+   H4sIAAAAAAAAC+3DQQ0AAAwDoTNZ/1YmYx9IWDVVVVX19QGGCOYCoA8AAA==
   </data>
  </layer>
 </map>

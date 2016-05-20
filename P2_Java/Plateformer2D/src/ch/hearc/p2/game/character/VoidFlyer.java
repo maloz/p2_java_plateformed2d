@@ -12,28 +12,26 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 import ch.hearc.p2.game.projectile.Projectile;
 import ch.hearc.p2.game.projectile.ProjectileAbeille;
 
-public class Bat extends Ennemie {
+public class VoidFlyer extends Ennemie {
 
-    public Bat(float x, float y) throws SlickException {
+    public VoidFlyer(float x, float y) throws SlickException {
 
 	super(x, y);
 	dead = false;
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
-	sprites = setSprite(new Image("ressources/character/ennemi/bat.png"),
-		sprites);
-	movingAnimations = setMovingAnimation(
-		new Image[] { new Image("ressources/character/ennemi/bat.png"),
-			new Image("ressources/character/ennemi/bat_fly.png") },
-		100, movingAnimations);
+	sprites = setSprite(new Image("ressources/character/ennemi/enemyFlying_1.png"), sprites);
+	movingAnimations = setMovingAnimation(new Image[] { new Image("ressources/character/ennemi/enemyFlying_1.png"),
+		new Image("ressources/character/ennemi/enemyFlying_2.png"),
+		new Image("ressources/character/ennemi/enemyFlying_3.png")}, 100, movingAnimations);
 
-	Image bee = new Image("ressources/character/ennemi/bat_hit.png");
+	Image voidFlyer_hit = new Image("ressources/character/ennemi/enemyFlying_4.png");
 
-	hitedSprites = setSprite(bee, hitedSprites);
-	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee }, 80, hitedMovingAnimations);
+	hitedSprites = setSprite(voidFlyer_hit, hitedSprites);
+	hitedMovingAnimations = setMovingAnimation(new Image[] { voidFlyer_hit, voidFlyer_hit }, 80, hitedMovingAnimations);
 
-	boundingShape = new AABoundingRect(x, y, 79, 42); //Moyenne entre les deux sprites de l'animation
-	deadPicture = new Image("ressources/character/ennemi/bat_dead.png");
+	boundingShape = new AABoundingRect(x, y, 64, 38);
+	deadPicture = new Image("ressources/character/ennemi/enemyFlying_4.png");
 	accelerationSpeed = 0.004f;
 	maximumSpeed = 0.7f;
 	maximumFallSpeed = 0.0f;
@@ -42,7 +40,7 @@ public class Bat extends Ennemie {
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x , y);
+	boundingShape.updatePosition(x, y);
     }
 
     public void shoot() throws SlickException {
