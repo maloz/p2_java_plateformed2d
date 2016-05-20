@@ -23,9 +23,13 @@ public class GameOver extends BasicGameState {
 	this.background = new Image("ressources/background/background.jpg");
 	cursor = new Image("ressources/cursor/hand_cursor.png");
 	quitter = new Image("ressources/menu/quitter.png");
-	container.setMouseCursor(cursor, 0, 0);
 	deadMusic = new Music("ressources/audio/music/gameover.ogg");
 
+    }
+    
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+	container.setMouseCursor(cursor, 0, 0);
     }
 
     @Override

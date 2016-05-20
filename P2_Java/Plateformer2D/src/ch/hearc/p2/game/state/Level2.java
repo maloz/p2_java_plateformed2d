@@ -22,6 +22,7 @@ public class Level2 extends LevelState {
 
     }
 
+    @Override
     public void instanciation() throws SlickException {
 	// ID for the next state (0 is main menu, ID+1 is the next level)
 
@@ -49,7 +50,5 @@ public class Level2 extends LevelState {
 	// musiclvl = new Music("ressources/audio/music/lvl1.ogg");
 
 	initialisationSuite();
-
     }
-
 }

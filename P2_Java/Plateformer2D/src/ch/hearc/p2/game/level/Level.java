@@ -9,13 +9,10 @@ import org.newdawn.slick.tiled.TiledMap;
 import ch.hearc.p2.game.WindowGame;
 import ch.hearc.p2.game.character.Character;
 import ch.hearc.p2.game.character.Player;
-import ch.hearc.p2.game.level.object.DeadZone;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.AirTile;
 import ch.hearc.p2.game.level.tile.SolidTile;
 import ch.hearc.p2.game.level.tile.Tile;
-
-
 
 public class Level {
 
@@ -29,15 +26,14 @@ public class Level {
     private Tile[][] limite;
     private Tile[][] end;
     private ArrayList<LevelObject> levelObjects;
-    
+
     private Image background;
-    
-  //ShakeFields
+
+    // ShakeFields
     public static final float SHAKE_DECAY = 0.2f;
     public static final int SHAKE_DELAY = 10;
     public static final boolean SHAKE_SNAP = false;
     public static final int SHAKE_INTENSITY = 19;
-   
 
     public Level(String level, Player player) throws SlickException {
 	map = new TiledMap("ressources/level/" + level + ".tmx");
@@ -87,7 +83,7 @@ public class Level {
 		tiles[x][y] = tile;
 	    }
 	}
-	
+
     }
 
     private void loadLimite() {
@@ -125,7 +121,7 @@ public class Level {
 	    }
 	}
     }
-    
+
     private void loadEnd() {
 	// create an array to hold all the tiles in the map
 	end = new Tile[map.getWidth()][map.getHeight()];
@@ -165,12 +161,12 @@ public class Level {
     public void addCharacter(Character c) {
 	characters.add(c);
     }
-    public void removeCharacter(Character c)
-    {
+
+    public void removeCharacter(Character c) {
 	characters.remove(c);
     }
-    public void removeCharacter(ArrayList<Character> list)
-    {
+
+    public void removeCharacter(ArrayList<Character> list) {
 	characters.removeAll(list);
     }
 
@@ -189,9 +185,10 @@ public class Level {
     public Tile[][] getLimite() {
 	return limite;
     }
+
     public Tile[][] getEnd() {
-  	return end;
-      }
+	return end;
+    }
 
     public void render() {
 	// render the map first
@@ -301,15 +298,15 @@ public class Level {
 	// TODO Auto-generated method stub
 	return levelObjects;
     }
+
     public TiledMap getMap() {
-	    return map;
-	   }
+	return map;
+    }
 
     public ArrayList<Objective> getObjectives() {
 	ArrayList<Objective> objectives = new ArrayList<Objective>();
-	for(LevelObject obj : levelObjects)
-	{
-	    if(obj instanceof Objective)
+	for (LevelObject obj : levelObjects) {
+	    if (obj instanceof Objective)
 		objectives.add((Objective) obj);
 	}
 	return objectives;
@@ -317,25 +314,25 @@ public class Level {
 
     public void render(float shakeX, float shakeY) {
 	// render the map first
-		int offset_x = getXOffset();
-		int offset_y = getYOffset();
-		offset_x += shakeX;
-		offset_y += shakeY;
+	int offset_x = getXOffset();
+	int offset_y = getYOffset();
+	offset_x += shakeX;
+	offset_y += shakeY;
 
-		renderBackground();
+	renderBackground();
 
-		// then render the map
-		map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, 71, 19);
+	// then render the map
+	map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, 71, 19);
 
-		// and then render the characters on top of the map
-		for (Character c : characters) {
-		    c.render(offset_x, offset_y);
-		}
+	// and then render the characters on top of the map
+	for (Character c : characters) {
+	    c.render(offset_x, offset_y);
+	}
 
-		for (LevelObject obj : levelObjects) {
-		    obj.render(offset_x, offset_y);
-		}
-	
+	for (LevelObject obj : levelObjects) {
+	    obj.render(offset_x, offset_y);
+	}
+
     }
 
 }

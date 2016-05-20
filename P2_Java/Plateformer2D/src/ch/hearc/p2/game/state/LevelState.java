@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
@@ -15,7 +16,6 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import ch.hearc.p2.game.WindowGame;
-import ch.hearc.p2.game.character.Abeille;
 import ch.hearc.p2.game.character.Ennemie;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController;
@@ -43,6 +43,7 @@ public abstract class LevelState extends BasicGameState {
     protected Hud hud;
     protected Music musiclvl;
     protected boolean isPause;
+    protected Image cursor;
 
     protected ArrayList<Ennemie> ennemies;
     protected ArrayList<Objective> objectives;
@@ -53,38 +54,39 @@ public abstract class LevelState extends BasicGameState {
     protected long time1;
     protected long time2;
 
-    public int ID = 101;
-    protected int nextLevel = 101;
+    protected int ID;
+    protected int nextLevel;
 
     public LevelState(String startingLevel) {
 	this.startinglevel = startingLevel;
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
-
     }
 
+    @Override
     public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
 	this.sbg = sbg;
+
+	cursor = new Image("ressources/cursor/viseur.png");
 
 	initialisation();
 
     }
 
+    public void initialisation() throws SlickException {
+	// Avant instanciation
+	ennemies = new ArrayList<Ennemie>();
+	objectives = new ArrayList<Objective>();
+
+	hud = new Hud();
+	musiclvl = new Music("ressources/audio/music/lvl1.ogg");
+
+	instanciation();
+    }
+
     public void instanciation() throws SlickException {
 	// A coder dans les classes enfants
 	initialisationSuite();
-
-    }
-
-    public void initialisation() throws SlickException {
-	// Avant instanciation
-
-	ennemies = new ArrayList<Ennemie>();
-	objectives = new ArrayList<Objective>();
-	hud = new Hud();
-	musiclvl = new Music("ressources/audio/music/lvl1.ogg");
-	instanciation();
-
     }
 
     public void initialisationSuite() throws SlickException {
@@ -112,13 +114,21 @@ public abstract class LevelState extends BasicGameState {
 	hud.init();
     }
 
-    public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+	container.setMouseCursor(cursor, 0, 0);
+
 	if (isPause == true) {
 	    musiclvl.resume();
 	    isPause = false;
 	} else if (musiclvl.playing() == false) {
 	    musiclvl.loop();
 	}
+    }
+
+    @Override
+    public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
+
 	// Pour gérer les entrées clavier
 	playerController.handleInput(container.getInput(), delta);
 
@@ -137,13 +147,12 @@ public abstract class LevelState extends BasicGameState {
 	    shakeAmt = Level.SHAKE_INTENSITY;
 	    shake();
 	}
-	weapon.clearList();
+	weapon.clearToAddList();
 
 	time1 = System.currentTimeMillis();
 
 	// Pour gérer les ennemies
 	Iterator<Ennemie> it = ennemies.iterator();
-
 	while (it.hasNext()) {
 
 	    Ennemie e = it.next();
@@ -154,11 +163,12 @@ public abstract class LevelState extends BasicGameState {
 		    e.setXVelocity(0);
 		}
 	    }
+
 	    List<LevelObject> toAddList = e.getToAddList();
 	    for (LevelObject obj : toAddList) {
 		level.addLevelObject(obj);
 	    }
-	    e.clearList();
+	    e.clearToAddList();
 
 	    if (time1 - time2 > 1000) {
 		if (!it.hasNext())
@@ -200,6 +210,7 @@ public abstract class LevelState extends BasicGameState {
 	}
     }
 
+    @Override
     public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
 	g.scale(WindowGame.SCALE, WindowGame.SCALE);
 
@@ -209,15 +220,27 @@ public abstract class LevelState extends BasicGameState {
 	    level.render();
 	hud.render(g, player);
 
-	/*
-	 * for(Tile t :
-	 * player.getBoundingShape().getGroundTiles(level.getTiles())){
-	 * g.setColor(new Color(255,130,90,200)); g.drawRect(t.getX()*128,
-	 * t.getY()*128, 128, 128); }
-	 */
-
 	if (shakeX != 0 && shakeY != 0)
 	    g.translate(-shakeX, -shakeY);
+    }
+
+    // this method is overriden from basicgamestate and will trigger once you
+    // realease any key on your keyboard
+    @Override
+    public void keyReleased(int key, char code) {
+	// if the key is escape, pause the level
+	if (key == Input.KEY_ESCAPE) {
+	    PauseGameState.setID_Last(ID);
+	    isPause = true;
+	    sbg.enterState(50);
+	}
+
+    }
+
+    @Override
+    public int getID() {
+	// this is the id for changing states
+	return ID;
     }
 
     private void shake() {
@@ -233,26 +256,8 @@ public abstract class LevelState extends BasicGameState {
 	    shakeAmt = 0f;
     }
 
-    // this method is overriden from basicgamestate and will trigger once you
-    // press any key on your keyboard
-    public void keyPressed(int key, char code) {
-	// if the key is escape, close our application
-
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+	musiclvl.pause();
     }
-
-    public void keyReleased(int key, char code) {
-	if (key == Input.KEY_ESCAPE) {
-	    PauseGameState.setID(ID);
-	    musiclvl.pause();
-	    isPause = true;
-	    sbg.enterState(50);
-	}
-
-    }
-
-    public int getID() {
-	// this is the id for changing states
-	return ID;
-    }
-
 }

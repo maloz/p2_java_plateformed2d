@@ -33,3 +33,6 @@
 1463739907345	Rename local variable 'snakeLava_hit'
 1463739924898	Rename local variable 'voidFlyer'
 1463740031194	Rename type 'Spinner'
+1463779057919	Rename method 'clearList'
+1463779170905	Rename method 'clearList'
+1463783145267	Rename method 'setID'

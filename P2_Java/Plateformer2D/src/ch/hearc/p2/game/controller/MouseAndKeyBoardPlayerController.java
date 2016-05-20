@@ -1,11 +1,10 @@
 package ch.hearc.p2.game.controller;
 
-import ch.hearc.p2.game.character.Player;
-import ch.hearc.p2.game.level.Level;
-
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+
+import ch.hearc.p2.game.character.Player;
+import ch.hearc.p2.game.level.Level;
 
 public class MouseAndKeyBoardPlayerController extends PlayerController {
 

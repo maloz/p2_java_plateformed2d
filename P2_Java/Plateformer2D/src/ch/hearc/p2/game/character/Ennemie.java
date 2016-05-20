@@ -4,12 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.physics.AABoundingRect;
-import ch.hearc.p2.game.projectile.Projectile;
 
 public class Ennemie extends Character {
 
@@ -44,7 +42,7 @@ public class Ennemie extends Character {
 	return toAddList;
     }
 
-    public void clearList() {
+    public void clearToAddList() {
 	toAddList.clear();
     }
 

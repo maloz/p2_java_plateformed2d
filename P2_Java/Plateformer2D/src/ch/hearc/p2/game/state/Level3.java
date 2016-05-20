@@ -13,10 +13,11 @@ public class Level3 extends LevelState {
 	super(startingLevel);
 	ID = 103;
 	this.startinglevel = startingLevel;
-	nextLevel = 104; // Si c'est le dernier level, 0 pour l'instant
+	nextLevel = 104;
 
     }
 
+    @Override
     public void instanciation() throws SlickException {
 	// ID for the next state (0 is main menu, ID+1 is the next level)
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Character"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.controller.PlayerController"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -12,7 +11,6 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.Game"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Player"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.state.BasicGameState"/>
-<fullyQualifiedTypeName name="org.newdawn.slick.state.StateBasedGame"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.GameContainer"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Animation"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.physics.AABoundingRect"/>
@@ -36,7 +34,6 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.object.Objective"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Ennemie"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.ProjectilePlayer"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.menu.PauseGameState"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.Grenade"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Sound"/>
@@ -58,5 +55,9 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Ghost"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.VoidFlyer"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.SpinnerHalf"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.state.LevelState"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.state.StateBasedGame"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.menu.PauseGameState"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.WindowGame"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>

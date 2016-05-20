@@ -5,14 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
 import ch.hearc.p2.game.enums.Facing;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.physics.AABoundingRect;
-import ch.hearc.p2.game.projectile.Projectile;
 import ch.hearc.p2.game.weapon.Weapon;
 
 public class Player extends Character {
