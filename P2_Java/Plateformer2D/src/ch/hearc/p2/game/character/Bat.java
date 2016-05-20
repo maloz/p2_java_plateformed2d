@@ -32,7 +32,7 @@ public class Bat extends Ennemie {
 	hitedSprites = setSprite(bee, hitedSprites);
 	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee }, 80, hitedMovingAnimations);
 
-	boundingShape = new AABoundingRect(x, y, 56, 48);
+	boundingShape = new AABoundingRect(x, y, 79, 42); //Moyenne entre les deux sprites de l'animation
 	deadPicture = new Image("ressources/character/ennemi/bat_dead.png");
 	accelerationSpeed = 0.004f;
 	maximumSpeed = 0.7f;

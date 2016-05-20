@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="20" tilewidth="70" tileheight="70" nextobjectid="51">
+ <tileset firstgid="1" name="sheet" tilewidth="70" tileheight="70" tilecount="98" columns="14">
+  <image source="../tiles/map/sheet.png" width="980" height="490"/>
+  <tile id="84">
+   <properties>
+    <property name="tileType" value="air"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="99" name="tiles_spritesheet" tilewidth="70" tileheight="70" spacing="2" tilecount="156" columns="12">
+  <image source="../tiles/map/tiles_spritesheet.png" width="914" height="936"/>
+ </tileset>
+ <tileset firstgid="255" name="spritesheet" tilewidth="70" tileheight="70" spacing="1" tilecount="49" columns="7">
+  <image source="../tiles/map/spritesheet.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="304" name="grayy" tilewidth="32" tileheight="32" tilecount="800" columns="20">
+  <image source="../tiles/map/grassy_tileset.png" width="640" height="1280"/>
+ </tileset>
+ <layer name="Limite" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NoQEAAAgDoD3pW95sNhhtBDKVpAAAAIClD1/fAEBVyHOgDwAA
+  </data>
+ </layer>
+ <layer name="Object" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACwtlYGAIHcUE8Q8S+bjEBhqP+oNyrMw4PPzBR0V/kOpPavpDiwh/UMuvA52uhoI/RIlwoyYd0x65mJh0RYyagcbEhPVQ8MdwiQ9i8jk16xhaYWLyOTFqBhoTU6aOllf0wWyMiLDuhoqJoLlZiXFo5A9q4JM48EC7i1TchwMPtLsGOwYAk+Guw6APAAA=
+  </data>
+ </layer>
+ <layer name="CollisionLayer" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC/vNwMDwe5jg0EGMh4s/SPHrQLuDmv6QY2RgEIdiASS2FOPAu3MwxMcSIJ6BhDeQqP8yEB9Hwico9IcaMF64gVgeSkug8QVpFG/E5OWhkD+Gij/Q0x0I9wxBfxATH8TG2UC7dTj5A71cguGh5g987Q10vw1VfxDK64PZH/jkh4I/yFEzmPxBin9x+QNbOUEpxuUOmPxuAu7FZR6hNEevvhkxao5jMQ9f2Ay0P3DFJbHlL7J6AHcGtn6gDwAA
+  </data>
+ </layer>
+ <layer name="End" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OIQEAMAwDsJqcxwm4wJsYKAgIzyQZKm3B4cIrOAAAALT7YKonxaAPAAA=
+  </data>
+ </layer>
+ <layer name="Object2" width="50" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DQQ0AAAwDoTNZ/1YmYx9IWDVVVVX19QGGCOYCoA8AAA==
+  </data>
+ </layer>
+</map>

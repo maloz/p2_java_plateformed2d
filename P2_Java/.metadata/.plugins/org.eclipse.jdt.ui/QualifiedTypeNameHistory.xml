@@ -54,4 +54,9 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.ProjectileAbeille"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.state.Level3"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.SnakeLava"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.Ghost"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.VoidFlyer"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.character.SpinnerHalf"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
