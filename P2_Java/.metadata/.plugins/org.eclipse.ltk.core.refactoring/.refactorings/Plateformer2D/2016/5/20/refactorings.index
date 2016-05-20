@@ -23,6 +23,13 @@
 1463683367778	Delete elements
 1463683371837	Copy compilation unit
 1463684979849	Copy compilation unit
-1463743875810	Rename type 'test'
-1463744078504	Delete element
-1463744080347	Delete element
+1463736051096	Copy compilation unit
+1463736213146	Rename local variable 'spider_hit'
+1463738749345	Copy compilation unit
+1463738898011	Rename local variable 'bee'
+1463739495534	Copy compilation unit
+1463739605815	Rename local variable 'bee'
+1463739893497	Copy compilation unit
+1463739907345	Rename local variable 'snakeLava_hit'
+1463739924898	Rename local variable 'voidFlyer'
+1463740031194	Rename type 'Spinner'

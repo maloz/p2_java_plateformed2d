@@ -51,16 +51,11 @@ public class Weapon extends LevelObject {
     public void shoot(float playerX, float playerY, int mouseX, int mouseY) throws SlickException {
 	if (munition > 0) {
 	    // Calcul de la vélocité X et Y
-	    float velocityX = 3.5f;
-	    float velocityY = 3.5f;
-
+	    float velocityX = (float) 3.4;
+	    float velocityY = (float) 5;
 	    double angle = Math.atan(Math.abs(mouseY - playerY) / Math.abs(mouseX - playerX));
-	    
-	    velocityX *= Math.cos(angle);
-	    velocityY *= Math.sin(angle);
-
-	  
-	    System.err.println(velocityX);
+	    float angleProj = (float) angle;
+	    velocityY *= angle;
 
 	    if (mouseX - playerX < 0) // Clique à gauche du joueur
 	    {
@@ -85,12 +80,15 @@ public class Weapon extends LevelObject {
 
 		}
 		way = Facing.RIGHT;
+		angleProj *= -1;
 
 	    }
 	    if (way == Facing.RIGHT)
-		toAddList.add(new ProjectilePlayer(x + 50, y + 30, velocityX, velocityY));
+		toAddList.add(new ProjectilePlayer(x + 50, y + 30, velocityX, velocityY,
+			(float) (angleProj + Math.toRadians(random.nextInt(5)))));
 	    else
-		toAddList.add(new ProjectilePlayer(x - 90, y + 30, velocityX, velocityY));
+		toAddList.add(new ProjectilePlayer(x - 90, y + 30, velocityX, velocityY,
+			(float) (angleProj + Math.toRadians(random.nextInt(5)))));
 	    munition--;
 
 	    tir.play();

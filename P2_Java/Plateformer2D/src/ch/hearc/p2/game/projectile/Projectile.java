@@ -13,13 +13,14 @@ public class Projectile extends LevelObject {
 
     public Projectile(float x, float y) throws SlickException {
 	super(x, y);
-	x_velocity = (float) 1;
+	x_velocity = (float) 1.8;
 	y_velocity = 0;
 
 	animation = new Animation(
 		new Image[] { new Image("ressources/tiles/item/laserRed02.png") },
 		125);
 	boundingShape = new AABoundingRect(x, y, 15, 15);
+	maximumFallSpeed = (float) 0.1;
 	maximumFallSpeed = 0.0f;
 
     }

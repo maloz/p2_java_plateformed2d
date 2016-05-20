@@ -107,13 +107,11 @@ public class Player extends Character {
 	weapon.shoot(x, y, mouseX, mouseY);
 	this.facing = weapon.getWay();
 	weapon.setPlayerFacing(this.facing);
-	
-	if (facing == Facing.RIGHT && (Math.abs(x_velocity) < x_velocity  + 2*velocityX))
-	    x_velocity -= velocityX/2;
-	else if(facing == Facing.LEFT && Math.abs(x_velocity) < x_velocity  + 2*velocityX)
-	    x_velocity += velocityX/2;
-	if(Math.abs(y_velocity) < velocityY *2)
-		y_velocity = velocityY;
+	if (facing == Facing.RIGHT)
+	    x_velocity -= velocityX;
+	else
+	    x_velocity += velocityX;
+	y_velocity = velocityY;
     }
 
     public List<LevelObject> getToAddList() {
