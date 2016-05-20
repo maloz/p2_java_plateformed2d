@@ -29,12 +29,12 @@ public class Weapon extends LevelObject {
 	super(x, y);
 	way = Facing.LEFT;
 	playerFacing = Facing.RIGHT;
-	munition = 1000; //remplacer par mun
+	munition = 1000; // remplacer par mun
 	x_velocity = 0;
 	y_velocity = 0;
 
 	arme = new Image("ressources/tiles/item/raygunBig.png");
-	
+
 	boundingShape = new AABoundingRect(x, y, 0, 0);
 	maximumFallSpeed = (float) 0;
 	tir = new Sound("ressources/audio/sound/shoot.ogg");
@@ -43,9 +43,9 @@ public class Weapon extends LevelObject {
 
     public void render(float offset_x, float offset_y) {
 	if (playerFacing == Facing.RIGHT)
-	    arme.draw(x - offset_x, y- offset_y);
+	    arme.draw(x - offset_x, y - offset_y);
 	else {
-	    arme.getFlippedCopy(true, false).draw(x - offset_x - 80, y  - offset_y);
+	    arme.getFlippedCopy(true, false).draw(x - offset_x - 80, y - offset_y);
 	}
 
     }
@@ -53,8 +53,8 @@ public class Weapon extends LevelObject {
     public void shoot(float playerX, float playerY, int mouseX, int mouseY) throws SlickException {
 	if (munition > 0) {
 	    // Calcul de la vélocité X et Y
-	    float velocityX = (float) 3.3;
-	    float velocityY = (float) 4;
+	    float velocityX = (float) 3.4;
+	    float velocityY = (float) 5;
 	    double angle = Math.atan(Math.abs(mouseY - playerY) / Math.abs(mouseX - playerX));
 	    float angleProj = (float) angle;
 	    velocityY *= angle;
@@ -86,13 +86,15 @@ public class Weapon extends LevelObject {
 
 	    }
 	    if (way == Facing.RIGHT)
-		toAddList.add(new ProjectilePlayer(x + 50, y+30, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
+		toAddList.add(new ProjectilePlayer(x + 50, y + 30, velocityX, velocityY,
+			(float) (angleProj + Math.toRadians(random.nextInt(5)))));
 	    else
-		toAddList.add(new ProjectilePlayer(x - 90, y+30, velocityX, velocityY, (float)(angleProj + Math.toRadians(random.nextInt(5)))));
+		toAddList.add(new ProjectilePlayer(x - 90, y + 30, velocityX, velocityY,
+			(float) (angleProj + Math.toRadians(random.nextInt(5)))));
 	    munition--;
-	    
+
 	    tir.play();
-	    
+
 	}
     }
 

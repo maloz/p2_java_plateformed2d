@@ -20,7 +20,7 @@ public class ProjectilePlayer extends Projectile {
 
 	bullet = new Image("ressources/tiles/item/bullet.png");
 	bullet = bullet.getScaledCopy(0.4f);
-	boundingShape = new AABoundingRect(x, y, 30, 30);
+	boundingShape = new AABoundingRect(x, y, 20, 20);
 	maximumFallSpeed = (float) 0;
 
     }

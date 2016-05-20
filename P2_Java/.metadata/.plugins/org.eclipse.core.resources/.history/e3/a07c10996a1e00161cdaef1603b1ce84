@@ -9,9 +9,10 @@ import org.newdawn.slick.SlickException;
 
 public class MouseAndKeyBoardPlayerController extends PlayerController {
 
+    
     private long time1;
     private long time2;
-
+    
     public MouseAndKeyBoardPlayerController(Player player, Level level) {
 	super(player, level);
 	time1 = System.currentTimeMillis();
@@ -50,28 +51,27 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
     private void handleMouseInput(Input i, int delta) throws SlickException {
 	time1 = System.currentTimeMillis();
+	
+	/*if (i.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
 
-	/*
-	 * if (i.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
-	 * 
-	 * int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // OK int
-	 * mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Fausse
-	 * player.shoot(mouseWorldX, mouseWorldY); // coordonnées //
-	 * System.out.println("MouseW x : " + mouseWorldX); //
-	 * System.out.println("MouseW y : " + mouseWorldY); //
-	 * System.out.println("Player x : " + player.getX()); //
-	 * System.out.println("Player y : " + player.getY()); // Valeur //
-	 * bizarre vers le haut de l'écran. Le 0 ne commence pas où il //
-	 * devrait; }
-	 */
+	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // OK
+	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Fausse
+	    player.shoot(mouseWorldX, mouseWorldY); // coordonnées
+	    // System.out.println("MouseW x : " + mouseWorldX);
+	    // System.out.println("MouseW y : " + mouseWorldY);
+	    // System.out.println("Player x : " + player.getX());
+	    // System.out.println("Player y : " + player.getY()); // Valeur
+	    // bizarre vers le haut de l'écran. Le 0 ne commence pas où il
+	    // devrait;
+	}*/
 	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > 100) {
-
-	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
-	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
+	    
+	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // OK
+	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Fausse
 	    player.shoot(mouseWorldX, mouseWorldY);
 	    time2 = System.currentTimeMillis();
 	}
-
+	
     }
 
 }
