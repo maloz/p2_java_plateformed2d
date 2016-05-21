@@ -14,19 +14,18 @@ public class Bat extends Ennemie {
 	dead = false;
 	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
-	sprites = setSprite(new Image("ressources/character/ennemi/bat.png"),
-		sprites);
-	movingAnimations = setMovingAnimation(
-		new Image[] { new Image("ressources/character/ennemi/bat.png"),
-			new Image("ressources/character/ennemi/bat_fly.png") },
-		100, movingAnimations);
+	sprites = setSprite(new Image("ressources/character/ennemi/bat.png"), sprites);
+	movingAnimations = setMovingAnimation(new Image[] { new Image("ressources/character/ennemi/bat.png"),
+		new Image("ressources/character/ennemi/bat_fly.png") }, 100, movingAnimations);
 
 	Image bee = new Image("ressources/character/ennemi/bat_hit.png");
 
 	hitedSprites = setSprite(bee, hitedSprites);
 	hitedMovingAnimations = setMovingAnimation(new Image[] { bee, bee }, 80, hitedMovingAnimations);
 
-	boundingShape = new AABoundingRect(x, y, 79, 42); //Moyenne entre les deux sprites de l'animation
+	boundingShape = new AABoundingRect(x, y, 79, 42); // Moyenne entre les
+							  // deux sprites de
+							  // l'animation
 	deadPicture = new Image("ressources/character/ennemi/bat_dead.png");
 	accelerationSpeed = 0.004f;
 	maximumSpeed = 0.7f;
@@ -36,7 +35,7 @@ public class Bat extends Ennemie {
     }
 
     public void updateBoundingShape() {
-	boundingShape.updatePosition(x , y);
+	boundingShape.updatePosition(x, y);
     }
 
     public void shoot() throws SlickException {

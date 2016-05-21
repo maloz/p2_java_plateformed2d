@@ -36,7 +36,7 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	}
     }
 
-    private void handleKeyboardInput(Input i, int delta) {
+    private void handleKeyboardInput(Input i, int delta){
 	// we can both use the WASD or arrow keys to move around, obviously we
 	// can't move both left and right simultaneously
 	if (i.isKeyDown(Input.KEY_A) || i.isKeyDown(Input.KEY_LEFT)) {
@@ -52,6 +52,7 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	if (i.isKeyDown(Input.KEY_SPACE)) {
 	    player.jump();
 	}
+	
     }
 
     private void handleMouseInput(Input i, int delta) throws SlickException {
@@ -63,7 +64,14 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    player.shoot(mouseWorldX, mouseWorldY);
 	    time2 = System.currentTimeMillis();
 	}
+	
+	if (i.isMouseButtonDown(Input.MOUSE_MIDDLE_BUTTON) && time1 - time2 > 200) {
 
+	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
+	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
+	    player.shootGrenade(mouseWorldX, mouseWorldY);
+	    time2 = System.currentTimeMillis();
+	}
     }
 
     private void handleControllerInput(Input i, int delta) throws SlickException {

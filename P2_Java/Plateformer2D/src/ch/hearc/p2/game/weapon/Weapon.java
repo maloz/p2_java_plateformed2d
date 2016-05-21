@@ -15,13 +15,14 @@ import ch.hearc.p2.game.projectile.ProjectilePlayer;
 
 public class Weapon extends LevelObject {
 
-    private List<LevelObject> toAddList = new LinkedList<LevelObject>();
+    protected List<LevelObject> toAddList = new LinkedList<LevelObject>();
     protected Image arme;
     private int munition;
-    private Facing way;
+    protected Facing way;
     private Facing playerFacing;
-    private Sound tir;
+    protected Sound tir;
     private Random random;
+
 
     public Weapon(float x, float y, int mun) throws SlickException {
 	super(x, y);
@@ -50,16 +51,14 @@ public class Weapon extends LevelObject {
 
     public void shoot(float playerX, float playerY, int mouseX, int mouseY) throws SlickException {
 	if (munition > 0) {
-	    // Calcul de la vélocité X et Y
+	    // Calcul de la vélocité X et Y    
 	    float velocityX = 3.5f;
 	    float velocityY = 3.5f;
-
+	    
 	    double angle = Math.atan(Math.abs(mouseY - playerY) / Math.abs(mouseX - playerX));
-
+	    angle += Math.toRadians(random.nextInt(5));
 	    velocityX *= Math.cos(angle);
 	    velocityY *= Math.sin(angle);
-
-	    System.err.println(velocityX);
 
 	    if (mouseX - playerX < 0) // Clique à gauche du joueur
 	    {
@@ -90,6 +89,7 @@ public class Weapon extends LevelObject {
 		toAddList.add(new ProjectilePlayer(x + 50, y + 30, velocityX, velocityY));
 	    else
 		toAddList.add(new ProjectilePlayer(x - 90, y + 30, velocityX, velocityY));
+
 	    munition--;
 
 	    tir.play();

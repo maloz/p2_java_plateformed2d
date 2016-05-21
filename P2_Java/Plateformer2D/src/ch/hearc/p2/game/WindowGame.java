@@ -60,7 +60,7 @@ public class WindowGame extends StateBasedGame {
 	app.setShowFPS(true);
 	// this will attempt to create a framerate of approximately 60 frames
 	// per second
-	// app.setTargetFrameRate(100);
+	 //app.setTargetFrameRate(20);
 
 	app.start();
     }

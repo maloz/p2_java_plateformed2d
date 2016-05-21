@@ -15,6 +15,8 @@ import ch.hearc.p2.game.level.object.DeadZone;
 import ch.hearc.p2.game.level.object.Key;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
+import ch.hearc.p2.game.projectile.Explosion;
+import ch.hearc.p2.game.projectile.Grenade;
 import ch.hearc.p2.game.projectile.Projectile;
 import ch.hearc.p2.game.projectile.ProjectileAbeille;
 import ch.hearc.p2.game.projectile.ProjectilePlayer;
@@ -101,6 +103,15 @@ public class Physics {
 			    }
 			}
 		    }
+		    if (obj instanceof Explosion) {
+			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
+			    if (((Ennemie) c).isDead() == false) {
+				c.damage(2);
+				c.hit();
+				removeQueueC.add(obj);
+			    }
+			}
+		    }
 		}
 	    }
 	    level.removeObjects(removeQueueC);
@@ -109,14 +120,16 @@ public class Physics {
     }
 
     private ArrayList<LevelObject> removeQueue;
+    private ArrayList<LevelObject> addQueue;
 
     private void handleLevelObjects(Level level, int delta) {
 	removeQueue = new ArrayList<LevelObject>();
+	addQueue = new ArrayList<LevelObject>();
 
 	for (LevelObject obj : level.getLevelObjects()) {
 	    handleGameObject(obj, level, delta);
 	}
-
+	level.addLevelObject(addQueue);
 	level.removeObjects(removeQueue);
     }
 
@@ -162,23 +175,13 @@ public class Physics {
 		    step_y = 1;
 
 	    }
-	    if (checkCollision(obj, level.getTiles())) {
-		if (obj instanceof Projectile) {
-		    // removeQueue.add(obj);
-		}
-	    }
+
 	} else if (y_movement != 0) {
 	    // if we only have vertical movement, we can just use a step of 1
 	    if (y_movement > 0)
 		step_y = 1;
 	    else
 		step_y = -1;
-	    if (checkCollision(obj, level.getTiles())) {
-		if (obj instanceof Projectile) {
-		    // removeQueue.add(obj);
-		}
-	    }
-
 	}
 
 	// and then do little steps until we are done moving
@@ -200,11 +203,22 @@ public class Physics {
 		// if we collide with any of the bounding shapes of the tiles we
 		// have to revert to our original position
 		if (checkCollision(obj, level.getTiles())) {
-		    if (obj instanceof Projectile) {
+		    if (obj instanceof Grenade) {
+			try {
+			    addQueue.add(new Explosion(obj.getX()-125, obj.getY()-125)); // -125 pour centrer l'explosion
+			} catch (SlickException e) {
+			    e.printStackTrace();
+			}
 		    }
+
+		    if (obj instanceof Projectile && !(obj instanceof Explosion)) {
+			removeQueue.add(obj);
+		    }
+
 		    obj.setX(obj.getX() - step_x);
 		    obj.setXVelocity(0);
 		    x_movement = 0;
+
 		}
 		if (checkCollision(obj, level.getLimite())) {
 		    if (obj instanceof Player)
@@ -231,18 +245,28 @@ public class Physics {
 		obj.setY(obj.getY() + step_y);
 
 		if (checkCollision(obj, level.getTiles())) {
-		    if (obj instanceof Projectile) {
+		    if (obj instanceof Grenade) {
+			try {
+			    // TODO corriger explosion pour un mouvement vertical
+			    addQueue.add(new Explosion(obj.getX()-125, obj.getY()-125)); // -125 pour centrer l'explosion
+			} catch (SlickException e) {
+			    e.printStackTrace();
+			}
+		    }
+
+		    if (obj instanceof Projectile && !(obj instanceof Explosion)) {
 			removeQueue.add(obj);
 		    }
+
 		    obj.setY(obj.getY() - step_y);
 		    obj.setYVelocity(0);
 		    y_movement = 0;
-		    break;
+
 		}
 		if (checkCollision(obj, level.getLimite())) {
 		    if (obj instanceof Player)
 			level.getPlayer().setLife(0);
-		    if (obj instanceof Projectile)
+		    if (obj instanceof Projectile && !(obj instanceof Explosion))
 			removeQueue.add(obj);
 		    if (obj instanceof Ennemie)
 			removeQueue.add(obj);
@@ -253,11 +277,19 @@ public class Physics {
 		}
 	    }
 	}
-	if (obj instanceof Projectile) {
+	if (obj instanceof Projectile && !(obj instanceof Explosion)) {
 	    if (obj.isOnGround() == true)
 		removeQueue.add(obj);
 	    if (obj.getYVelocity() == 0 || obj.getXVelocity() == 0)
 		removeQueue.add(obj);
+	}
+	if (obj instanceof Explosion) {
+	    ((Explosion) obj).setTime2(System.currentTimeMillis());
+	    if (((Explosion) obj).getTime2() - ((Explosion) obj).getTime1() > 200) {
+		removeQueue.add(obj);
+	    } else {
+		// TODO SetDamage à 0
+	    }
 	}
 
     }
