@@ -2,6 +2,7 @@ package ch.hearc.p2.game;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -46,6 +47,8 @@ public class WindowGame extends StateBasedGame {
 	addState(new GameOver());
 	addState(new LevelScreen1GameState());
 	addState(new LevelScreen2GameState());
+	
+	
     }
 
     public static void main(String[] args) throws SlickException {

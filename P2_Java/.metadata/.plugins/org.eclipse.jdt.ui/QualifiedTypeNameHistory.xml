@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.controller.PlayerController"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.controller.MouseAndKeyBoardPlayerController"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.AirTile"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.SolidTile"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.physics.BoundingShape"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.menu.PauseGameState"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.WindowGame"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Input"/>
+<fullyQualifiedTypeName name="org.lwjgl.input.Controllers"/>
+<fullyQualifiedTypeName name="org.lwjgl.input.Controller"/>
 </qualifiedTypeNameHistroy>

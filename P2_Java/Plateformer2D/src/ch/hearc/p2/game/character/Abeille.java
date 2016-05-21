@@ -1,15 +1,9 @@
 package ch.hearc.p2.game.character;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.opengl.renderer.SGL;
 
-import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.physics.AABoundingRect;
-import ch.hearc.p2.game.projectile.Projectile;
 import ch.hearc.p2.game.projectile.ProjectileAbeille;
 
 public class Abeille extends Ennemie {

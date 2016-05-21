@@ -1,10 +1,8 @@
 package ch.hearc.p2.game.level.object;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Key extends Objective {
