@@ -1,5 +1,7 @@
 package ch.hearc.p2.game.controller;
 
+import org.lwjgl.input.Controller;
+import org.lwjgl.input.Controllers;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -10,19 +12,24 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
     private long time1;
     private long time2;
+    private Controller controller;
 
     public MouseAndKeyBoardPlayerController(Player player, Level level) {
 	super(player, level);
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
+	controller = Controllers.getController(2);
     }
 
     public void handleInput(Input i, int delta) {
 	// handle any input from the keyboard
+	time1 = System.currentTimeMillis();
+
 	handleKeyboardInput(i, delta);
 
 	try {
 	    handleMouseInput(i, delta);
+	    handleControllerInput(i, delta);
 	} catch (SlickException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
@@ -48,21 +55,7 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
     }
 
     private void handleMouseInput(Input i, int delta) throws SlickException {
-	time1 = System.currentTimeMillis();
 
-	/*
-	 * if (i.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
-	 * 
-	 * int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // OK int
-	 * mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Fausse
-	 * player.shoot(mouseWorldX, mouseWorldY); // coordonnées //
-	 * System.out.println("MouseW x : " + mouseWorldX); //
-	 * System.out.println("MouseW y : " + mouseWorldY); //
-	 * System.out.println("Player x : " + player.getX()); //
-	 * System.out.println("Player y : " + player.getY()); // Valeur //
-	 * bizarre vers le haut de l'écran. Le 0 ne commence pas où il //
-	 * devrait; }
-	 */
 	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > 100) {
 
 	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
@@ -71,6 +64,39 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    time2 = System.currentTimeMillis();
 	}
 
+    }
+
+    private void handleControllerInput(Input i, int delta) throws SlickException {
+	// Work
+	if (i.isControllerLeft(Input.ANY_CONTROLLER)) {
+	    player.moveLeft(delta);
+	} else if (i.isControllerRight(Input.ANY_CONTROLLER)) {
+	    player.moveRight(delta);
+	}
+	// Work
+	if (i.isButton1Pressed(Input.ANY_CONTROLLER)) {
+	    player.jump();
+	}
+	if (i.isButtonPressed(2, 4)) {
+	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
+	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
+	    player.shoot(mouseWorldX, mouseWorldY);
+	}
+
+	// Get the trigger button, doesn't work
+	// java.lang.ArrayIndexOutOfBoundsException: 4
+	/*
+	 * if(i.isButtonPressed(4, Input.ANY_CONTROLLER) && time1 - time2 > 100)
+	 * { int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
+	 * int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
+	 * player.shoot(mouseWorldX, mouseWorldY); time2 =
+	 * System.currentTimeMillis(); //Limite }
+	 */
+
+	// Doesn't work either (want this value to move the camera)
+	// java.lang.ArrayIndexOutOfBoundsException: -1
+	// float vValue = i.getAxisValue(Input.ANY_CONTROLLER, 2);
+	// float hValue = i.getAxisValue(Input.ANY_CONTROLLER, 3);
     }
 
 }
