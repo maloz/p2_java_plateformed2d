@@ -1,5 +1,6 @@
 package ch.hearc.p2.game.projectile;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -23,7 +24,7 @@ public class ProjectileAbeille extends Projectile {
     }
 
     public void render(float offset_x, float offset_y) {
-	projectile.draw(x - offset_x, y - offset_y);
+	projectile.draw(x - 2 - offset_x, y - 2 - offset_y);
     }
 
 }

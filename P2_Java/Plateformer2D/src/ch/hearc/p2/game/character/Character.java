@@ -157,8 +157,8 @@ public abstract class Character extends LevelObject {
 	    deadPicture.draw(x -offset_x, y - offset_y);
 	
     }
-
-    public void hit() {
+    public void hit()
+    {
 	time2 = System.currentTimeMillis();
 	hited = true;
     }

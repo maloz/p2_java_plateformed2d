@@ -290,13 +290,8 @@ public class Level {
 	levelObjects.removeAll(objects);
     }
 
-    public void addLevelObject(ArrayList<LevelObject> addQueue) {
-	levelObjects.addAll(addQueue);
-    }
-
-    public void addLevelObject(LevelObject obj) {
-	levelObjects.add(obj);
-
+    public void addLevelObject(LevelObject objective) {
+	levelObjects.add(objective);
     }
 
     public ArrayList<LevelObject> getLevelObjects() {

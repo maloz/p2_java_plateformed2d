@@ -7,6 +7,7 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Key extends Objective {
 
+    
     public Key(float x, float y) throws SlickException {
 	super(x, y);
 
@@ -14,5 +15,6 @@ public class Key extends Objective {
 	image = new Image("ressources/tiles/item/keyRed.png");
 	boundingShape = new AABoundingRect(x, y, 45, 50);
     }
+
 
 }

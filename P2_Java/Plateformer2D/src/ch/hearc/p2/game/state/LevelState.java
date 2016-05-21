@@ -26,7 +26,6 @@ import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.menu.PauseGameState;
 import ch.hearc.p2.game.physics.Physics;
-import ch.hearc.p2.game.weapon.LanceGrenade;
 import ch.hearc.p2.game.weapon.Weapon;
 
 public abstract class LevelState extends BasicGameState {
@@ -51,7 +50,6 @@ public abstract class LevelState extends BasicGameState {
 
     protected int shakeTime = Level.SHAKE_DELAY;
     protected Weapon weapon;
-    protected LanceGrenade lanceGrenade;
 
     protected long time1;
     protected long time2;
@@ -93,8 +91,6 @@ public abstract class LevelState extends BasicGameState {
 
     public void initialisationSuite() throws SlickException {
 	weapon = player.getWeapon();
-	lanceGrenade = player.getLanceGrenade();
-
 	// once we initialize our level, we want to load the right level
 	level = new Level(startinglevel, player);
 
@@ -143,9 +139,6 @@ public abstract class LevelState extends BasicGameState {
 	weapon.setX(player.getX() + 40);
 	weapon.setY(player.getY() + 30);
 
-	lanceGrenade.setX(player.getX() + 40);
-	lanceGrenade.setY(player.getY() + 30);
-
 	// Pour voir si le player a tiré (donc si l'arme doit tirer) et ajouter
 	// les projectiles au niveau
 	List<LevelObject> toAdd = weapon.getToAddList();
@@ -155,13 +148,6 @@ public abstract class LevelState extends BasicGameState {
 	    shake();
 	}
 	weapon.clearToAddList();
-
-	// grenade
-	List<LevelObject> toAddGrenade = lanceGrenade.getToAddList();
-	for (LevelObject obj : toAddGrenade) {
-	    level.addLevelObject(obj);
-	}
-	lanceGrenade.clearToAddList();
 
 	time1 = System.currentTimeMillis();
 
