@@ -2,7 +2,6 @@ package ch.hearc.p2.game;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -15,6 +14,8 @@ import ch.hearc.p2.game.state.Level1;
 import ch.hearc.p2.game.state.Level2;
 import ch.hearc.p2.game.state.Level3;
 import ch.hearc.p2.game.state.Level4;
+import ch.hearc.p2.game.state.Level5;
+import ch.hearc.p2.game.state.Level6;
 
 public class WindowGame extends StateBasedGame {
 
@@ -25,7 +26,7 @@ public class WindowGame extends StateBasedGame {
 
     // 1280x720 is our base, we use 70x70
     public static final float SCALE = (float) 1;
-    public static final String GAME_NAME = "Gravity Platformer";
+    public static final String GAME_NAME = "Platformer 2D";
 
     public WindowGame() {
 	super(GAME_NAME);
@@ -41,14 +42,13 @@ public class WindowGame extends StateBasedGame {
 	addState(new Level2("lvl2"));
 	addState(new Level3("lvl3"));
 	addState(new Level4("lvl4"));
-	// addState(new Level5("lvl5"));
-	// addState(new Level6("lvl6"));
+	addState(new Level5("lvl5"));
+	addState(new Level6("lvl6"));
 	addState(new PauseGameState());
 	addState(new GameOver());
 	addState(new LevelScreen1GameState());
 	addState(new LevelScreen2GameState());
-	
-	
+
     }
 
     public static void main(String[] args) throws SlickException {

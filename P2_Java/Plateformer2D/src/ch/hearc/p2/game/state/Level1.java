@@ -5,6 +5,8 @@ import org.newdawn.slick.SlickException;
 
 import ch.hearc.p2.game.character.Abeille;
 import ch.hearc.p2.game.character.Player;
+import ch.hearc.p2.game.character.SnakeLava;
+import ch.hearc.p2.game.character.Spider;
 import ch.hearc.p2.game.level.object.Coin;
 import ch.hearc.p2.game.level.object.Key;
 
@@ -27,6 +29,8 @@ public class Level1 extends LevelState {
 	ennemies.add(new Abeille(5 * 70, 6 * 70));
 	ennemies.add(new Abeille(26 * 70, 9 * 70));
 	ennemies.add(new Abeille(38 * 70, 9 * 70));
+	ennemies.add(new Spider(31 * 70, 17 * 70));
+	ennemies.add(new SnakeLava(15 * 70, 14 * 70));
 
 	// Remplis Objectifs
 	objectives.add(new Coin(8 * 70, 6 * 70));
@@ -37,8 +41,8 @@ public class Level1 extends LevelState {
 
 	// setup music
 	musiclvl = new Music("ressources/audio/music/lvl1.ogg");
-	
-	//set weapon
+
+	// set weapon
 	player.setWeapon(0);
 
 	initialisationSuite();
