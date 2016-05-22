@@ -11,6 +11,7 @@ import ch.hearc.p2.game.character.Character;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.AirTile;
+import ch.hearc.p2.game.level.tile.HalfDownTile;
 import ch.hearc.p2.game.level.tile.HalfTile;
 import ch.hearc.p2.game.level.tile.SolidTile;
 import ch.hearc.p2.game.level.tile.Tile;
@@ -79,6 +80,9 @@ public class Level {
 		    break;
 		case "half":
 		    tile = new HalfTile(x, y, "");
+		    break;
+		case "halfDown":
+		    tile = new HalfDownTile(x, y, "");
 		    break;
 		default:
 		    tile = new SolidTile(x, y, "");
