@@ -11,6 +11,7 @@ import ch.hearc.p2.game.character.Character;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.AirTile;
+import ch.hearc.p2.game.level.tile.HalfTile;
 import ch.hearc.p2.game.level.tile.SolidTile;
 import ch.hearc.p2.game.level.tile.Tile;
 
@@ -75,6 +76,9 @@ public class Level {
 		switch (map.getTileProperty(tileID, "tileType", "solid")) {
 		case "air":
 		    tile = new AirTile(x, y, "");
+		    break;
+		case "half":
+		    tile = new HalfTile(x, y, "");
 		    break;
 		default:
 		    tile = new SolidTile(x, y, "");
