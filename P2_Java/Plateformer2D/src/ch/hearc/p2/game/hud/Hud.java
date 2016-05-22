@@ -87,7 +87,7 @@ public class Hud {
 		
 		
 		int munition = p.getWeapon().getMunition();
-		x = 150;
+		x = 210;
 		if(munition == 0)
 		    g.drawImage(numbers[0], x, 950);
 		while (munition > 0) {

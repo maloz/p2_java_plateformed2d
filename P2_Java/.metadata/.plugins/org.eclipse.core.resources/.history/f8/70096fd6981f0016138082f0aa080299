@@ -1,0 +1,7 @@
+package ch.hearc.p2.game.weapon;
+
+import ch.hearc.p2.game.level.LevelObject;
+
+public class MuzzleFlash extends LevelObject {
+
+}

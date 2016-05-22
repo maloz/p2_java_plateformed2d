@@ -294,6 +294,11 @@ public class Level {
 	levelObjects.add(objective);
     }
 
+    public void addLevelObject(ArrayList<LevelObject> addQueue) {
+	levelObjects.addAll(addQueue);
+
+    }
+
     public ArrayList<LevelObject> getLevelObjects() {
 	// TODO Auto-generated method stub
 	return levelObjects;

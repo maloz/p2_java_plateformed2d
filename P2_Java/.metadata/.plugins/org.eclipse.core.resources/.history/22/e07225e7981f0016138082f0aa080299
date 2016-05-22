@@ -1,0 +1,17 @@
+package ch.hearc.p2.game.weapon;
+
+import org.newdawn.slick.Animation;
+
+import ch.hearc.p2.game.level.LevelObject;
+
+public class MuzzleFlash extends LevelObject {
+
+    private Animation animation;
+    public MuzzleFlash(float x, float y) {
+	super(x, y);
+	x_velocity = 0;
+	y_velocity = 0;
+	maximumFallSpeed = 0;
+    }
+
+}

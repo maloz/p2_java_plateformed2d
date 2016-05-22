@@ -48,7 +48,6 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    // effect that our player decelerates
 	    player.setMoving(false);
 	}
-
 	if (i.isKeyDown(Input.KEY_SPACE)) {
 	    player.jump();
 	}
@@ -56,14 +55,13 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
     private void handleMouseInput(Input i, int delta) throws SlickException {
 
-	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > 100) {
+	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > player.getWeapon().getCadence()) {
 
 	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
 	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
 	    player.shoot(mouseWorldX, mouseWorldY);
 	    time2 = System.currentTimeMillis();
 	}
-
     }
 
     private void handleControllerInput(Input i, int delta) throws SlickException {

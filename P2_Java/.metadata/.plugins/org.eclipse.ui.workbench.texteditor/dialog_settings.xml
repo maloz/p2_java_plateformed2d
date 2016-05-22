@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getObj" key="selection"/>
+		<item value="Damage" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="damage"/>
 			<item value="getObj"/>
 			<item value="end"/>
 			<item value="maximumFallSpeed"/>
@@ -15,7 +16,6 @@
 			<item value="timer"/>
 			<item value="removeQueueC"/>
 			<item value="Abeille"/>
-			<item value="128"/>
 		</list>
 		<list key="replacehistory">
 			<item value="70"/>

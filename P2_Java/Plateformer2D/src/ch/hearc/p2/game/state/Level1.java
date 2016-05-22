@@ -21,7 +21,6 @@ public class Level1 extends LevelState {
     @Override
     public void instanciation() throws SlickException {
 	// at the start of the game we don't have a player yet
-
 	player = new Player(1 * 70, 16 * 70);
 
 	// Remplis ennmis
@@ -38,6 +37,9 @@ public class Level1 extends LevelState {
 
 	// setup music
 	musiclvl = new Music("ressources/audio/music/lvl1.ogg");
+	
+	//set weapon
+	player.setWeapon(0);
 
 	initialisationSuite();
     }

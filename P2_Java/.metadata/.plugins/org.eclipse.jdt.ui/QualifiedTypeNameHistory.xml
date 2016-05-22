@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.AirTile"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.SolidTile"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.physics.BoundingShape"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.physics.Physics"/>
@@ -32,7 +31,6 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Ennemie"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.ProjectilePlayer"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.Grenade"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Sound"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Music"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.menu.GameOver"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="org.newdawn.slick.Input"/>
 <fullyQualifiedTypeName name="org.lwjgl.input.Controllers"/>
 <fullyQualifiedTypeName name="org.lwjgl.input.Controller"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.Explosion"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.projectile.Grenade"/>
 </qualifiedTypeNameHistroy>

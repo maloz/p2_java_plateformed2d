@@ -51,6 +51,8 @@ public class Level4 extends LevelState {
 
 	// setup music (si rien, on garde la même musique qu'au niveau d'avant)
 	// musiclvl = new Music("ressources/audio/music/lvl1.ogg");
+	
+	player.setWeapon(1);
 
 	initialisationSuite();
 

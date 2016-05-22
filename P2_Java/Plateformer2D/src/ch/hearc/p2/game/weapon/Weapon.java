@@ -15,21 +15,23 @@ import ch.hearc.p2.game.projectile.ProjectilePlayer;
 
 public class Weapon extends LevelObject {
 
-    private List<LevelObject> toAddList = new LinkedList<LevelObject>();
+    protected List<LevelObject> toAddList = new LinkedList<LevelObject>();
     protected Image arme;
-    private int munition;
-    private Facing way;
-    private Facing playerFacing;
-    private Sound tir;
-    private Random random;
+    protected int munition;
+    protected Facing way;
+    protected Facing playerFacing;
+    protected Sound tir;
+    protected Random random;
+    protected int cadence;
 
-    public Weapon(float x, float y, int mun) throws SlickException {
+    public Weapon(float x, float y) throws SlickException {
 	super(x, y);
 	way = Facing.LEFT;
 	playerFacing = Facing.RIGHT;
-	munition = 1000; // remplacer par mun
+	munition = 100; // remplacer par mun
 	x_velocity = 0;
 	y_velocity = 0;
+	cadence = 200;
 
 	arme = new Image("ressources/tiles/item/raygunBig.png");
 
@@ -86,10 +88,14 @@ public class Weapon extends LevelObject {
 		way = Facing.RIGHT;
 
 	    }
-	    if (way == Facing.RIGHT)
+	    if (way == Facing.RIGHT) {
 		toAddList.add(new ProjectilePlayer(x + 50, y + 30, velocityX, velocityY));
-	    else
+		toAddList.add(new MuzzleFlash(x + 40, y + 10));
+	    } else {
 		toAddList.add(new ProjectilePlayer(x - 90, y + 30, velocityX, velocityY));
+		toAddList.add(new MuzzleFlash(x - 85, y + 10));
+	    }
+
 	    munition--;
 
 	    tir.play();
@@ -115,6 +121,10 @@ public class Weapon extends LevelObject {
 
     public void setPlayerFacing(Facing facing) {
 	playerFacing = facing;
+    }
+
+    public int getCadence() {
+	return cadence;
     }
 
 }

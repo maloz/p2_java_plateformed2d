@@ -15,9 +15,12 @@ import ch.hearc.p2.game.level.object.DeadZone;
 import ch.hearc.p2.game.level.object.Key;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
+import ch.hearc.p2.game.projectile.Explosion;
+import ch.hearc.p2.game.projectile.Grenade;
 import ch.hearc.p2.game.projectile.Projectile;
 import ch.hearc.p2.game.projectile.ProjectileAbeille;
 import ch.hearc.p2.game.projectile.ProjectilePlayer;
+import ch.hearc.p2.game.weapon.MuzzleFlash;
 
 public class Physics {
 
@@ -31,12 +34,12 @@ public class Physics {
 	map = new TiledMap("ressources/level/" + level + ".tmx");
     }
 
-    public void handlePhysics(Level level, int delta) {
+    public void handlePhysics(Level level, int delta) throws SlickException {
 	handleCharacters(level, delta);
 	handleLevelObjects(level, delta);
     }
 
-    private void handleCharacters(Level level, int delta) {
+    private void handleCharacters(Level level, int delta) throws SlickException {
 	for (Character c : level.getCharacters()) {
 	    ArrayList<LevelObject> removeQueueC = new ArrayList<LevelObject>();
 
@@ -56,7 +59,7 @@ public class Physics {
 		    if (obj instanceof ProjectileAbeille) {
 			// in case its an objective and its collides
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
-			    c.damage(1);
+			    c.damage(((ProjectileAbeille) obj).getDamage());
 			    removeQueueC.add(obj);
 			}
 		    }
@@ -101,6 +104,15 @@ public class Physics {
 			    }
 			}
 		    }
+
+		    if (obj instanceof Explosion) {
+			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
+			    if (((Ennemie) c).isDead() == false) {
+				c.damage(((Explosion) obj).getDamage());
+				c.hit();
+			    }
+			}
+		    }
 		}
 	    }
 	    level.removeObjects(removeQueueC);
@@ -109,18 +121,19 @@ public class Physics {
     }
 
     private ArrayList<LevelObject> removeQueue;
+    private ArrayList<LevelObject> addQueue;
 
-    private void handleLevelObjects(Level level, int delta) {
+    private void handleLevelObjects(Level level, int delta) throws SlickException {
 	removeQueue = new ArrayList<LevelObject>();
-
+	addQueue = new ArrayList<LevelObject>();
 	for (LevelObject obj : level.getLevelObjects()) {
 	    handleGameObject(obj, level, delta);
 	}
-
+	level.addLevelObject(addQueue);
 	level.removeObjects(removeQueue);
     }
 
-    private void handleGameObject(LevelObject obj, Level level, int delta) {
+    private void handleGameObject(LevelObject obj, Level level, int delta) throws SlickException {
 
 	// first update the onGround of the object
 	obj.setOnGround(isOnGroud(obj, level.getTiles()));
@@ -200,7 +213,8 @@ public class Physics {
 		// if we collide with any of the bounding shapes of the tiles we
 		// have to revert to our original position
 		if (checkCollision(obj, level.getTiles())) {
-		    if (obj instanceof Projectile) {
+		    if (obj instanceof Projectile && !(obj instanceof Explosion)) {
+			removeQueue.add(obj);
 		    }
 		    obj.setX(obj.getX() - step_x);
 		    obj.setXVelocity(0);
@@ -231,7 +245,7 @@ public class Physics {
 		obj.setY(obj.getY() + step_y);
 
 		if (checkCollision(obj, level.getTiles())) {
-		    if (obj instanceof Projectile) {
+		    if (obj instanceof Projectile && !(obj instanceof Explosion)) {
 			removeQueue.add(obj);
 		    }
 		    obj.setY(obj.getY() - step_y);
@@ -253,11 +267,33 @@ public class Physics {
 		}
 	    }
 	}
-	if (obj instanceof Projectile) {
-	    if (obj.isOnGround() == true)
+
+	if (obj instanceof Projectile && !(obj instanceof Explosion)) {
+	    if (obj.isOnGround() == true) {
 		removeQueue.add(obj);
-	    if (obj.getYVelocity() == 0 || obj.getXVelocity() == 0)
+		if (obj instanceof Grenade)
+		    addQueue.add(new Explosion(obj.getX() - 100, obj.getY() - 100));
+	    }
+	    if (obj.getYVelocity() == 0 || obj.getXVelocity() == 0) {
 		removeQueue.add(obj);
+		if (obj instanceof Grenade)
+		    addQueue.add(new Explosion(obj.getX() - 100, obj.getY() - 100));
+	    }
+	}
+
+	if (obj instanceof Explosion) {
+	    ((Explosion) obj).setTime2(System.currentTimeMillis());
+	    if (((Explosion) obj).getTime2() - ((Explosion) obj).getTime1() > 540) {
+		removeQueue.add(obj);
+	    } else if (((Explosion) obj).getTime2() - ((Explosion) obj).getTime1() > 10) {
+		((Explosion) obj).setDamage(0);
+	    }
+	}
+	if (obj instanceof MuzzleFlash) {
+	    ((MuzzleFlash) obj).setTime2(System.currentTimeMillis());
+	    if (((MuzzleFlash) obj).getTime2() - ((MuzzleFlash) obj).getTime1() > 40) {
+		removeQueue.add(obj);
+	    }
 	}
 
     }
