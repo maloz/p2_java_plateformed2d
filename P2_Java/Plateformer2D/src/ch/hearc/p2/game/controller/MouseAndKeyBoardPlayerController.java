@@ -13,12 +13,15 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
     private long time1;
     private long time2;
     private Controller controller;
+    private int posX = 0;
+    private int posY = 0;
 
     public MouseAndKeyBoardPlayerController(Player player, Level level) {
 	super(player, level);
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
 	controller = Controllers.getController(2);
+
     }
 
     public void handleInput(Input i, int delta) {
@@ -34,6 +37,7 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
+
     }
 
     private void handleKeyboardInput(Input i, int delta) {
@@ -75,10 +79,11 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	if (i.isButton1Pressed(Input.ANY_CONTROLLER)) {
 	    player.jump();
 	}
-	if (i.isButtonPressed(2, 4)) {
+	if (i.isButtonPressed(4, 1) && time1 - time2 > player.getWeapon().getCadence()) {
 	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
 	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
 	    player.shoot(mouseWorldX, mouseWorldY);
+	    time2 = System.currentTimeMillis();
 	}
 
 	// Get the trigger button, doesn't work
