@@ -4,9 +4,10 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class HalfDownTile extends Tile {
 
+    // Pour les tiles "Pont"
     public HalfDownTile(int x, int y, String type) {
 	super(x, y, type);
-	boundingShape = new AABoundingRect(x * 70, y * 70 + 50, 70, 20);
+	boundingShape = new AABoundingRect(x * 70, y * 70 + 47, 70, 23);
     }
 
 }
