@@ -20,8 +20,6 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	super(player, level);
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
-	controller = Controllers.getController(2);
-
     }
 
     public void handleInput(Input i, int delta) {
