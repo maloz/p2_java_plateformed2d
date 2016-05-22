@@ -3,7 +3,10 @@ package ch.hearc.p2.game.menu;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -24,6 +27,12 @@ public class LevelScreen2GameState extends BasicGameState {
     private Image precedent;
     private Image cursor;
 
+    // Pour les clicks
+    private Sound click;
+    private Sound rollover;
+    private Input i;
+    private boolean in;
+
     private StateBasedGame game;
 
     @Override
@@ -42,6 +51,12 @@ public class LevelScreen2GameState extends BasicGameState {
 	niveau9 = new Image("ressources/menu/niveaux/niveau9.jpg");
 	niveau10 = new Image("ressources/menu/niveaux/niveau10.jpg");
 	cursor = new Image("ressources/cursor/hand_cursor.png");
+
+	// Pour les clics
+	i = container.getInput();
+	in = false;
+	click = new Sound("ressources/audio/sound/click.ogg");
+	rollover = new Sound("ressources/audio/sound/rollover.ogg");
     }
 
     @Override
@@ -72,6 +87,7 @@ public class LevelScreen2GameState extends BasicGameState {
 
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
+	click.play();
 	if (x > 550 && x < 550 + 80 && y > 300 && y < 380) { // Lvl1
 	    game.enterState(111); // Il faudrait mettre les ID correspodnant au
 				  // niveau

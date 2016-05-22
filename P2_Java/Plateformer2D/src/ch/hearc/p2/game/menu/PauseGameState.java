@@ -3,7 +3,10 @@ package ch.hearc.p2.game.menu;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -19,6 +22,12 @@ public class PauseGameState extends BasicGameState {
     private StateBasedGame game;
     private Image cursor;
 
+    // Pour les clicks
+    private Sound click;
+    private Sound rollover;
+    private Input i;
+    private boolean in;
+
     public PauseGameState() {
 	super();
     }
@@ -30,6 +39,12 @@ public class PauseGameState extends BasicGameState {
 	cursor = new Image("ressources/cursor/hand_cursor.png");
 	quitter = new Image("ressources/menu/quitter.png");
 	reprendre = new Image("ressources/menu/reprendre.png");
+
+	// Pour les clics
+	i = container.getInput();
+	in = false;
+	click = new Sound("ressources/audio/sound/click.ogg");
+	rollover = new Sound("ressources/audio/sound/rollover.ogg");
 
     }
 
@@ -48,10 +63,31 @@ public class PauseGameState extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+
+	if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
+		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 250
+		&& i.getMouseY() < 340) {
+	    if (in == false)
+		rollover.play();
+	    in = true;
+
+	}
+
+	// Menu - niveau
+	else if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
+		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 400
+		&& i.getMouseY() < 490) {
+	    if (in == false)
+		rollover.play();
+	    in = true;
+
+	} else
+	    in = false;
     }
 
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
+	click.play();
 	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
 		&& y > 250 && y < 340) {
 	    try {
