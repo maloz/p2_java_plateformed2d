@@ -19,7 +19,7 @@ public class VoidFlyer extends Ennemie {
 		new Image("ressources/character/ennemi/enemyFlying_2.png"),
 		new Image("ressources/character/ennemi/enemyFlying_3.png")}, 100, movingAnimations);
 
-	Image voidFlyer_hit = new Image("ressources/character/ennemi/enemyFlying_4.png");
+	Image voidFlyer_hit = new Image("ressources/character/ennemi/enemyFlying_1_hit.png");
 
 	hitedSprites = setSprite(voidFlyer_hit, hitedSprites);
 	hitedMovingAnimations = setMovingAnimation(new Image[] { voidFlyer_hit, voidFlyer_hit }, 80, hitedMovingAnimations);

@@ -68,7 +68,7 @@ public class Uzi extends Weapon {
 		toAddList.add(new MuzzleFlash(x - 85, y + 10));
 	    }
 
-	    munition--;
+	    munition -= 3;
 
 	    tir.play();
 

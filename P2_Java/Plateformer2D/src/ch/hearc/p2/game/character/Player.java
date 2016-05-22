@@ -50,10 +50,7 @@ public class Player extends Character {
 		new Image("ressources/character/player/blue/p2_walk11.png") }, 50, movingAnimations);
 
 	jumpSprite = setSprite(new Image("ressources/character/player/blue/p2_jump.png"), jumpSprite);
-	hitedSprites = setSprite(new Image("ressources/character/player/blue/p2_stand.png"), hitedSprites); // image
-													    // par
-													    // défaut
-
+	hitedSprites = setSprite(new Image("ressources/character/player/blue/p2_hit.png"), hitedSprites);
 	boundingShape = new AABoundingRect(x, y, 60, 90);
 
 	accelerationSpeed = 0.002f;
@@ -77,6 +74,11 @@ public class Player extends Character {
 	this.facing = weapons.get(weaponIndex).getWay();
 	weapons.get(weaponIndex).setPlayerFacing(this.facing);
 	boundingShape.updatePosition(x + 5, y + 2);
+
+	if (this.facing == Facing.LEFT && x_velocity < 0.76)
+	    x_velocity += 0.15;
+	else if (this.facing == Facing.RIGHT && x_velocity > -0.76)
+	    x_velocity -= 0.15;
     }
 
     public List<LevelObject> getToAddList() {

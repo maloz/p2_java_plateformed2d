@@ -28,6 +28,7 @@ public class Physics {
     private String level;
     private TiledMap map;
     private boolean isFinished = false;
+    private boolean needShake = false;
 
     public Physics(String startinglevel) throws SlickException {
 	this.level = startinglevel;
@@ -61,6 +62,7 @@ public class Physics {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
 			    c.damage(((ProjectileAbeille) obj).getDamage());
 			    removeQueueC.add(obj);
+			    c.hit();
 			}
 		    }
 		    if (obj instanceof DeadZone) {
@@ -269,15 +271,22 @@ public class Physics {
 	}
 
 	if (obj instanceof Projectile && !(obj instanceof Explosion)) {
+	    // if (obj instanceof Grenade)
+	    // addQueue.add(new Explosion(obj.getX() - 100, obj.getY() - 100));
+	    // lance flamme si décommenté
 	    if (obj.isOnGround() == true) {
 		removeQueue.add(obj);
-		if (obj instanceof Grenade)
+		if (obj instanceof Grenade) {
 		    addQueue.add(new Explosion(obj.getX() - 100, obj.getY() - 100));
+		    needShake = true;
+		}
 	    }
 	    if (obj.getYVelocity() == 0 || obj.getXVelocity() == 0) {
 		removeQueue.add(obj);
-		if (obj instanceof Grenade)
+		if (obj instanceof Grenade) {
 		    addQueue.add(new Explosion(obj.getX() - 100, obj.getY() - 100));
+		    needShake = true;
+		}
 	    }
 	}
 
@@ -289,6 +298,7 @@ public class Physics {
 		((Explosion) obj).setDamage(0);
 	    }
 	}
+
 	if (obj instanceof MuzzleFlash) {
 	    ((MuzzleFlash) obj).setTime2(System.currentTimeMillis());
 	    if (((MuzzleFlash) obj).getTime2() - ((MuzzleFlash) obj).getTime1() > 40) {
@@ -347,6 +357,14 @@ public class Physics {
 
     public void setOver(boolean isOver) {
 	isFinished = isOver;
+    }
+
+    public boolean needShake() {
+	return needShake;
+    }
+
+    public void setShake(boolean shake) {
+	needShake = shake;
     }
 
 }

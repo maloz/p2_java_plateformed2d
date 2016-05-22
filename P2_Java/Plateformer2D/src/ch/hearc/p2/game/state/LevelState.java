@@ -26,6 +26,8 @@ import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.menu.PauseGameState;
 import ch.hearc.p2.game.physics.Physics;
+import ch.hearc.p2.game.projectile.Grenade;
+import ch.hearc.p2.game.weapon.MuzzleFlash;
 import ch.hearc.p2.game.weapon.Weapon;
 
 public abstract class LevelState extends BasicGameState {
@@ -145,7 +147,8 @@ public abstract class LevelState extends BasicGameState {
 	for (LevelObject obj : toAdd) {
 	    level.addLevelObject(obj);
 	    shakeAmt = Level.SHAKE_INTENSITY;
-	    shake();
+	    if (!(obj instanceof MuzzleFlash) && !(obj instanceof Grenade))
+		shake();
 	}
 	weapon.clearToAddList();
 
@@ -207,6 +210,11 @@ public abstract class LevelState extends BasicGameState {
 	    if (shakeTime <= 0) {
 		shake();
 	    }
+	}
+	if (physics.needShake() == true) {
+	    shakeAmt = Level.SHAKE_INTENSITY;
+	    shake();
+	    physics.setShake(false);
 	}
     }
 
