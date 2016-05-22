@@ -84,7 +84,6 @@ public class Physics {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape()) && !((Ennemie) obj).isDead()) {
 			    c.damage(1);
 			    c.hit();
-			    System.out.println("Damage");
 			}
 		    }
 		}

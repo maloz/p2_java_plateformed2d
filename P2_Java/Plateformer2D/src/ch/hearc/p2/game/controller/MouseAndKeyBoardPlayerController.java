@@ -1,5 +1,8 @@
 package ch.hearc.p2.game.controller;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+
 import org.lwjgl.input.Controller;
 import org.lwjgl.input.Controllers;
 import org.newdawn.slick.Input;
@@ -15,11 +18,18 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
     private Controller controller;
     private int posX = 0;
     private int posY = 0;
+    private Robot robot;
 
     public MouseAndKeyBoardPlayerController(Player player, Level level) {
 	super(player, level);
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
+	try {
+	    robot = new Robot();
+	} catch (AWTException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
     }
 
     public void handleInput(Input i, int delta) {
@@ -84,20 +94,14 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    time2 = System.currentTimeMillis();
 	}
 
-	// Get the trigger button, doesn't work
-	// java.lang.ArrayIndexOutOfBoundsException: 4
-	/*
-	 * if(i.isButtonPressed(4, Input.ANY_CONTROLLER) && time1 - time2 > 100)
-	 * { int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
-	 * int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
-	 * player.shoot(mouseWorldX, mouseWorldY); time2 =
-	 * System.currentTimeMillis(); //Limite }
-	 */
+	if (i.getAxisValue(1, 3) != 0 || i.getAxisValue(1, 2) != 0) {
 
-	// Doesn't work either (want this value to move the camera)
-	// java.lang.ArrayIndexOutOfBoundsException: -1
-	// float vValue = i.getAxisValue(Input.ANY_CONTROLLER, 2);
-	// float hValue = i.getAxisValue(Input.ANY_CONTROLLER, 3);
+	    int y = (int) (i.getAxisValue(1, 2) * delta);
+	    int x = (int) (i.getAxisValue(1, 3) * delta);
+
+	    robot.mouseMove(i.getMouseX() + x, i.getMouseY() + y);
+
+	}
     }
 
 }
