@@ -1,5 +1,6 @@
 package ch.hearc.p2.game.state;
 
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
@@ -45,6 +46,10 @@ public class Level1 extends LevelState {
 	// set weapon
 	player.setWeapon(0);
 
+	// instanciation du level etc
 	initialisationSuite();
+
+	// choix du background
+	level.setBackground(new Image("ressources/background/desert.png"));
     }
 }

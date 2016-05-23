@@ -58,7 +58,7 @@ public class MainScreenGameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, 0, 0);
+	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
 	if (sound.playing() == false)
 	    sound.loop(1, 0.4f);
     }

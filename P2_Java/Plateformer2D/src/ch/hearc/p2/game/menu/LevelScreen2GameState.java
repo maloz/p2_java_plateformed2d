@@ -60,7 +60,7 @@ public class LevelScreen2GameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, 0, 0);
+	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
     }
 
     @Override

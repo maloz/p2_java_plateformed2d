@@ -1,5 +1,6 @@
 package ch.hearc.p2.game.state;
 
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import ch.hearc.p2.game.character.Bat;
@@ -48,7 +49,7 @@ public class Level6 extends LevelState {
 	objectives.add(new Key(15 * 70, 22 * 70));
 
 	// setup music (si rien, on garde la même musique qu'au niveau d'avant)
-	// musiclvl = new Music("ressources/audio/music/lvl1.ogg");
+	musiclvl = new Music("ressources/audio/music/lvl6.ogg");
 
 	player.setWeapon(2);
 

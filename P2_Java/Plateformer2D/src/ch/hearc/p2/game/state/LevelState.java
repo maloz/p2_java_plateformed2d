@@ -81,7 +81,6 @@ public abstract class LevelState extends BasicGameState {
 	objectives = new ArrayList<Objective>();
 
 	hud = new Hud();
-	musiclvl = new Music("ressources/audio/music/lvl1.ogg");
 
 	instanciation();
     }
@@ -92,6 +91,7 @@ public abstract class LevelState extends BasicGameState {
     }
 
     public void initialisationSuite() throws SlickException {
+	musiclvl.setVolume(0.4f);
 	weapon = player.getWeapon();
 	// once we initialize our level, we want to load the right level
 	level = new Level(startinglevel, player);
@@ -118,12 +118,13 @@ public abstract class LevelState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, 0, 0);
+	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
 
 	if (isPause == true) {
 	    musiclvl.resume();
 	    isPause = false;
-	} else if (musiclvl.playing() == false) {
+	} else {
+	    initialisation();
 	    musiclvl.loop();
 	}
     }
@@ -185,7 +186,7 @@ public abstract class LevelState extends BasicGameState {
 
 	// Pour voir si le player est pas mort
 	if (player.getLife() <= 0) {
-	    initialisation();
+	    // initialisation();
 	    musiclvl.fade(20, 0, true);
 	    sbg.enterState(40, new FadeOutTransition(), new FadeInTransition());
 	}

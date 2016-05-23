@@ -76,37 +76,38 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
     }
 
     private void handleControllerInput(Input i, int delta) throws SlickException {
-	int controlleur = 1;
+	try {
+	    int controlleur = i.getControllerCount() - 1;
 
-	// Work
-	if (i.isControllerLeft(Input.ANY_CONTROLLER)) {
-	    player.moveLeft(delta);
-	} else if (i.isControllerRight(Input.ANY_CONTROLLER)) {
-	    player.moveRight(delta);
-	}
-	// Work
-	if (i.isButtonPressed(4, controlleur)) {
-	    player.jump();
+	    // Work
+	    if (i.isControllerLeft(Input.ANY_CONTROLLER)) {
+		player.moveLeft(delta);
+	    } else if (i.isControllerRight(Input.ANY_CONTROLLER)) {
+		player.moveRight(delta);
+	    }
+	    // Work
+	    if (i.isButtonPressed(4, controlleur)) {
+		player.jump();
+	    }
+
+	    if (i.isButtonPressed(5, controlleur) && time1 - time2 > player.getWeapon().getCadence()) {
+		int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
+		int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
+		player.shoot(mouseWorldX, mouseWorldY);
+		time2 = System.currentTimeMillis();
+	    }
+
+	    if (i.getAxisValue(controlleur, 3) != 0 || i.getAxisValue(controlleur, 2) != 0) {
+
+		int y = (int) (i.getAxisValue(controlleur, 2) * delta * 2);
+		int x = (int) ((i.getAxisValue(controlleur, 3)) * delta * 2);
+
+		robot.mouseMove(i.getMouseX() + x, i.getMouseY() + y);
+
+	    }
+	} catch (Exception ex) {
 	}
 
-	if (i.isButtonPressed(5, controlleur) && time1 - time2 > player.getWeapon().getCadence()) {
-	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
-	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
-	    player.shoot(mouseWorldX, mouseWorldY);
-	    time2 = System.currentTimeMillis();
-	}
-
-	/*
-	 * if (i.getAxisValue(controlleur, 3) != 0 ||
-	 * i.getAxisValue(controlleur, 2) != 0) {
-	 * 
-	 * int y = (int) (i.getAxisValue(controlleur, 2) * delta * 2); int x =
-	 * (int) (i.getAxisValue(controlleur, 3) * delta * 2);
-	 * 
-	 * robot.mouseMove(i.getMouseX() + x, i.getMouseY() + y);
-	 * 
-	 * }
-	 */
     }
 
 }

@@ -63,7 +63,7 @@ public class LevelScreen1GameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, 0, 0);
+	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
     }
 
     @Override
@@ -93,34 +93,30 @@ public class LevelScreen1GameState extends BasicGameState {
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 750 && i.getMouseX() < 750 + 80 && i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl7
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (i.getMouseX() > 950 && i.getMouseX() < 950 + 80 && i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl8
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (i.getMouseX() > 1150 && i.getMouseX() < 1150 + 80 && i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl9
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (i.getMouseX() > 1350 && i.getMouseX() < 1350 + 80 && i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl10
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (i.getMouseX() > 550 && i.getMouseX() < 550 + 400 && i.getMouseY() > 750
+	} /*
+	   * else if (i.getMouseX() > 750 && i.getMouseX() < 750 + 80 &&
+	   * i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl7 if (in ==
+	   * false) rollover.play(); in = true; } else if (i.getMouseX() > 950
+	   * && i.getMouseX() < 950 + 80 && i.getMouseY() > 480 && i.getMouseY()
+	   * < 560) { // Lvl8 if (in == false) rollover.play(); in = true; }
+	   * else if (i.getMouseX() > 1150 && i.getMouseX() < 1150 + 80 &&
+	   * i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl9 if (in ==
+	   * false) rollover.play(); in = true; } else if (i.getMouseX() > 1350
+	   * && i.getMouseX() < 1350 + 80 && i.getMouseY() > 480 &&
+	   * i.getMouseY() < 560) { // Lvl10 if (in == false) rollover.play();
+	   * in = true; }
+	   */else if (i.getMouseX() > 550 && i.getMouseX() < 550 + 400 && i.getMouseY() > 750
 		&& i.getMouseY() < 750 + 80) { // RetourAuHome
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 1030 && i.getMouseX() < 1030 + 400 && i.getMouseY() > 750
-		&& i.getMouseY() < 750 + 80) {
-	    if (in == false)
-		rollover.play();
-	    in = true;
-
-	} else
+	} /*
+	   * else if (i.getMouseX() > 1030 && i.getMouseX() < 1030 + 400 &&
+	   * i.getMouseY() > 750 && i.getMouseY() < 750 + 80) { if (in == false)
+	   * rollover.play(); in = true;
+	   * 
+	   * }
+	   */else
 	    in = false;
     }
 
@@ -133,12 +129,13 @@ public class LevelScreen1GameState extends BasicGameState {
 	g.drawImage(niveau4, 1150, 300);
 	g.drawImage(niveau5, 1350, 300);
 	g.drawImage(niveau6, 550, 480);
-	g.drawImage(niveau7, 750, 480);
-	g.drawImage(niveau8, 950, 480);
-	g.drawImage(niveau9, 1150, 480);
-	g.drawImage(niveau10, 1350, 480);
+
+	/*
+	 * g.drawImage(niveau7, 750, 480); g.drawImage(niveau8, 950, 480);
+	 * g.drawImage(niveau9, 1150, 480); g.drawImage(niveau10, 1350, 480);
+	 */
 	g.drawImage(retour, 550, 750);
-	g.drawImage(suivant, 1030, 750);
+	// g.drawImage(suivant, 1030, 750);
 
     }
 
@@ -146,78 +143,39 @@ public class LevelScreen1GameState extends BasicGameState {
     public void mouseClicked(int button, int x, int y, int clickCount) {
 	click.play();
 	if (x > 550 && x < 550 + 80 && y > 300 && y < 380) { // Lvl1
-	    game.enterState(101); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
+	    game.enterState(101);
 	}
 	if (x > 750 && x < 750 + 80 && y > 300 && y < 380) { // Lvl2
-	    game.enterState(102); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
+	    game.enterState(102);
 	}
 	if (x > 950 && x < 950 + 80 && y > 300 && y < 380) { // Lvl3
-	    game.enterState(103); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
+	    game.enterState(103);
 	}
 	if (x > 1150 && x < 1150 + 80 && y > 300 && y < 380) { // Lvl4
-	    game.enterState(104); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
+	    game.enterState(104);
 	}
 	if (x > 1350 && x < 1350 + 80 && y > 300 && y < 380) { // Lvl5
-	    game.enterState(105); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
+	    game.enterState(105);
 	}
 	if (x > 550 && x < 550 + 80 && y > 480 && y < 560) { // Lvl6
-	    game.enterState(106); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
+	    game.enterState(106);
 	}
-	if (x > 750 && x < 750 + 80 && y > 480 && y < 560) { // Lvl7
-	    game.enterState(107); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
-	}
-	if (x > 950 && x < 950 + 80 && y > 480 && y < 560) { // Lvl8
-	    game.enterState(108); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
-	}
-	if (x > 1150 && x < 1150 + 80 && y > 480 && y < 560) { // Lvl9
-	    game.enterState(109); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
-	}
-	if (x > 1350 && x < 1350 + 80 && y > 480 && y < 560) { // Lvl10
-	    game.enterState(110); // Il faudrait mettre les ID correspodnant au
-				  // niveau
-				  // ou appeler la fonction lvl avec le string
-				  // du nom du lvl
-	}
+	/*
+	 * if (x > 750 && x < 750 + 80 && y > 480 && y < 560) { // Lvl7
+	 * game.enterState(107); } if (x > 950 && x < 950 + 80 && y > 480 && y <
+	 * 560) { // Lvl8 game.enterState(108); } if (x > 1150 && x < 1150 + 80
+	 * && y > 480 && y < 560) { // Lvl9 game.enterState(109); } if (x > 1350
+	 * && x < 1350 + 80 && y > 480 && y < 560) { // Lvl10
+	 * game.enterState(110); }
+	 */
 
 	if (x > 550 && x < 550 + 400 && y > 750 && y < 750 + 80) { // RetourAuHome
-	    game.enterState(0); // Il faudrait mettre les ID correspodnant au
-				// niveau
-				// ou appeler la fonction lvl avec le string du
-				// nom du lvl
+	    game.enterState(0);
 	}
-	if (x > 1030 && x < 1030 + 400 && y > 750 && y < 750 + 80) { // Page2desNiveaux
-	    game.enterState(12); // Il faudrait mettre les ID correspodnant au
-				 // niveau
-				 // ou appeler la fonction lvl avec le string du
-				 // nom du lvl
-	}
+	/*
+	 * if (x > 1030 && x < 1030 + 400 && y > 750 && y < 750 + 80) { //
+	 * Page2desNiveaux game.enterState(12); }
+	 */
 
     }
 

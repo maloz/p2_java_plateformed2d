@@ -1,5 +1,6 @@
 package ch.hearc.p2.game.state;
 
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import ch.hearc.p2.game.character.Ghost;
@@ -44,7 +45,7 @@ public class Level5 extends LevelState {
 	objectives.add(new Key(18 * 70, 3 * 70));
 
 	// setup music (si rien, on garde la même musique qu'au niveau d'avant)
-	// musiclvl = new Music("ressources/audio/music/lvl1.ogg");
+	musiclvl = new Music("ressources/audio/music/lvl5.ogg");
 
 	player.setWeapon(1);
 

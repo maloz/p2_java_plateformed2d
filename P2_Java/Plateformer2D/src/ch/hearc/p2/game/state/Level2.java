@@ -1,5 +1,7 @@
 package ch.hearc.p2.game.state;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
 import ch.hearc.p2.game.character.Abeille;
@@ -42,11 +44,14 @@ public class Level2 extends LevelState {
 	objectives.add(new Key(36 * 70, 11 * 70));
 
 	// setup music (si rien, on garde la même musique qu'au niveau d'avant)
-	// musiclvl = new Music("ressources/audio/music/lvl1.ogg");
+	musiclvl = new Music("ressources/audio/music/lvl2.ogg");
 
 	player.setWeapon(2);
 
 	initialisationSuite();
+
+	level.setBackground(new Image("ressources/background/moutain.png"));
+
     }
 
 }

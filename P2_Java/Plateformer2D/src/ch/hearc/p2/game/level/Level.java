@@ -348,4 +348,8 @@ public class Level {
 
     }
 
+    public void setBackground(Image i) {
+	background = i;
+    }
+
 }
