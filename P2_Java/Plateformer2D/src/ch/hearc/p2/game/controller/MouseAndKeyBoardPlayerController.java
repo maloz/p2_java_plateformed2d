@@ -97,14 +97,17 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    time2 = System.currentTimeMillis();
 	}
 
-	if (i.getAxisValue(controlleur, 3) != 0 || i.getAxisValue(controlleur, 2) != 0) {
-
-	    int y = (int) (i.getAxisValue(controlleur, 2) * delta * 2);
-	    int x = (int) (i.getAxisValue(controlleur, 3) * delta * 2);
-
-	    robot.mouseMove(i.getMouseX() + x, i.getMouseY() + y);
-
-	}
+	/*
+	 * if (i.getAxisValue(controlleur, 3) != 0 ||
+	 * i.getAxisValue(controlleur, 2) != 0) {
+	 * 
+	 * int y = (int) (i.getAxisValue(controlleur, 2) * delta * 2); int x =
+	 * (int) (i.getAxisValue(controlleur, 3) * delta * 2);
+	 * 
+	 * robot.mouseMove(i.getMouseX() + x, i.getMouseY() + y);
+	 * 
+	 * }
+	 */
     }
 
 }

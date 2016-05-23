@@ -1,5 +1,6 @@
 package ch.hearc.p2.game.weapon;
 
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
@@ -14,7 +15,7 @@ public class LanceGrenade extends Weapon {
 	cadence = 400;
 	tir = new Sound("ressources/audio/sound/shoot.ogg");
 
-	// arme = new Image("ressources/tiles/item/raygunBig.png");
+	arme = new Image("ressources/tiles/item/raygunPurpleBig.png");
 	// tir = new Sound("ressources/audio/sound/shoot.ogg");
     }
 
@@ -55,10 +56,10 @@ public class LanceGrenade extends Weapon {
 
 	    if (way == Facing.RIGHT) {
 		toAddList.add(new Grenade(x + 50, y + 30, velocityX, velocityY));
-		toAddList.add(new MuzzleFlash(x + 40, y+10));
+		toAddList.add(new MuzzleFlash(x + 40, y + 10));
 	    } else {
 		toAddList.add(new Grenade(x - 90, y + 30, velocityX, velocityY));
-		toAddList.add(new MuzzleFlash(x - 85, y+10));
+		toAddList.add(new MuzzleFlash(x - 85, y + 10));
 	    }
 	    munition--;
 
