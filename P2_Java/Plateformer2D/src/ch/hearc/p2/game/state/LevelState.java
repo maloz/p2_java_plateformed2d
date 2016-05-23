@@ -138,7 +138,7 @@ public abstract class LevelState extends BasicGameState {
 	physics.handlePhysics(level, delta);
 
 	// Pour que l'arme suive le perso
-	weapon.setX(player.getX() + 40);
+	weapon.setX(player.getX() + 30);
 	weapon.setY(player.getY() + 30);
 
 	// Pour voir si le player a tiré (donc si l'arme doit tirer) et ajouter

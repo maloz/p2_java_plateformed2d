@@ -45,7 +45,7 @@ public class Weapon extends LevelObject {
 	if (playerFacing == Facing.RIGHT)
 	    arme.draw(x - offset_x, y - offset_y);
 	else {
-	    arme.getFlippedCopy(true, false).draw(x - offset_x - 80, y - offset_y);
+	    arme.getFlippedCopy(true, false).draw(x - offset_x - 65, y - offset_y);
 	}
 
     }

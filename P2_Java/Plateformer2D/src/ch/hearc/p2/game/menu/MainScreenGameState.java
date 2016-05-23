@@ -142,7 +142,7 @@ public class MainScreenGameState extends BasicGameState {
 	// Menu - niveau
 	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
 		&& y > 400 && y < 490) {
-	    game.enterState(11); // TODO Faire game states
+	    game.enterState(11);
 	}
 
 	// Menu - options

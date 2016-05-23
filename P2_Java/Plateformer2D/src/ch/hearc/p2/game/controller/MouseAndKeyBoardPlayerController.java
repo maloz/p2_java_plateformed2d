@@ -4,7 +4,6 @@ import java.awt.AWTException;
 import java.awt.Robot;
 
 import org.lwjgl.input.Controller;
-import org.lwjgl.input.Controllers;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -69,8 +68,8 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
 	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > player.getWeapon().getCadence()) {
 
-	    int mouseWorldX = level.getXOffset() + i.getMouseX() - 64; // Ok
-	    int mouseWorldY = level.getYOffset() + i.getMouseY() - 95; // Ok
+	    int mouseWorldX = level.getXOffset() + i.getMouseX(); // Ok
+	    int mouseWorldY = level.getYOffset() + i.getMouseY(); // Ok
 	    player.shoot(mouseWorldX, mouseWorldY);
 	    time2 = System.currentTimeMillis();
 	}

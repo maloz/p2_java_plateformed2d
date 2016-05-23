@@ -27,6 +27,8 @@ public class Player extends Character {
     private long damage1;
     private long damage2;
     private int weaponIndex;
+    private int height;
+    private int width;
 
     public Player(float x, float y) throws SlickException {
 	super(x, y);
@@ -35,6 +37,8 @@ public class Player extends Character {
 	damage2 = System.currentTimeMillis();
 	weaponIndex = 0;
 	point = 0;
+	height = 90;
+	width = 60;
 	key = false;
 	sprites = setSprite(new Image("ressources/character/player/blue/p2_stand.png"), sprites);
 	movingAnimations = setMovingAnimation(new Image[] { new Image("ressources/character/player/blue/p2_walk01.png"),
@@ -51,7 +55,7 @@ public class Player extends Character {
 
 	jumpSprite = setSprite(new Image("ressources/character/player/blue/p2_jump.png"), jumpSprite);
 	hitedSprites = setSprite(new Image("ressources/character/player/blue/p2_hit.png"), hitedSprites);
-	boundingShape = new AABoundingRect(x, y, 60, 90);
+	boundingShape = new AABoundingRect(x, y, width, height);
 
 	accelerationSpeed = 0.002f;
 	maximumSpeed = 0.55f;
@@ -70,7 +74,7 @@ public class Player extends Character {
     }
 
     public void shoot(int mouseX, int mouseY) throws SlickException {
-	weapons.get(weaponIndex).shoot(x, y, mouseX, mouseY);
+	weapons.get(weaponIndex).shoot(x, y + height / 2, mouseX, mouseY);
 	this.facing = weapons.get(weaponIndex).getWay();
 	weapons.get(weaponIndex).setPlayerFacing(this.facing);
 	boundingShape.updatePosition(x + 5, y + 2);
