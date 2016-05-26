@@ -1,16 +1,10 @@
 package ch.hearc.p2.game.weapon;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
 import ch.hearc.p2.game.enums.Facing;
-import ch.hearc.p2.game.level.LevelObject;
-import ch.hearc.p2.game.physics.AABoundingRect;
 import ch.hearc.p2.game.projectile.ProjectilePlayer;
 
 public class Mitraillette extends Weapon {
@@ -60,13 +54,12 @@ public class Mitraillette extends Weapon {
 		way = Facing.RIGHT;
 
 	    }
-	    if (way == Facing.RIGHT){
+	    if (way == Facing.RIGHT) {
 		toAddList.add(new ProjectilePlayer(x + 50, y + 30, velocityX, velocityY));
-		toAddList.add(new MuzzleFlash(x + 40, y+10));
-	    }
-	    else{
+		toAddList.add(new MuzzleFlash(x + 40, y + 10));
+	    } else {
 		toAddList.add(new ProjectilePlayer(x - 90, y + 30, velocityX, velocityY));
-		toAddList.add(new MuzzleFlash(x - 85, y+10));
+		toAddList.add(new MuzzleFlash(x - 85, y + 10));
 	    }
 
 	    munition--;

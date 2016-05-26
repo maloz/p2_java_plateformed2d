@@ -4,13 +4,12 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class LevelScreen1GameState extends BasicGameState {
+public class LevelScreenGameState extends BasicGameState {
 
     public static final int ID = 11;
     private Image background;
@@ -20,11 +19,6 @@ public class LevelScreen1GameState extends BasicGameState {
     private Image niveau4;
     private Image niveau5;
     private Image niveau6;
-    private Image niveau7;
-    private Image niveau8;
-    private Image niveau9;
-    private Image niveau10;
-    private Image suivant;
     private Image retour;
     private Image cursor;
 
@@ -40,7 +34,6 @@ public class LevelScreen1GameState extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 	this.game = game;
 	this.background = new Image("ressources/background/background.jpg");
-	suivant = new Image("ressources/menu/suivant.jpg");
 	retour = new Image("ressources/menu/retour.jpg");
 	niveau1 = new Image("ressources/menu/niveaux/niveau1.jpg");
 	niveau2 = new Image("ressources/menu/niveaux/niveau2.jpg");
@@ -48,10 +41,6 @@ public class LevelScreen1GameState extends BasicGameState {
 	niveau4 = new Image("ressources/menu/niveaux/niveau4.jpg");
 	niveau5 = new Image("ressources/menu/niveaux/niveau5.jpg");
 	niveau6 = new Image("ressources/menu/niveaux/niveau6.jpg");
-	niveau7 = new Image("ressources/menu/niveaux/niveau7.jpg");
-	niveau8 = new Image("ressources/menu/niveaux/niveau8.jpg");
-	niveau9 = new Image("ressources/menu/niveaux/niveau9.jpg");
-	niveau10 = new Image("ressources/menu/niveaux/niveau10.jpg");
 	cursor = new Image("ressources/cursor/hand_cursor.png");
 
 	// Pour les clics
@@ -172,11 +161,6 @@ public class LevelScreen1GameState extends BasicGameState {
 	if (x > 550 && x < 550 + 400 && y > 750 && y < 750 + 80) { // RetourAuHome
 	    game.enterState(0);
 	}
-	/*
-	 * if (x > 1030 && x < 1030 + 400 && y > 750 && y < 750 + 80) { //
-	 * Page2desNiveaux game.enterState(12); }
-	 */
-
     }
 
     @Override

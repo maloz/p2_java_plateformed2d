@@ -86,6 +86,6 @@ public abstract class LevelObject {
 	}
 
 	public void render(float offset_x, float offset_y) {
-		// animation.draw(x-2-offset_x,y-2-offset_y);
+		// animation.draw(x-offset_x, y-offset_y);
 	}
 }

@@ -7,6 +7,7 @@ import org.lwjgl.input.Controller;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import ch.hearc.p2.game.WindowGame;
 import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.Level;
 
@@ -68,8 +69,8 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
 	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > player.getWeapon().getCadence()) {
 
-	    int mouseWorldX = level.getXOffset() + i.getMouseX(); // Ok
-	    int mouseWorldY = level.getYOffset() + i.getMouseY(); // Ok
+	    int mouseWorldX = (int) (level.getXOffset() + (i.getMouseX() * (1 / WindowGame.SCALE_W)));
+	    int mouseWorldY = (int) (level.getYOffset() + (i.getMouseY() * (1 / WindowGame.SCALE_H)));
 	    player.shoot(mouseWorldX, mouseWorldY);
 	    time2 = System.currentTimeMillis();
 	}

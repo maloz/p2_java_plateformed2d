@@ -11,7 +11,6 @@ import ch.hearc.p2.game.character.Player;
 import ch.hearc.p2.game.level.Level;
 import ch.hearc.p2.game.level.LevelObject;
 import ch.hearc.p2.game.level.object.Coin;
-import ch.hearc.p2.game.level.object.DeadZone;
 import ch.hearc.p2.game.level.object.Key;
 import ch.hearc.p2.game.level.object.Objective;
 import ch.hearc.p2.game.level.tile.Tile;
@@ -65,9 +64,6 @@ public class Physics {
 			    c.hit();
 			}
 		    }
-		    if (obj instanceof DeadZone) {
-			c.setLife(0);
-		    }
 		    if (obj instanceof Objective) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
 			    if (obj instanceof Coin)
@@ -91,10 +87,6 @@ public class Physics {
 	    }
 	    if (c instanceof Ennemie) {
 		for (LevelObject obj : level.getLevelObjects()) {
-
-		    if (obj instanceof DeadZone) {
-			removeQueueC.add(obj);
-		    }
 
 		    if (obj instanceof ProjectilePlayer) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {

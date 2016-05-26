@@ -221,12 +221,13 @@ public abstract class LevelState extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame sbg, Graphics g) throws SlickException {
-	g.scale(WindowGame.SCALE, WindowGame.SCALE);
+	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
 	if (shakeX != 0 && shakeY != 0)
 	    level.render(shakeX, shakeY);
 	else
 	    level.render();
+	
 	hud.render(g, player);
 
 	if (shakeX != 0 && shakeY != 0)

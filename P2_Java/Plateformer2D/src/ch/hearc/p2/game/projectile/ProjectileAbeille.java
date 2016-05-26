@@ -1,6 +1,5 @@
 package ch.hearc.p2.game.projectile;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 

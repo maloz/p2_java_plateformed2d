@@ -19,7 +19,7 @@ public class Objective extends LevelObject {
     }
 
     public void render(float offset_x, float offset_y) {
-	image.draw(x - 2 - offset_x, y - 2 - offset_y);
+	image.draw(x - offset_x, y - offset_y);
     }
 
 }

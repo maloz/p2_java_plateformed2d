@@ -222,8 +222,8 @@ public class Level {
     public int getYOffset() {
 	int offset_y = 0;
 
-	int half_heigth = (int) (WindowGame.WINDOW_HEIGTH / WindowGame.SCALE / 2);
-
+	int half_heigth = (int) (WindowGame.BASE_WINDOW_HEIGTH / 2);
+	
 	int maxY = (int) (map.getHeight() * 70) - half_heigth;
 
 	if (player.getY() < half_heigth) {
@@ -242,8 +242,8 @@ public class Level {
 
 	// the first thing we are going to need is the half-width of the screen,
 	// to calculate if the player is in the middle of our screen
-	int half_width = (int) (WindowGame.WINDOW_WIDTH / WindowGame.SCALE / 2);
-
+	int half_width = (int) (WindowGame.BASE_WINDOW_WIDTH / 2);
+	
 	// next up is the maximum offset, this is the most right side of the
 	// map, minus half of the screen offcourse
 	int maxX = (int) (map.getWidth() * 70) - half_width;
@@ -272,15 +272,15 @@ public class Level {
 
 	// first calculate the maximum amount we can "scroll" the background
 	// image before we have the rightmore or bottom most pixel on the screen
-	float backgroundXScrollValue = (background.getWidth() - WindowGame.WINDOW_WIDTH / WindowGame.SCALE);
-	float backgroundYScrollValue = (background.getHeight() - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE);
+	float backgroundXScrollValue = (background.getWidth() - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
+	float backgroundYScrollValue = (background.getHeight() - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE_H);
 
 	// we do the same for the map
 	// By changing the size of the tiled (200 instead of 128), the
 	// background render smoother
-	float mapXScrollValue = ((float) map.getWidth() * 200 - WindowGame.WINDOW_WIDTH / WindowGame.SCALE);
-	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE);
-
+	float mapXScrollValue = ((float) map.getWidth() * 200 - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
+	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE_H);
+	
 	// and now calculate the factor we have to multiply the offset with,
 	// making sure we multiply the offset by -1 to get it to negative
 	float scrollXFactor = backgroundXScrollValue / mapXScrollValue * -1;

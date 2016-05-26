@@ -6,8 +6,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import ch.hearc.p2.game.menu.GameOver;
-import ch.hearc.p2.game.menu.LevelScreen1GameState;
-import ch.hearc.p2.game.menu.LevelScreen2GameState;
+import ch.hearc.p2.game.menu.LevelScreenGameState;
 import ch.hearc.p2.game.menu.MainScreenGameState;
 import ch.hearc.p2.game.menu.PauseGameState;
 import ch.hearc.p2.game.state.Level1;
@@ -19,13 +18,22 @@ import ch.hearc.p2.game.state.Level6;
 
 public class WindowGame extends StateBasedGame {
 
-    // set the window width and then the height according to a aspect ratio
+    public static final int TILE_SIZE = 70;
+
+    public static final int BASE_WINDOW_WIDTH = 1920;
+    public static final int BASE_WINDOW_HEIGTH = 1080;
+
+    public static final float CAMERA_TILES_W = BASE_WINDOW_WIDTH / (float) TILE_SIZE;
+    public static final float CAMERA_TILES_H = BASE_WINDOW_HEIGTH / (float) TILE_SIZE;
+
     public static final int WINDOW_WIDTH = 1920;
     public static final int WINDOW_HEIGTH = 1080;
     public static final boolean FULLSCREEN = true;
 
     // 1280x720 is our base, we use 70x70
-    public static final float SCALE = (float) 1;
+    public static final float SCALE_W = 1 / ((CAMERA_TILES_W * TILE_SIZE) / WINDOW_WIDTH);
+    public static final float SCALE_H = 1 / ((CAMERA_TILES_H * TILE_SIZE) / WINDOW_HEIGTH);
+
     public static final String GAME_NAME = "Platformer 2D";
 
     public WindowGame() {
@@ -46,9 +54,7 @@ public class WindowGame extends StateBasedGame {
 	addState(new Level6("lvl6"));
 	addState(new PauseGameState());
 	addState(new GameOver());
-	addState(new LevelScreen1GameState());
-	addState(new LevelScreen2GameState());
-
+	addState(new LevelScreenGameState());
     }
 
     public static void main(String[] args) throws SlickException {
