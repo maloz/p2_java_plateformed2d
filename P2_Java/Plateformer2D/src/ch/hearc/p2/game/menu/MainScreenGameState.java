@@ -12,6 +12,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import ch.hearc.p2.game.WindowGame;
+
 public class MainScreenGameState extends BasicGameState {
 
     public static final int ID = 0;
@@ -58,52 +60,61 @@ public class MainScreenGameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
+	container.setMouseCursor(cursor, 0, 0);
+
 	if (sound.playing() == false)
 	    sound.loop(1, 0.4f);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-	if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 250
-		&& i.getMouseY() < 340) {
+
+	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
+	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
+
+	System.out.println("Click x : " + x);
+	System.out.println("Click y : " + y);
+
+	// Menu - jouer
+	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + jouer.getWidth() / 2 && y > 250
+		&& y < 250 + jouer.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
 	}
 
 	// Menu - niveau
-	else if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 400
-		&& i.getMouseY() < 490) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + niveaux.getWidth() / 2 && y > 400
+		&& y < 400 + niveaux.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
 	}
 
 	// Menu - options
-	else if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 550
-		&& i.getMouseY() < 640) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + options.getWidth() / 2 && y > 550
+		&& y < 550 + options.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
 	}
 
 	// Menu - credits
-	else if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 700
-		&& i.getMouseY() < 790) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - credits.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + credits.getWidth() / 2 && y > 700
+		&& y < 700 + credits.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
 	}
 
 	// Menu - quitter
-	else if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 850
-		&& i.getMouseY() < 940) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 850
+		&& y < 850 + quitter.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
@@ -117,20 +128,27 @@ public class MainScreenGameState extends BasicGameState {
      */
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-	background.draw(0, 0, container.getWidth(), container.getHeight());
-	g.drawImage(jouer, container.getWidth() / 2 - 200, 250);
-	g.drawImage(niveaux, container.getWidth() / 2 - 200, 400);
-	g.drawImage(options, container.getWidth() / 2 - 200, 550);
-	g.drawImage(credits, container.getWidth() / 2 - 200, 700);
-	g.drawImage(quitter, container.getWidth() / 2 - 200, 850);
+	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
+
+	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGTH);
+	g.drawImage(jouer, WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2, 250);
+	g.drawImage(niveaux, WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2, 400);
+	g.drawImage(options, WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2, 550);
+	g.drawImage(credits, WindowGame.BASE_WINDOW_WIDTH / 2 - credits.getWidth() / 2, 700);
+	g.drawImage(quitter, WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2, 850);
 
     }
 
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
 	click.play();
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 250 && y < 340) {
+
+	x *= 1 / WindowGame.SCALE_W;
+	y *= 1 / WindowGame.SCALE_H;
+
+	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + jouer.getWidth() / 2 && y > 250
+		&& y < 250 + jouer.getHeight()) {
 
 	    game.enterState(101, new FadeOutTransition(), new FadeInTransition());
 	    // game.enterState(101, new FadeOutTransition(), new
@@ -140,26 +158,30 @@ public class MainScreenGameState extends BasicGameState {
 	}
 
 	// Menu - niveau
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 400 && y < 490) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + niveaux.getWidth() / 2 && y > 400
+		&& y < 400 + niveaux.getHeight()) {
 	    game.enterState(11);
 	}
 
 	// Menu - options
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 550 && y < 640) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + options.getWidth() / 2 && y > 550
+		&& y < 550 + options.getHeight()) {
 	    System.exit(0);
 	}
 
 	// Menu - credits
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 700 && y < 790) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - credits.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + credits.getWidth() / 2 && y > 700
+		&& y < 700 + credits.getHeight()) {
 	    System.exit(0);
 	}
 
 	// Menu - quitter
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 850 && y < 940) {
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 850
+		&& y < 850 + quitter.getHeight()) {
 	    System.exit(0);
 	}
     }

@@ -4,6 +4,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import ch.hearc.p2.game.WindowGame;
 import ch.hearc.p2.game.character.Player;
 
 public class Hud {
@@ -37,6 +38,8 @@ public class Hud {
 
     public void render(Graphics g, Player p) {
 	g.resetTransform();
+
+	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
 	switch (p.getLife()) {
 	case 6:

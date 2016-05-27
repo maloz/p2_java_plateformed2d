@@ -206,7 +206,8 @@ public class Level {
 	renderBackground();
 
 	// then render the map
-	map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, 71, 19);
+	map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, map.getTileWidth(),
+		map.getHeight());
 
 	// and then render the characters on top of the map
 	for (Character c : characters) {
@@ -223,7 +224,7 @@ public class Level {
 	int offset_y = 0;
 
 	int half_heigth = (int) (WindowGame.BASE_WINDOW_HEIGTH / 2);
-	
+
 	int maxY = (int) (map.getHeight() * 70) - half_heigth;
 
 	if (player.getY() < half_heigth) {
@@ -243,7 +244,7 @@ public class Level {
 	// the first thing we are going to need is the half-width of the screen,
 	// to calculate if the player is in the middle of our screen
 	int half_width = (int) (WindowGame.BASE_WINDOW_WIDTH / 2);
-	
+
 	// next up is the maximum offset, this is the most right side of the
 	// map, minus half of the screen offcourse
 	int maxX = (int) (map.getWidth() * 70) - half_width;
@@ -280,7 +281,7 @@ public class Level {
 	// background render smoother
 	float mapXScrollValue = ((float) map.getWidth() * 200 - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
 	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE_H);
-	
+
 	// and now calculate the factor we have to multiply the offset with,
 	// making sure we multiply the offset by -1 to get it to negative
 	float scrollXFactor = backgroundXScrollValue / mapXScrollValue * -1;
@@ -335,7 +336,8 @@ public class Level {
 	renderBackground();
 
 	// then render the map
-	map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, 71, 19);
+	map.render(-(offset_x % 70), -(offset_y % 70), offset_x / 70, offset_y / 70, map.getTileWidth(),
+		map.getHeight());
 
 	// and then render the characters on top of the map
 	for (Character c : characters) {
