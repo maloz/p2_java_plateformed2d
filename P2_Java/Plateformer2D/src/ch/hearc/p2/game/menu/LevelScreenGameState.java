@@ -9,6 +9,8 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import ch.hearc.p2.game.WindowGame;
+
 public class LevelScreenGameState extends BasicGameState {
 
     public static final int ID = 11;
@@ -52,66 +54,54 @@ public class LevelScreenGameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
+	container.setMouseCursor(cursor, 0, 0);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 
-	if (i.getMouseX() > 550 && i.getMouseX() < 550 + 80 && i.getMouseY() > 300 && i.getMouseY() < 380) { // Lvl1
+	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
+	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
+
+	if (x > 550 && x < 550 + niveau1.getWidth() && y > 300 && y < 300 + niveau1.getHeight()) { // Lvl1
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 750 && i.getMouseX() < 750 + 80 && i.getMouseY() > 300 && i.getMouseY() < 380) { // Lvl2
+	} else if (x > 750 && x < 750 + niveau2.getWidth() && y > 300 && y < 300 + niveau2.getHeight()) { // Lvl2
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 950 && i.getMouseX() < 950 + 80 && i.getMouseY() > 300 && i.getMouseY() < 380) { // Lvl3
+	} else if (x > 950 && x < 950 + niveau3.getWidth() && y > 300 && y < 300 + niveau3.getHeight()) { // Lvl3
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 1150 && i.getMouseX() < 1150 + 80 && i.getMouseY() > 300 && i.getMouseY() < 380) { // Lvl4
+	} else if (x > 1150 && x < 1150 + niveau4.getWidth() && y > 300 && y < 300 + niveau4.getHeight()) { // Lvl4
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 1350 && i.getMouseX() < 1350 + 80 && i.getMouseY() > 300 && i.getMouseY() < 380) { // Lvl5
+	} else if (x > 1350 && x < 1350 + niveau5.getWidth() && y > 300 && y < 300 + niveau5.getHeight()) { // Lvl5
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else if (i.getMouseX() > 550 && i.getMouseX() < 550 + 80 && i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl6
+	} else if (x > 550 && x < 550 + niveau6.getWidth() && y > 480 && y < 300 + niveau6.getHeight()) { // Lvl6
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} /*
-	   * else if (i.getMouseX() > 750 && i.getMouseX() < 750 + 80 &&
-	   * i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl7 if (in ==
-	   * false) rollover.play(); in = true; } else if (i.getMouseX() > 950
-	   * && i.getMouseX() < 950 + 80 && i.getMouseY() > 480 && i.getMouseY()
-	   * < 560) { // Lvl8 if (in == false) rollover.play(); in = true; }
-	   * else if (i.getMouseX() > 1150 && i.getMouseX() < 1150 + 80 &&
-	   * i.getMouseY() > 480 && i.getMouseY() < 560) { // Lvl9 if (in ==
-	   * false) rollover.play(); in = true; } else if (i.getMouseX() > 1350
-	   * && i.getMouseX() < 1350 + 80 && i.getMouseY() > 480 &&
-	   * i.getMouseY() < 560) { // Lvl10 if (in == false) rollover.play();
-	   * in = true; }
-	   */else if (i.getMouseX() > 550 && i.getMouseX() < 550 + 400 && i.getMouseY() > 750
-		&& i.getMouseY() < 750 + 80) { // RetourAuHome
+	} else if (x > 550 && x < 550 + retour.getWidth() && y > 750 && y < 750 + retour.getHeight()) { // RetourAuHome
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} /*
-	   * else if (i.getMouseX() > 1030 && i.getMouseX() < 1030 + 400 &&
-	   * i.getMouseY() > 750 && i.getMouseY() < 750 + 80) { if (in == false)
-	   * rollover.play(); in = true;
-	   * 
-	   * }
-	   */else
+	} else {
 	    in = false;
+	}
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-	background.draw(0, 0, container.getWidth(), container.getHeight());
+	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
+
+	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
+
 	g.drawImage(niveau1, 550, 300);
 	g.drawImage(niveau2, 750, 300);
 	g.drawImage(niveau3, 950, 300);
@@ -119,46 +109,29 @@ public class LevelScreenGameState extends BasicGameState {
 	g.drawImage(niveau5, 1350, 300);
 	g.drawImage(niveau6, 550, 480);
 
-	/*
-	 * g.drawImage(niveau7, 750, 480); g.drawImage(niveau8, 950, 480);
-	 * g.drawImage(niveau9, 1150, 480); g.drawImage(niveau10, 1350, 480);
-	 */
 	g.drawImage(retour, 550, 750);
-	// g.drawImage(suivant, 1030, 750);
-
     }
 
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
 	click.play();
-	if (x > 550 && x < 550 + 80 && y > 300 && y < 380) { // Lvl1
-	    game.enterState(101);
-	}
-	if (x > 750 && x < 750 + 80 && y > 300 && y < 380) { // Lvl2
-	    game.enterState(102);
-	}
-	if (x > 950 && x < 950 + 80 && y > 300 && y < 380) { // Lvl3
-	    game.enterState(103);
-	}
-	if (x > 1150 && x < 1150 + 80 && y > 300 && y < 380) { // Lvl4
-	    game.enterState(104);
-	}
-	if (x > 1350 && x < 1350 + 80 && y > 300 && y < 380) { // Lvl5
-	    game.enterState(105);
-	}
-	if (x > 550 && x < 550 + 80 && y > 480 && y < 560) { // Lvl6
-	    game.enterState(106);
-	}
-	/*
-	 * if (x > 750 && x < 750 + 80 && y > 480 && y < 560) { // Lvl7
-	 * game.enterState(107); } if (x > 950 && x < 950 + 80 && y > 480 && y <
-	 * 560) { // Lvl8 game.enterState(108); } if (x > 1150 && x < 1150 + 80
-	 * && y > 480 && y < 560) { // Lvl9 game.enterState(109); } if (x > 1350
-	 * && x < 1350 + 80 && y > 480 && y < 560) { // Lvl10
-	 * game.enterState(110); }
-	 */
 
-	if (x > 550 && x < 550 + 400 && y > 750 && y < 750 + 80) { // RetourAuHome
+	x *= 1 / WindowGame.SCALE_W;
+	y *= 1 / WindowGame.SCALE_H;
+
+	if (x > 550 && x < 550 + niveau1.getWidth() && y > 300 && y < 300 + niveau1.getHeight()) { // Lvl1
+	    game.enterState(101);
+	} else if (x > 750 && x < 750 + niveau2.getWidth() && y > 300 && y < 300 + niveau2.getHeight()) { // Lvl2
+	    game.enterState(102);
+	} else if (x > 950 && x < 950 + niveau3.getWidth() && y > 300 && y < 300 + niveau3.getHeight()) { // Lvl3
+	    game.enterState(103);
+	} else if (x > 1150 && x < 1150 + niveau4.getWidth() && y > 300 && y < 300 + niveau4.getHeight()) { // Lvl4
+	    game.enterState(104);
+	} else if (x > 1350 && x < 1350 + niveau5.getWidth() && y > 300 && y < 300 + niveau5.getHeight()) { // Lvl5
+	    game.enterState(105);
+	} else if (x > 550 && x < 550 + niveau6.getWidth() && y > 480 && y < 300 + niveau6.getHeight()) { // Lvl6
+	    game.enterState(106);
+	} else if (x > 550 && x < 550 + retour.getWidth() && y > 750 && y < 750 + retour.getHeight()) { // RetourAuHome
 	    game.enterState(0);
 	}
     }

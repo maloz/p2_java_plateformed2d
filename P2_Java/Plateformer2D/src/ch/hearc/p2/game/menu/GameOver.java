@@ -10,6 +10,8 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import ch.hearc.p2.game.WindowGame;
+
 public class GameOver extends BasicGameState {
 
     public static final int ID = 40;
@@ -45,34 +47,46 @@ public class GameOver extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 	if (!deadMusic.playing())
 	    deadMusic.loop(1, 0.4f);
-	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
+	container.setMouseCursor(cursor, 0, 0);
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-	background.draw(0, 0, container.getWidth(), container.getHeight());
-	g.drawImage(quitter, container.getWidth() / 2 - 200, 500);
+	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
+
+	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
+
+	g.drawImage(quitter, WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2, 500);
 
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 
-	if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 500
-		&& i.getMouseY() < 590) {
+	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
+	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
+
+	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 500
+		&& y < 500 + quitter.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
-	} else
+	} else {
 	    in = false;
+	}
     }
 
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
 	click.play();
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 500 && y < 590) {
+
+	x *= 1 / WindowGame.SCALE_W;
+	y *= 1 / WindowGame.SCALE_H;
+
+	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 500
+		&& y < 500 + quitter.getHeight()) {
 	    game.enterState(0);
 	}
     }

@@ -223,7 +223,7 @@ public class Level {
     public int getYOffset() {
 	int offset_y = 0;
 
-	int half_heigth = (int) (WindowGame.BASE_WINDOW_HEIGTH / 2);
+	int half_heigth = (int) (WindowGame.BASE_WINDOW_HEIGHT / 2);
 
 	int maxY = (int) (map.getHeight() * 70) - half_heigth;
 
@@ -274,13 +274,13 @@ public class Level {
 	// first calculate the maximum amount we can "scroll" the background
 	// image before we have the rightmore or bottom most pixel on the screen
 	float backgroundXScrollValue = (background.getWidth() - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
-	float backgroundYScrollValue = (background.getHeight() - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE_H);
+	float backgroundYScrollValue = (background.getHeight() - WindowGame.WINDOW_HEIGHT / WindowGame.SCALE_H);
 
 	// we do the same for the map
 	// By changing the size of the tiled (200 instead of 128), the
 	// background render smoother
 	float mapXScrollValue = ((float) map.getWidth() * 200 - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
-	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGTH / WindowGame.SCALE_H);
+	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGHT / WindowGame.SCALE_H);
 
 	// and now calculate the factor we have to multiply the offset with,
 	// making sure we multiply the offset by -1 to get it to negative

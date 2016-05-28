@@ -72,9 +72,6 @@ public class MainScreenGameState extends BasicGameState {
 	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
 	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
 
-	System.out.println("Click x : " + x);
-	System.out.println("Click y : " + y);
-
 	// Menu - jouer
 	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2
 		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + jouer.getWidth() / 2 && y > 250
@@ -102,19 +99,10 @@ public class MainScreenGameState extends BasicGameState {
 	    in = true;
 	}
 
-	// Menu - credits
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - credits.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + credits.getWidth() / 2 && y > 700
-		&& y < 700 + credits.getHeight()) {
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	}
-
 	// Menu - quitter
 	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 850
-		&& y < 850 + quitter.getHeight()) {
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 700
+		&& y < 700 + quitter.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
@@ -130,12 +118,12 @@ public class MainScreenGameState extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
-	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGTH);
+	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
+
 	g.drawImage(jouer, WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2, 250);
 	g.drawImage(niveaux, WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2, 400);
 	g.drawImage(options, WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2, 550);
-	g.drawImage(credits, WindowGame.BASE_WINDOW_WIDTH / 2 - credits.getWidth() / 2, 700);
-	g.drawImage(quitter, WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2, 850);
+	g.drawImage(quitter, WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2, 700);
 
     }
 
@@ -168,20 +156,13 @@ public class MainScreenGameState extends BasicGameState {
 	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2
 		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + options.getWidth() / 2 && y > 550
 		&& y < 550 + options.getHeight()) {
-	    System.exit(0);
-	}
-
-	// Menu - credits
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - credits.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + credits.getWidth() / 2 && y > 700
-		&& y < 700 + credits.getHeight()) {
-	    System.exit(0);
+	    game.enterState(60);
 	}
 
 	// Menu - quitter
 	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 850
-		&& y < 850 + quitter.getHeight()) {
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 700
+		&& y < 700 + quitter.getHeight()) {
 	    System.exit(0);
 	}
     }

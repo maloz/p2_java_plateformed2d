@@ -9,6 +9,7 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import ch.hearc.p2.game.WindowGame;
 import ch.hearc.p2.game.state.LevelState;
 
 public class PauseGameState extends BasicGameState {
@@ -49,33 +50,37 @@ public class PauseGameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
+	container.setMouseCursor(cursor, 0, 0);
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-	background.draw(0, 0, container.getWidth(), container.getHeight());
-	g.drawImage(quitter, container.getWidth() / 2 - 200, 250);
-	g.drawImage(reprendre, container.getWidth() / 2 - 200, 400);
+	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
+	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
+
+	g.drawImage(quitter, WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2, 250);
+	g.drawImage(reprendre, WindowGame.BASE_WINDOW_WIDTH / 2 - reprendre.getWidth() / 2, 400);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 
-	if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 250
-		&& i.getMouseY() < 340) {
+	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
+	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
+
+	// Bouton quitter
+	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 250
+		&& y < 250 + quitter.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
-
 	}
-
-	// Menu - niveau
-	else if (i.getMouseX() > this.game.getContainer().getWidth() / 2 - 200
-		&& i.getMouseX() < this.game.getContainer().getWidth() / 2 + 200 && i.getMouseY() > 400
-		&& i.getMouseY() < 490) {
+	// Bouton reprendre
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - reprendre.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + reprendre.getWidth() / 2 && y > 400
+		&& y < 400 + reprendre.getHeight()) {
 	    if (in == false)
 		rollover.play();
 	    in = true;
@@ -87,8 +92,14 @@ public class PauseGameState extends BasicGameState {
     @Override
     public void mouseClicked(int button, int x, int y, int clickCount) {
 	click.play();
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 250 && y < 340) {
+
+	x *= 1 / WindowGame.SCALE_W;
+	y *= 1 / WindowGame.SCALE_H;
+
+	// Bouton quitter
+	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 250
+		&& y < 250 + quitter.getHeight()) {
 	    try {
 		((LevelState) game.getState(ID_Last)).initialisation();
 	    } catch (SlickException e) {
@@ -97,10 +108,10 @@ public class PauseGameState extends BasicGameState {
 	    }
 	    game.enterState(0);
 	}
-
-	// Menu - niveau
-	if (x > this.game.getContainer().getWidth() / 2 - 200 && x < this.game.getContainer().getWidth() / 2 + 200
-		&& y > 400 && y < 490) {
+	// Bouton reprendre
+	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - reprendre.getWidth() / 2
+		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + reprendre.getWidth() / 2 && y > 400
+		&& y < 400 + reprendre.getHeight()) {
 	    game.enterState(ID_Last);
 	}
     }

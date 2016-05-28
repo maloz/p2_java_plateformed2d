@@ -118,7 +118,10 @@ public abstract class LevelState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-	container.setMouseCursor(cursor, cursor.getWidth() / 2, cursor.getHeight() / 2);
+	container.setMouseCursor(
+		cursor.getScaledCopy((int) (cursor.getWidth() * WindowGame.SCALE_W),
+			(int) (cursor.getHeight() * WindowGame.SCALE_H)),
+		cursor.getWidth() / 2, cursor.getHeight() / 2);
 
 	if (isPause == true) {
 	    musiclvl.resume();
@@ -227,7 +230,7 @@ public abstract class LevelState extends BasicGameState {
 	    level.render(shakeX, shakeY);
 	else
 	    level.render();
-	
+
 	hud.render(g, player);
 
 	if (shakeX != 0 && shakeY != 0)
