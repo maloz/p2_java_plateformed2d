@@ -4,32 +4,40 @@ import ch.hearc.p2.game.physics.BoundingShape;
 
 public class Tile {
 
-	protected int x;
-	protected int y;
-	protected String type;
+    protected int x;
+    protected int y;
+    protected String type;
 
-	protected BoundingShape boundingShape;
+    protected BoundingShape boundingShape;
 
-	public Tile(int x, int y, String type) {
-		this.x = x;
-		this.y = y;
-		this.type = type;
-		boundingShape = null;
-	}
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
 
-	public BoundingShape getBoundingShape() {
-		return boundingShape;
-	}
+    public Tile(int x, int y, String type) {
+	this.x = x;
+	this.y = y;
+	this.type = type;
+	boundingShape = null;
+    }
 
-	public int getX() {
-		return x;
-	}
+    /*-----------------------*\
+    |*		Get	     *|
+    \*-----------------------*/
 
-	public int getY() {
-		return y;
-	}
+    public BoundingShape getBoundingShape() {
+	return boundingShape;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public int getX() {
+	return x;
+    }
+
+    public int getY() {
+	return y;
+    }
+
+    public String getType() {
+	return type;
+    }
 }

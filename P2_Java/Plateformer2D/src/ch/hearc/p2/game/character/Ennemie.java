@@ -17,7 +17,7 @@ public class Ennemie extends Character {
     /*------------------------------------------------------------------*\
     |*				Constructeurs			  	*|
     \*------------------------------------------------------------------*/
-    
+
     public Ennemie(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -33,6 +33,10 @@ public class Ennemie extends Character {
 	decelerationSpeed = 0.001f;
 	life = 6;
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void updateBoundingShape() {
@@ -51,20 +55,28 @@ public class Ennemie extends Character {
 	toAddList.clear();
     }
 
-    public void dead(Boolean b) {
-	this.dead = true;
-    }
-
-    public Boolean isDead() {
-	return dead;
-    }
-
     public void moveRandom() {
 
     }
 
+    /*-----------------------*\
+    |*		Set	     *|
+    \*-----------------------*/
+
     public void setMaximumFallSpeed(float maximumFallSpeed) {
 	this.maximumFallSpeed = maximumFallSpeed;
+    }
+
+    public void dead(Boolean b) {
+	this.dead = b;
+    }
+
+    /*----------------------*\
+    |*		Is	    *|
+    \*----------------------*/
+
+    public Boolean isDead() {
+	return dead;
     }
 
 }

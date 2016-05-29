@@ -40,9 +40,17 @@ public class WindowGame extends StateBasedGame {
 
     public static final String GAME_NAME = "Platformer 2D";
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public WindowGame() {
 	super(GAME_NAME);
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
@@ -61,6 +69,10 @@ public class WindowGame extends StateBasedGame {
 	addState(new LevelScreenGameState());
 	addState(new OptionGameState());
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Static		    		*|
+    \*------------------------------------------------------------------*/
 
     public static void initStaticValues() {
 	WINDOW_WIDTH = PREFERENCES.getInt("width", 1920);
@@ -82,7 +94,7 @@ public class WindowGame extends StateBasedGame {
 	app.setShowFPS(true);
 	// this will attempt to create a framerate of approximately 60 frames
 	// per second
-	// app.setTargetFrameRate(100);
+	// app.setTargetFrameRate(10);
 	app.start();
     }
 

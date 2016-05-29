@@ -9,6 +9,10 @@ import ch.hearc.p2.game.projectile.ProjectilePlayer;
 
 public class Mitraillette extends Weapon {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public Mitraillette(float x, float y) throws SlickException {
 	super(x, y);
 	munition = 900;
@@ -18,6 +22,11 @@ public class Mitraillette extends Weapon {
 	arme = new Image("ressources/tiles/item/raygun.png");
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void shoot(float playerX, float playerY, int mouseX, int mouseY) throws SlickException {
 	if (munition > 0) {
 	    // Calcul de la vélocité X et Y

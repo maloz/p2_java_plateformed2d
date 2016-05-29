@@ -37,6 +37,10 @@ public class Level {
     public static final boolean SHAKE_SNAP = false;
     public static final int SHAKE_INTENSITY = 19;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			        *|
+    \*------------------------------------------------------------------*/
+
     public Level(String level, Player player) throws SlickException {
 	map = new TiledMap("ressources/level/" + level + ".tmx");
 	background = new Image("ressources/background/" + map.getMapProperty("back.png", "back.png"));
@@ -50,6 +54,10 @@ public class Level {
 	loadEnd();
 
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Private	    		*|
+    \*------------------------------------------------------------------*/
 
     private void loadTileMap() {
 	// create an array to hold all the tiles in the map
@@ -166,6 +174,32 @@ public class Level {
 	}
     }
 
+    private void renderBackground() {
+
+	// first calculate the maximum amount we can "scroll" the background
+	// image before we have the rightmore or bottom most pixel on the screen
+	float backgroundXScrollValue = (background.getWidth() - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
+	float backgroundYScrollValue = (background.getHeight() - WindowGame.WINDOW_HEIGHT / WindowGame.SCALE_H);
+
+	// we do the same for the map
+	// By changing the size of the tiled (200 instead of 128), the
+	// background render smoother
+	float mapXScrollValue = ((float) map.getWidth() * 200 - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
+	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGHT / WindowGame.SCALE_H);
+
+	// and now calculate the factor we have to multiply the offset with,
+	// making sure we multiply the offset by -1 to get it to negative
+	float scrollXFactor = backgroundXScrollValue / mapXScrollValue * -1;
+	float scrollYFactor = backgroundYScrollValue / mapYScrollValue * -1;
+	// and now draw it using the factor and the offset to see where we start
+	// drawing
+	background.draw(this.getXOffset() * scrollXFactor, this.getYOffset() * scrollYFactor);
+    }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
+
     public void addCharacter(Character c) {
 	characters.add(c);
     }
@@ -180,22 +214,6 @@ public class Level {
 
     public ArrayList<Character> getCharacters() {
 	return characters;
-    }
-
-    public Tile[][] getTiles() {
-	return tiles;
-    }
-
-    public Player getPlayer() {
-	return player;
-    }
-
-    public Tile[][] getLimite() {
-	return limite;
-    }
-
-    public Tile[][] getEnd() {
-	return end;
     }
 
     public void render() {
@@ -219,111 +237,6 @@ public class Level {
 	    c.render(offset_x, offset_y);
 	}
 
-    }
-
-    public int getYOffset() {
-	int offset_y = 0;
-
-	int half_heigth = (int) (WindowGame.BASE_WINDOW_HEIGHT / 2);
-
-	int maxY = (int) (map.getHeight() * 70) - half_heigth;
-
-	if (player.getY() < half_heigth) {
-	    offset_y = 0;
-	} else if (player.getY() > maxY) {
-	    offset_y = maxY - half_heigth;
-	} else {
-	    offset_y = (int) (player.getY() - half_heigth);
-	}
-
-	return offset_y;
-    }
-
-    public int getXOffset() {
-	int offset_x = 0;
-
-	// the first thing we are going to need is the half-width of the screen,
-	// to calculate if the player is in the middle of our screen
-	int half_width = (int) (WindowGame.BASE_WINDOW_WIDTH / 2);
-
-	// next up is the maximum offset, this is the most right side of the
-	// map, minus half of the screen offcourse
-	int maxX = (int) (map.getWidth() * 70) - half_width;
-
-	// now we have 3 cases here
-	if (player.getX() < half_width) {
-	    // the player is between the most left side of the map, which is
-	    // zero and half a screen size which is 0+half_screen
-	    offset_x = 0;
-	} else if (player.getX() > maxX) {
-	    // the player is between the maximum point of scrolling and the
-	    // maximum width of the map
-	    // the reason why we substract half the screen again is because we
-	    // need to set our offset to the topleft position of our screen
-	    offset_x = maxX - half_width;
-	} else {
-	    // the player is in between the 2 spots, so we set the offset to the
-	    // player, minus the half-width of the screen
-	    offset_x = (int) (player.getX() - half_width);
-	}
-
-	return offset_x;
-    }
-
-    private void renderBackground() {
-
-	// first calculate the maximum amount we can "scroll" the background
-	// image before we have the rightmore or bottom most pixel on the screen
-	float backgroundXScrollValue = (background.getWidth() - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
-	float backgroundYScrollValue = (background.getHeight() - WindowGame.WINDOW_HEIGHT / WindowGame.SCALE_H);
-
-	// we do the same for the map
-	// By changing the size of the tiled (200 instead of 128), the
-	// background render smoother
-	float mapXScrollValue = ((float) map.getWidth() * 200 - WindowGame.WINDOW_WIDTH / WindowGame.SCALE_W);
-	float mapYScrollValue = ((float) map.getHeight() * 200 - WindowGame.WINDOW_HEIGHT / WindowGame.SCALE_H);
-
-	// and now calculate the factor we have to multiply the offset with,
-	// making sure we multiply the offset by -1 to get it to negative
-	float scrollXFactor = backgroundXScrollValue / mapXScrollValue * -1;
-	float scrollYFactor = backgroundYScrollValue / mapYScrollValue * -1;
-	// and now draw it using the factor and the offset to see where we start
-	// drawing
-	background.draw(this.getXOffset() * scrollXFactor, this.getYOffset() * scrollYFactor);
-    }
-
-    public void removeObject(LevelObject obj) {
-	levelObjects.remove(obj);
-    }
-
-    public void removeObjects(ArrayList<LevelObject> objects) {
-	levelObjects.removeAll(objects);
-    }
-
-    public void addLevelObject(LevelObject objective) {
-	levelObjects.add(objective);
-    }
-
-    public void addLevelObject(ArrayList<LevelObject> addQueue) {
-	levelObjects.addAll(addQueue);
-
-    }
-
-    public ArrayList<LevelObject> getLevelObjects() {
-	return levelObjects;
-    }
-
-    public TiledMap getMap() {
-	return map;
-    }
-
-    public ArrayList<Objective> getObjectives() {
-	ArrayList<Objective> objectives = new ArrayList<Objective>();
-	for (LevelObject obj : levelObjects) {
-	    if (obj instanceof Objective)
-		objectives.add((Objective) obj);
-	}
-	return objectives;
     }
 
     public void render(float shakeX, float shakeY) {
@@ -352,8 +265,114 @@ public class Level {
 	for (LevelObject obj : levelObjects) {
 	    obj.render(offset_x, offset_y);
 	}
+    }
+
+    public void removeObject(LevelObject obj) {
+	levelObjects.remove(obj);
+    }
+
+    public void removeObjects(ArrayList<LevelObject> objects) {
+	levelObjects.removeAll(objects);
+    }
+
+    public void addLevelObject(LevelObject objective) {
+	levelObjects.add(objective);
+    }
+
+    public void addLevelObject(ArrayList<LevelObject> addQueue) {
+	levelObjects.addAll(addQueue);
 
     }
+
+    /*-----------------------*\
+    |*		Get	     *|
+    \*-----------------------*/
+
+    public Tile[][] getTiles() {
+	return tiles;
+    }
+
+    public Player getPlayer() {
+	return player;
+    }
+
+    public Tile[][] getLimite() {
+	return limite;
+    }
+
+    public Tile[][] getEnd() {
+	return end;
+    }
+
+    public int getYOffset() {
+	int offset_y = 0;
+
+	int half_heigth = WindowGame.BASE_WINDOW_HEIGHT / 2;
+
+	int maxY = map.getHeight() * 70 - half_heigth;
+
+	if (player.getY() < half_heigth) {
+	    offset_y = 0;
+	} else if (player.getY() > maxY) {
+	    offset_y = maxY - half_heigth;
+	} else {
+	    offset_y = (int) (player.getY() - half_heigth);
+	}
+
+	return offset_y;
+    }
+
+    public int getXOffset() {
+	int offset_x = 0;
+
+	// the first thing we are going to need is the half-width of the screen,
+	// to calculate if the player is in the middle of our screen
+	int half_width = WindowGame.BASE_WINDOW_WIDTH / 2;
+
+	// next up is the maximum offset, this is the most right side of the
+	// map, minus half of the screen offcourse
+	int maxX = map.getWidth() * 70 - half_width;
+
+	// now we have 3 cases here
+	if (player.getX() < half_width) {
+	    // the player is between the most left side of the map, which is
+	    // zero and half a screen size which is 0+half_screen
+	    offset_x = 0;
+	} else if (player.getX() > maxX) {
+	    // the player is between the maximum point of scrolling and the
+	    // maximum width of the map
+	    // the reason why we substract half the screen again is because we
+	    // need to set our offset to the topleft position of our screen
+	    offset_x = maxX - half_width;
+	} else {
+	    // the player is in between the 2 spots, so we set the offset to the
+	    // player, minus the half-width of the screen
+	    offset_x = (int) (player.getX() - half_width);
+	}
+
+	return offset_x;
+    }
+
+    public ArrayList<Objective> getObjectives() {
+	ArrayList<Objective> objectives = new ArrayList<Objective>();
+	for (LevelObject obj : levelObjects) {
+	    if (obj instanceof Objective)
+		objectives.add((Objective) obj);
+	}
+	return objectives;
+    }
+
+    public ArrayList<LevelObject> getLevelObjects() {
+	return levelObjects;
+    }
+
+    public TiledMap getMap() {
+	return map;
+    }
+
+    /*-----------------------*\
+    |*		Set	     *|
+    \*-----------------------*/
 
     public void setBackground(Image i) {
 	background = i;

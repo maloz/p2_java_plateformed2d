@@ -24,6 +24,10 @@ public class Weapon extends LevelObject {
     protected Random random;
     protected int cadence;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public Weapon(float x, float y) throws SlickException {
 	super(x, y);
 	way = Facing.LEFT;
@@ -36,11 +40,16 @@ public class Weapon extends LevelObject {
 	arme = new Image("ressources/tiles/item/raygunBig.png");
 
 	boundingShape = new AABoundingRect(x, y, 0, 0);
-	maximumFallSpeed = (float) 0;
+	maximumFallSpeed = 0;
 	tir = new Sound("ressources/audio/sound/shoot.ogg");
 	random = new Random();
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void render(float offset_x, float offset_y) {
 	if (playerFacing == Facing.RIGHT)
 	    arme.draw(x - offset_x, y - offset_y);
@@ -103,12 +112,16 @@ public class Weapon extends LevelObject {
 	}
     }
 
-    public List<LevelObject> getToAddList() {
-	return toAddList;
-    }
-
     public void clearToAddList() {
 	toAddList.clear();
+    }
+
+    /*-----------------------*\
+    |*		Get	     *|
+    \*-----------------------*/
+
+    public List<LevelObject> getToAddList() {
+	return toAddList;
     }
 
     public int getMunition() {
@@ -119,12 +132,16 @@ public class Weapon extends LevelObject {
 	return way;
     }
 
-    public void setPlayerFacing(Facing facing) {
-	playerFacing = facing;
-    }
-
     public int getCadence() {
 	return cadence;
+    }
+
+    /*-----------------------*\
+    |*		Set	     *|
+    \*-----------------------*/
+
+    public void setPlayerFacing(Facing facing) {
+	playerFacing = facing;
     }
 
 }

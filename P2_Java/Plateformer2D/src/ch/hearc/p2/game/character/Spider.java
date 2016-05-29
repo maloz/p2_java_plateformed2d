@@ -7,6 +7,10 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Spider extends Ennemie {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public Spider(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -30,20 +34,13 @@ public class Spider extends Ennemie {
 	life = 5;
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
+
     @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x, y);
-    }
-
-    @Override
-    public void shoot() throws SlickException {
-	/*
-	 * int randomX = -2 + (int) (Math.random() * 1); int randomY = 0 + (int)
-	 * (Math.random() * 1);
-	 * 
-	 * toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX,
-	 * randomY));
-	 */
     }
 
     @Override

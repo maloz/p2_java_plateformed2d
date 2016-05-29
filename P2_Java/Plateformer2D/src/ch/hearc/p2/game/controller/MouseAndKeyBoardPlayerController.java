@@ -16,6 +16,10 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
     private long time2;
     private Robot robot;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public MouseAndKeyBoardPlayerController(Player player, Level level) {
 	super(player, level);
 	time1 = System.currentTimeMillis();
@@ -27,6 +31,10 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	}
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
+
     @Override
     public void handleInput(Input i, int delta) {
 	// handle any input from the keyboard
@@ -35,13 +43,17 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	handleKeyboardInput(i, delta);
 
 	try {
-	    handleMouseInput(i, delta);
+	    handleMouseInput(i);
 	    handleControllerInput(i, delta);
 	} catch (SlickException e) {
 	    e.printStackTrace();
 	}
 
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Private	 	  	*|
+    \*------------------------------------------------------------------*/
 
     private void handleKeyboardInput(Input i, int delta) {
 	// we can both use the WASD or arrow keys to move around, obviously we
@@ -60,7 +72,7 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	}
     }
 
-    private void handleMouseInput(Input i, int delta) throws SlickException {
+    private void handleMouseInput(Input i) throws SlickException {
 
 	if (i.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && time1 - time2 > player.getWeapon().getCadence()) {
 
@@ -103,7 +115,5 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    }
 	} catch (Exception ex) {
 	}
-
     }
-
 }

@@ -7,6 +7,10 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class SnakeLava extends Ennemie {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public SnakeLava(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -30,6 +34,10 @@ public class SnakeLava extends Ennemie {
 	setMoving(true);
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
+    
     @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x, y);

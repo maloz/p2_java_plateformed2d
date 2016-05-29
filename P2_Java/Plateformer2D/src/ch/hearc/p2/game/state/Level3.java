@@ -14,6 +14,10 @@ import ch.hearc.p2.game.level.object.Key;
 
 public class Level3 extends LevelState {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Level3(String startingLevel) {
 	super(startingLevel);
 	ID = 103;
@@ -21,6 +25,10 @@ public class Level3 extends LevelState {
 	nextLevel = 104;
 
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void instanciation() throws SlickException {

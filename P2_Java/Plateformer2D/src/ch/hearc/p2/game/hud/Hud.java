@@ -15,6 +15,18 @@ public class Hud {
     private Image cleVide;
     private Image clePleine;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
+    public Hud() {
+
+    }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
+
     public void init() throws SlickException {
 	life = new Image[3];
 	life[0] = new Image("ressources/hud/hudHeart_full.png");
@@ -79,7 +91,6 @@ public class Hud {
 	    break;
 	default:
 	    break;
-
 	}
 
 	int point = p.getPoint();
@@ -108,7 +119,6 @@ public class Hud {
 	    g.drawImage(clePleine, x, 950);
 	else
 	    g.drawImage(cleVide, x, 950);
-
     }
 
 }

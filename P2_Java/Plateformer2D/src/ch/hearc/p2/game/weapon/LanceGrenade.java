@@ -9,6 +9,10 @@ import ch.hearc.p2.game.projectile.Grenade;
 
 public class LanceGrenade extends Weapon {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public LanceGrenade(float x, float y) throws SlickException {
 	super(x, y);
 	munition = 50;
@@ -19,6 +23,11 @@ public class LanceGrenade extends Weapon {
 	// tir = new Sound("ressources/audio/sound/shoot.ogg");
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void shoot(float playerX, float playerY, int mouseX, int mouseY) throws SlickException {
 	if (munition > 0) {
 	    float velocityX = 1.8f;

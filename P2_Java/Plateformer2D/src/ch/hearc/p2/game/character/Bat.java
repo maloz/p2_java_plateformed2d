@@ -39,6 +39,10 @@ public class Bat extends Ennemie {
 	life = 6;
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
+    
     @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x , y);
@@ -63,6 +67,9 @@ public class Bat extends Ennemie {
 	}
 
     }
+    /*------------------------------*\
+    |*		    Set	   	    *|
+    \*------------------------------*/
 
     @Override
     public void setMaximumFallSpeed(float maximumFallSpeed) {

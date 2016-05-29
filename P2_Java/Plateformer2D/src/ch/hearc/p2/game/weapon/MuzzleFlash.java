@@ -13,6 +13,10 @@ public class MuzzleFlash extends LevelObject {
     protected long time1;
     protected long time2;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public MuzzleFlash(float x, float y) throws SlickException {
 	super(x, y);
 	x_velocity = 0;
@@ -47,13 +51,26 @@ public class MuzzleFlash extends LevelObject {
 	boundingShape = new AABoundingRect(x, y, 200, 200);
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void render(float offset_x, float offset_y) {
 	animation.draw(x - offset_x, y - offset_y);
     }
 
+    /*-----------------------*\
+    |*		Set	     *|
+    \*-----------------------*/
+
     public void setTime2(long time) {
 	time2 = time;
     }
+
+    /*-----------------------*\
+    |*		Get	     *|
+    \*-----------------------*/
 
     public long getTime1() {
 	return time1;

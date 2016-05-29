@@ -10,6 +10,10 @@ public class Objective extends LevelObject {
 
     protected Image image;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Objective(float x, float y) throws SlickException {
 	super(x, y);
 
@@ -17,6 +21,10 @@ public class Objective extends LevelObject {
 	image = new Image("ressources/tiles/item/coinGold.png");
 	boundingShape = new AABoundingRect(x, y, 35, 35);
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void render(float offset_x, float offset_y) {

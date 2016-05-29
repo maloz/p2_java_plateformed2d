@@ -31,6 +31,10 @@ public class Player extends Character {
     private int height;
     private int width;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Player(float x, float y) throws SlickException {
 	super(x, y);
 	weapons = new LinkedList<Weapon>();
@@ -69,6 +73,10 @@ public class Player extends Character {
 	jump = new Sound("ressources/audio/sound/jump.ogg");
 	coin = new Sound("ressources/audio/sound/coin.ogg");
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void updateBoundingShape() {
@@ -96,25 +104,9 @@ public class Player extends Character {
 	toAddList.clear();
     }
 
-    public Weapon getWeapon() {
-	return weapons.get(weaponIndex);
-    }
-
-    public void setWeapon(int index) {
-	this.weaponIndex = index;
-    }
-
     public void addPoint(int i) {
 	point += i;
 	coin.play(1, (float) 0.75);
-    }
-
-    public void setPoint(int i) {
-	point = i;
-    }
-
-    public int getPoint() {
-	return point;
     }
 
     @Override
@@ -123,15 +115,6 @@ public class Player extends Character {
 	    y_velocity = -1f;
 	    jump.play(1, (float) 0.5);
 	}
-
-    }
-
-    public void setKey(boolean key) {
-	this.key = key;
-    }
-
-    public boolean hasKey() {
-	return key;
     }
 
     @Override
@@ -169,13 +152,47 @@ public class Player extends Character {
 	    damage2 = System.currentTimeMillis();
 	}
     }
+    
+    /*-----------------------*\
+    |*		Set	     *|
+    \*-----------------------*/
+    
+    public void setKey(boolean key) {
+	this.key = key;
+    }
 
     public void setWeaponIndex(int index) {
 	this.weaponIndex = index;
     }
 
+    public void setWeapon(int index) {
+	this.weaponIndex = index;
+    }
+    
+    public void setPoint(int i) {
+	point = i;
+    }
+
+    /*-----------------------*\
+    |*		Get	     *|
+    \*-----------------------*/
+    
+    public boolean hasKey() {
+	return key;
+    }
+
     public int getWeaponIndex() {
 	return weaponIndex;
     }
+    
+
+    public Weapon getWeapon() {
+	return weapons.get(weaponIndex);
+    }
+
+    public int getPoint() {
+	return point;
+    }
+
 
 }

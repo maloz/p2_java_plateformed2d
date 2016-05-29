@@ -7,6 +7,10 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class SpinnerHalf extends Ennemie {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public SpinnerHalf(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -28,6 +32,10 @@ public class SpinnerHalf extends Ennemie {
 	life = 5;
 	setMoving(true);
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void updateBoundingShape() {

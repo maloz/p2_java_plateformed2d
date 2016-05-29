@@ -13,6 +13,10 @@ import ch.hearc.p2.game.level.object.Key;
 
 public class Level4 extends LevelState {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Level4(String startingLevel) {
 	super(startingLevel);
 	ID = 104;
@@ -20,6 +24,10 @@ public class Level4 extends LevelState {
 	nextLevel = 105; // Si c'est le dernier level, 0 pour l'instant
 
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void instanciation() throws SlickException {

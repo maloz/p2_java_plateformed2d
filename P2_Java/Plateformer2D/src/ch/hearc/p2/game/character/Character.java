@@ -49,6 +49,11 @@ public abstract class Character extends LevelObject {
 	// default direction will be right
 	facing = Facing.RIGHT;
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Protected		    	*|
+    \*------------------------------------------------------------------*/
+
 
     protected HashMap<Facing, Animation> setMovingAnimation(Image[] images, int frameDuration, HashMap<Facing, Animation> movingAnim) {
 	movingAnim = new HashMap<Facing, Animation>();
@@ -71,26 +76,14 @@ public abstract class Character extends LevelObject {
 	sprite.put(Facing.LEFT, i.getFlippedCopy(true, false));
 	return sprite;
     }
-
-    public boolean isMoving() {
-	return moving;
-    }
-
-    public void setMoving(boolean b) {
-	moving = b;
-    }
-
-    public int getLife() {
-	return life;
-    }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
 
     public void damage(int value) {
 	
 	this.life -= value;
-    }
-
-    public void setLife(int life) {
-	this.life = life;
     }
 
     // move towards x_velocity = 0
@@ -105,7 +98,7 @@ public abstract class Character extends LevelObject {
 		x_velocity = 0;
 	}
     }
-
+    
     public void jump() {
 	if (onGround)
 	    y_velocity = -1f;
@@ -166,5 +159,34 @@ public abstract class Character extends LevelObject {
 	time2 = System.currentTimeMillis();
 	hited = true;
     }
+    
+    /*------------------------------*\
+    |*		    Set	   	    *|
+    \*------------------------------*/
+    
+    public void setMoving(boolean b) {
+	moving = b;
+    }
+    
+    public void setLife(int life) {
+	this.life = life;
+    }
+    
+    /*------------------------------*\
+    |*		    Get	   	    *|
+    \*------------------------------*/
+    
+    public int getLife() {
+	return life;
+    }
+    
+    /*------------------------------*\
+    |*		    Is	   	    *|
+    \*------------------------------*/
+
+    public boolean isMoving() {
+	return moving;
+    }
+
 
 }

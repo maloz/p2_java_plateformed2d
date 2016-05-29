@@ -59,11 +59,19 @@ public abstract class LevelState extends BasicGameState {
     protected int ID;
     protected int nextLevel;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+
     public LevelState(String startingLevel) {
 	this.startinglevel = startingLevel;
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		    		*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void init(GameContainer container, StateBasedGame sbg) throws SlickException {
@@ -251,10 +259,13 @@ public abstract class LevelState extends BasicGameState {
     }
 
     @Override
-    public int getID() {
-	// this is the id for changing states
-	return ID;
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+	musiclvl.pause();
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Private	    		*|
+    \*------------------------------------------------------------------*/
 
     private void shake() {
 	shakeX = (float) (Math.random() * shakeAmt);
@@ -269,8 +280,14 @@ public abstract class LevelState extends BasicGameState {
 	    shakeAmt = 0f;
     }
 
+    /*-----------------------*\
+    |*		Get	     *|
+    \*-----------------------*/
+
     @Override
-    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
-	musiclvl.pause();
+    public int getID() {
+	// this is the id for changing states
+	return ID;
     }
+
 }

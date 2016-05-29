@@ -8,6 +8,10 @@ import ch.hearc.p2.game.projectile.ProjectileAbeille;
 
 public class Ghost extends Ennemie {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Ghost(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -31,6 +35,10 @@ public class Ghost extends Ennemie {
 	decelerationSpeed = 0.001f;
 	life = 5;
     }
+    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void updateBoundingShape() {
