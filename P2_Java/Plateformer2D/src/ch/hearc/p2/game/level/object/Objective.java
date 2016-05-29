@@ -18,6 +18,7 @@ public class Objective extends LevelObject {
 	boundingShape = new AABoundingRect(x, y, 35, 35);
     }
 
+    @Override
     public void render(float offset_x, float offset_y) {
 	image.draw(x - offset_x, y - offset_y);
     }

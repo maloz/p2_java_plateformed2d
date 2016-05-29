@@ -30,6 +30,7 @@ public class SnakeLava extends Ennemie {
 	setMoving(true);
     }
 
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x, y);
     }

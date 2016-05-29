@@ -67,7 +67,7 @@ public class Physics {
 		    if (obj instanceof Objective) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
 			    if (obj instanceof Coin)
-				((Player) c).addPoint(((Coin) obj).getValue());
+				((Player) c).addPoint(((Coin) obj).getValue());  
 			    if (obj instanceof Key)
 				((Player) c).setKey(true);
 			    removeQueueC.add(obj);

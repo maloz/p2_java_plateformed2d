@@ -14,6 +14,10 @@ public class Ennemie extends Character {
     protected List<LevelObject> toAddList;
     protected Random rand;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Ennemie(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -30,6 +34,7 @@ public class Ennemie extends Character {
 	life = 6;
     }
 
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x + 20, y + 70);
     }
@@ -55,7 +60,6 @@ public class Ennemie extends Character {
     }
 
     public void moveRandom() {
-	// TODO Auto-generated method stub
 
     }
 

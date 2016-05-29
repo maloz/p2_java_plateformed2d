@@ -17,7 +17,7 @@ public class Explosion extends Projectile {
 	this.y_velocity = 0;
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
-	damage = 3;
+	damage = 10;
 
 	Image img00 = new Image("ressources/tiles/item/regularExplosion00.png");
 	Image img01 = new Image("ressources/tiles/item/regularExplosion01.png");

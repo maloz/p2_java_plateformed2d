@@ -32,10 +32,12 @@ public class Ghost extends Ennemie {
 	life = 5;
     }
 
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x, y);
     }
 
+    @Override
     public void shoot() throws SlickException {
 
 	float randomX = rand.nextInt((1 - (-1)) + 1) + (-1);
@@ -44,6 +46,7 @@ public class Ghost extends Ennemie {
 	toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX, randomY));
     }
 
+    @Override
     public void moveRandom() {
 	float randomNum = rand.nextInt(50 + 1);
 	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);

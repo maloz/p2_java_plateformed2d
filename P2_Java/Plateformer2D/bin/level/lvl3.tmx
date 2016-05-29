@@ -49,7 +49,7 @@
  </layer>
  <layer name="CollisionLayer" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2XSw6AIAwFuQnEtRgTvYrn5yqywKRpkACBx0cXsy19HcJHCyH0JFyD8+fAs1iUYwflWMmaIbYP+sjNgZ5pLnJgH9LNkPs4LGcH/VFUAD7/nn3E3Htmkhw+H/R8ToGf5WgMwIcEu6vRvypQ+23/oN6JpWrH1ugxhyG0ykH3U0kf6P9H6dq1czxz57TO4espBMp1yjo3iORLTKAPAAA=
+   H4sIAAAAAAAAC+2XSw6AIAwFuQnEtRgTvYrn5yqygKRplF9K+ehiFmygr2OQaiGEnoRrcP4c/CwW5diZcqzgzBDbB32U5uDuaSlyYB/S9RD7OCxnB/VBVADc/559pPz3zCQ5nnzA+zkHfJdzYxh8SGZ3NepXBHt753iNqZWD6g2aukePOQygVQ74PVH6UBGoc1DPNrXnKN/3t760yhHzllJvjVkz55wbVvE7yqAPAAA=
   </data>
  </layer>
  <layer name="Object" width="50" height="20">

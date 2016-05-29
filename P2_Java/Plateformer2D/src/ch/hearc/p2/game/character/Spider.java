@@ -30,10 +30,12 @@ public class Spider extends Ennemie {
 	life = 5;
     }
 
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x, y);
     }
 
+    @Override
     public void shoot() throws SlickException {
 	/*
 	 * int randomX = -2 + (int) (Math.random() * 1); int randomY = 0 + (int)
@@ -44,6 +46,7 @@ public class Spider extends Ennemie {
 	 */
     }
 
+    @Override
     public void moveRandom() {
 	float randomNum = rand.nextInt(50 + 1);
 	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);

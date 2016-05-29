@@ -8,6 +8,10 @@ import ch.hearc.p2.game.projectile.ProjectileAbeille;
 
 public class Bat extends Ennemie {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Bat(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -35,10 +39,12 @@ public class Bat extends Ennemie {
 	life = 6;
     }
 
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x , y);
     }
 
+    @Override
     public void shoot() throws SlickException {
 	float randomX = rand.nextInt((1 - (-1)) + 1) + (-1);
 	float randomY = rand.nextInt((1 - (-1)) + 1) + (-1);
@@ -46,6 +52,7 @@ public class Bat extends Ennemie {
 	toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX, randomY));
     }
 
+    @Override
     public void moveRandom() {
 	float randomNum = rand.nextInt(50 + 1);
 	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);
@@ -57,6 +64,7 @@ public class Bat extends Ennemie {
 
     }
 
+    @Override
     public void setMaximumFallSpeed(float maximumFallSpeed) {
 	this.maximumFallSpeed = maximumFallSpeed;
     }

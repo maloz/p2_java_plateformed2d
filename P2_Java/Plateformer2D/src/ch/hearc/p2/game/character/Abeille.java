@@ -8,6 +8,10 @@ import ch.hearc.p2.game.projectile.ProjectileAbeille;
 
 public class Abeille extends Ennemie {
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Abeille(float x, float y) throws SlickException {
 
 	super(x, y);
@@ -32,10 +36,16 @@ public class Abeille extends Ennemie {
 	life = 5;
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	  	*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x, y);
     }
 
+    @Override
     public void shoot() throws SlickException {
 
 	float randomX = rand.nextInt((1 - (-1)) + 1) + (-1);
@@ -44,6 +54,7 @@ public class Abeille extends Ennemie {
 	toAddList.add(new ProjectileAbeille(x + 10, y + 10, randomX, randomY));
     }
 
+    @Override
     public void moveRandom() {
 	float randomNum = rand.nextInt(50 + 1);
 	float randomWay = rand.nextInt((1 - (-1)) + 1) + (-1);

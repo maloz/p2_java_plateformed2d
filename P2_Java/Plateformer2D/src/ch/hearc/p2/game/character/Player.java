@@ -23,6 +23,7 @@ public class Player extends Character {
     private int point;
     private boolean key;
     private Sound jump;
+    private Sound coin;
     private HashMap<Facing, Image> jumpSprite;
     private long damage1;
     private long damage2;
@@ -66,8 +67,10 @@ public class Player extends Character {
 	weapons.add(new LanceGrenade(0, 0));
 	weapons.add(new Uzi(0, 0));
 	jump = new Sound("ressources/audio/sound/jump.ogg");
+	coin = new Sound("ressources/audio/sound/coin.ogg");
     }
 
+    @Override
     public void updateBoundingShape() {
 	boundingShape.updatePosition(x + 5, y + 2);
 	weapons.get(weaponIndex).setPlayerFacing(this.facing);
@@ -103,6 +106,7 @@ public class Player extends Character {
 
     public void addPoint(int i) {
 	point += i;
+	coin.play(1, (float) 0.75);
     }
 
     public void setPoint(int i) {
@@ -113,6 +117,7 @@ public class Player extends Character {
 	return point;
     }
 
+    @Override
     public void jump() {
 	if (onGround) {
 	    y_velocity = -1f;
@@ -129,6 +134,7 @@ public class Player extends Character {
 	return key;
     }
 
+    @Override
     public void render(int offset_x, int offset_y) {
 
 	time1 = System.currentTimeMillis();
@@ -156,6 +162,7 @@ public class Player extends Character {
 
     }
 
+    @Override
     public void damage(int value) {
 	if (damage1 - damage2 > 500) {
 	    this.life -= value;

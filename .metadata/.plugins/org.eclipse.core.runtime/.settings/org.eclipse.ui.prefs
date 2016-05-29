@@ -1,2 +1,5 @@
+CURRENT_THEME_ID=org.eclipse.ui.defaultTheme
+ENABLE_ANIMATIONS=false
+defaultPerspectiveId=Java_CBI
 eclipse.preferences.version=1
 showIntro=false

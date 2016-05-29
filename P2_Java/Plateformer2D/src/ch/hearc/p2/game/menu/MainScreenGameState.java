@@ -21,7 +21,6 @@ public class MainScreenGameState extends BasicGameState {
     private Image jouer;
     private Image niveaux;
     private Image options;
-    private Image credits;
     private Image quitter;
     private Image cursor;
     private StateBasedGame game;
@@ -46,7 +45,6 @@ public class MainScreenGameState extends BasicGameState {
 	jouer = new Image("ressources/menu/jouer.png");
 	niveaux = new Image("ressources/menu/niveaux.png");
 	options = new Image("ressources/menu/options.png");
-	credits = new Image("ressources/menu/credits.png");
 	quitter = new Image("ressources/menu/quitter.png");
 
 	// Pour les clics

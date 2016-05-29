@@ -27,6 +27,10 @@ public abstract class Character extends LevelObject {
     protected long time1;
     protected long time2;
     
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			  	*|
+    \*------------------------------------------------------------------*/
+    
     public Character(float x, float y) throws SlickException {
 	super(x, y);
 	time1 = System.currentTimeMillis();

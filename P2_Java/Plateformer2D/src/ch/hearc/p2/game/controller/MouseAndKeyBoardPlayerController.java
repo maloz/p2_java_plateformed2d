@@ -3,7 +3,6 @@ package ch.hearc.p2.game.controller;
 import java.awt.AWTException;
 import java.awt.Robot;
 
-import org.lwjgl.input.Controller;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -15,9 +14,6 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
     private long time1;
     private long time2;
-    private Controller controller;
-    private int posX = 0;
-    private int posY = 0;
     private Robot robot;
 
     public MouseAndKeyBoardPlayerController(Player player, Level level) {
@@ -27,11 +23,11 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	try {
 	    robot = new Robot();
 	} catch (AWTException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
     }
 
+    @Override
     public void handleInput(Input i, int delta) {
 	// handle any input from the keyboard
 	time1 = System.currentTimeMillis();
@@ -42,7 +38,6 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 	    handleMouseInput(i, delta);
 	    handleControllerInput(i, delta);
 	} catch (SlickException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
 
