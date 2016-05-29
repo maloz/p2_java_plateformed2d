@@ -9,6 +9,10 @@ public class ProjectilePlayer extends Projectile {
 
     protected Image bullet;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public ProjectilePlayer(float x, float y, float x_velocity, float y_velocity) throws SlickException {
 	super(x, y);
 	this.x_velocity = x_velocity;
@@ -21,6 +25,11 @@ public class ProjectilePlayer extends Projectile {
 
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void render(float offset_x, float offset_y) {
 	bullet.draw(x - 2 - offset_x, y - 2 - offset_y);
     }

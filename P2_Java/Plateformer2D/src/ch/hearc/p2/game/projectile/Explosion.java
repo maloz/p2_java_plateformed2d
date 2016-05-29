@@ -11,6 +11,10 @@ public class Explosion extends Projectile {
     protected long time2;
     protected Animation animation;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public Explosion(float x, float y) throws SlickException {
 	super(x, y);
 	this.x_velocity = 0;
@@ -43,16 +47,29 @@ public class Explosion extends Projectile {
 		true);
 
 	boundingShape = new AABoundingRect(x, y, 200, 200);
-	maximumFallSpeed = (float) 0;
+	maximumFallSpeed = 0;
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void render(float offset_x, float offset_y) {
 	animation.draw(x - offset_x, y - offset_y);
     }
 
+    /*------------------------------*\
+    |*		Set		    *|
+    \*------------------------------*/
+
     public void setTime2(long time) {
 	time2 = time;
     }
+
+    /*------------------------------*\
+    |*		Get		    *|
+    \*------------------------------*/
 
     public long getTime1() {
 	return time1;

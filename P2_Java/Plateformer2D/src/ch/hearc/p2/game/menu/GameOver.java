@@ -27,6 +27,10 @@ public class GameOver extends BasicGameState {
     private Input i;
     private boolean in;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 	this.game = game;
@@ -42,6 +46,10 @@ public class GameOver extends BasicGameState {
 	rollover = new Sound("ressources/audio/sound/rollover.ogg");
 
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {

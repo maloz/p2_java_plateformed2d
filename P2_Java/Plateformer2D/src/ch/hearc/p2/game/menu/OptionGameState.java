@@ -37,9 +37,17 @@ public class OptionGameState extends BasicGameState {
     private Input i;
     private boolean in;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public OptionGameState() {
 	super();
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
@@ -74,32 +82,6 @@ public class OptionGameState extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 	container.setMouseCursor(cursor, 0, 0);
 	placeSelectedIcon();
-    }
-
-    private void placeSelectedIcon() {
-	switch (WindowGame.WINDOW_WIDTH) {
-	case 1920:
-	    y1Selected = 25;
-	    break;
-	case 1280:
-	    y1Selected = 125;
-	    break;
-	case 1024:
-	    y1Selected = 225;
-	    break;
-	case 800:
-	    y1Selected = 325;
-	    break;
-
-	default:
-	    y1Selected = 25;
-	    break;
-	}
-
-	if (WindowGame.FULLSCREEN)
-	    y2Selected = 425;
-	else
-	    y2Selected = 525;
     }
 
     @Override
@@ -248,6 +230,45 @@ public class OptionGameState extends BasicGameState {
 	}
     }
 
+    /*------------------------------*\
+    |*		Get		    *|
+    \*------------------------------*/
+
+    @Override
+    public int getID() {
+	return ID;
+    }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Private		   	*|
+    \*------------------------------------------------------------------*/
+
+    private void placeSelectedIcon() {
+	switch (WindowGame.WINDOW_WIDTH) {
+	case 1920:
+	    y1Selected = 25;
+	    break;
+	case 1280:
+	    y1Selected = 125;
+	    break;
+	case 1024:
+	    y1Selected = 225;
+	    break;
+	case 800:
+	    y1Selected = 325;
+	    break;
+
+	default:
+	    y1Selected = 25;
+	    break;
+	}
+
+	if (WindowGame.FULLSCREEN)
+	    y2Selected = 425;
+	else
+	    y2Selected = 525;
+    }
+
     private void changeADisplay(Boolean b) {
 	WindowGame.PREFERENCES.putBoolean("fullscreen", b);
     }
@@ -255,10 +276,5 @@ public class OptionGameState extends BasicGameState {
     private void changeResolution(int w, int h) {
 	WindowGame.PREFERENCES.putInt("width", w);
 	WindowGame.PREFERENCES.putInt("height", h);
-    }
-
-    @Override
-    public int getID() {
-	return ID;
     }
 }

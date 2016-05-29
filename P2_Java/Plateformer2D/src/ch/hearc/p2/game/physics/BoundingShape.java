@@ -8,28 +8,39 @@ import ch.hearc.p2.game.level.tile.Tile;
 
 public abstract class BoundingShape {
 
-	public boolean checkCollision(BoundingShape bv, TiledMap map) {
-		if (bv instanceof AABoundingRect)
-			return checkCollision((AABoundingRect) bv, map);
-		return false;
-	}
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
 
-	public boolean checkCollision(BoundingShape bv) {
-		if (bv instanceof AABoundingRect)
-			return checkCollision((AABoundingRect) bv);
-		return false;
-	}
+    public BoundingShape() {
+    }
 
-	public abstract boolean checkCollision(AABoundingRect box);
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
 
-	public abstract boolean checkCollision(AABoundingRect box, TiledMap map);
+    public boolean checkCollision(BoundingShape bv, TiledMap map) {
+	if (bv instanceof AABoundingRect)
+	    return checkCollision((AABoundingRect) bv, map);
+	return false;
+    }
 
-	public abstract void updatePosition(float newX, float newY);
+    public boolean checkCollision(BoundingShape bv) {
+	if (bv instanceof AABoundingRect)
+	    return checkCollision((AABoundingRect) bv);
+	return false;
+    }
 
-	public abstract void movePosition(float x, float y);
+    public abstract boolean checkCollision(AABoundingRect box);
 
-	public abstract ArrayList<Tile> getTilesOccupying(Tile[][] tiles);
+    public abstract boolean checkCollision(AABoundingRect box, TiledMap map);
 
-	public abstract ArrayList<Tile> getGroundTiles(Tile[][] tiles);
+    public abstract void updatePosition(float newX, float newY);
+
+    public abstract void movePosition(float x, float y);
+
+    public abstract ArrayList<Tile> getTilesOccupying(Tile[][] tiles);
+
+    public abstract ArrayList<Tile> getGroundTiles(Tile[][] tiles);
 
 }

@@ -28,16 +28,54 @@ public class Physics {
     private TiledMap map;
     private boolean isFinished = false;
     private boolean needShake = false;
+    private ArrayList<LevelObject> removeQueue;
+    private ArrayList<LevelObject> addQueue;
+
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
 
     public Physics(String startinglevel) throws SlickException {
 	this.level = startinglevel;
 	map = new TiledMap("ressources/level/" + level + ".tmx");
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
+
     public void handlePhysics(Level level, int delta) throws SlickException {
 	handleCharacters(level, delta);
 	handleLevelObjects(level, delta);
     }
+
+    /*------------------------------*\
+    |*		Is		    *|
+    \*------------------------------*/
+
+    public boolean isOver() {
+	return isFinished;
+    }
+
+    public boolean needShake() {
+	return needShake;
+    }
+
+    /*------------------------------*\
+    |*		Set	  	    *|
+    \*------------------------------*/
+
+    public void setOver(boolean isOver) {
+	isFinished = isOver;
+    }
+
+    public void setShake(boolean shake) {
+	needShake = shake;
+    }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Private		    	*|
+    \*------------------------------------------------------------------*/
 
     private void handleCharacters(Level level, int delta) throws SlickException {
 	for (Character c : level.getCharacters()) {
@@ -67,7 +105,7 @@ public class Physics {
 		    if (obj instanceof Objective) {
 			if (obj.getBoundingShape().checkCollision(c.getBoundingShape())) {
 			    if (obj instanceof Coin)
-				((Player) c).addPoint(((Coin) obj).getValue());  
+				((Player) c).addPoint(((Coin) obj).getValue());
 			    if (obj instanceof Key)
 				((Player) c).setKey(true);
 			    removeQueueC.add(obj);
@@ -112,9 +150,6 @@ public class Physics {
 	}
 
     }
-
-    private ArrayList<LevelObject> removeQueue;
-    private ArrayList<LevelObject> addQueue;
 
     private void handleLevelObjects(Level level, int delta) throws SlickException {
 	removeQueue = new ArrayList<LevelObject>();
@@ -341,21 +376,4 @@ public class Physics {
 
 	return false;
     }
-
-    public boolean isOver() {
-	return isFinished;
-    }
-
-    public void setOver(boolean isOver) {
-	isFinished = isOver;
-    }
-
-    public boolean needShake() {
-	return needShake;
-    }
-
-    public void setShake(boolean shake) {
-	needShake = shake;
-    }
-
 }
