@@ -32,6 +32,18 @@ public class LevelScreenGameState extends BasicGameState {
 
     private StateBasedGame game;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
+    public LevelScreenGameState() {
+	super();
+    }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
+
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 	this.game = game;
@@ -135,6 +147,10 @@ public class LevelScreenGameState extends BasicGameState {
 	    game.enterState(0);
 	}
     }
+
+    /*------------------------------*\
+    |*		Get		    *|
+    \*------------------------------*/
 
     @Override
     public int getID() {

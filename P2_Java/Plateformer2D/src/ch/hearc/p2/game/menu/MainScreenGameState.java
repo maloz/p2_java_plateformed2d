@@ -32,9 +32,17 @@ public class MainScreenGameState extends BasicGameState {
     private Input i;
     private boolean in;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public MainScreenGameState() {
 	super();
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
@@ -164,6 +172,10 @@ public class MainScreenGameState extends BasicGameState {
 	    System.exit(0);
 	}
     }
+
+    /*------------------------------*\
+    |*		Get	            *|
+    \*------------------------------*/
 
     /**
      * L'identifiant permet d'identifier les différentes boucles. Pour passer de

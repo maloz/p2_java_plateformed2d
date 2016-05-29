@@ -12,9 +12,13 @@ public class Projectile extends LevelObject {
     protected Animation animation;
     protected int damage;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public Projectile(float x, float y) throws SlickException {
 	super(x, y);
-	x_velocity = (float) 1;
+	x_velocity = 1;
 	y_velocity = 0;
 	damage = 1;
 	animation = new Animation(new Image[] { new Image("ressources/tiles/item/laserRed02.png") }, 125);
@@ -23,13 +27,26 @@ public class Projectile extends LevelObject {
 
     }
 
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void render(float offset_x, float offset_y) {
 	animation.draw(x - 2 - offset_x, y - 2 - offset_y);
     }
 
+    /*------------------------------*\
+    |*		Set		    *|
+    \*------------------------------*/
+
     public void setDamage(int d) {
 	damage = d;
     }
+
+    /*------------------------------*\
+    |*		Get		    *|
+    \*------------------------------*/
 
     public int getDamage() {
 	return damage;

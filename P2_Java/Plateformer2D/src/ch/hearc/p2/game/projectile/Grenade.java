@@ -9,6 +9,10 @@ public class Grenade extends Projectile {
 
     protected Image grenade;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public Grenade(float x, float y, float x_velocity, float y_velocity) throws SlickException {
 	super(x, y);
 	this.x_velocity = x_velocity;
@@ -16,11 +20,15 @@ public class Grenade extends Projectile {
 	grenade = new Image("ressources/tiles/item/bomb.png");
 	grenade = grenade.getScaledCopy(0.5f);
 	boundingShape = new AABoundingRect(x, y, 15f, 15f);
-	maximumFallSpeed = (float) 1;
+	maximumFallSpeed = 1;
     }
 
-    
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
+
+    @Override
     public void render(float offset_x, float offset_y) {
-   	grenade.draw(x - offset_x, y - offset_y);
-       }
+	grenade.draw(x - offset_x, y - offset_y);
+    }
 }

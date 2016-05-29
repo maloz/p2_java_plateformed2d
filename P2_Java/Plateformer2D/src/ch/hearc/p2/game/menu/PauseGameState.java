@@ -28,9 +28,17 @@ public class PauseGameState extends BasicGameState {
     private Input i;
     private boolean in;
 
+    /*------------------------------------------------------------------*\
+    |*				Constructeurs			    	*|
+    \*------------------------------------------------------------------*/
+
     public PauseGameState() {
 	super();
     }
+
+    /*------------------------------------------------------------------*\
+    |*				Methodes Public		 	    	*|
+    \*------------------------------------------------------------------*/
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
@@ -116,10 +124,18 @@ public class PauseGameState extends BasicGameState {
 	}
     }
 
+    /*------------------------------*\
+    |*		Get		    *|
+    \*------------------------------*/
+
     @Override
     public int getID() {
 	return ID;
     }
+
+    /*------------------------------*\
+    |*		Set		    *|
+    \*------------------------------*/
 
     public static void setID_Last(int id) {
 	ID_Last = id;
