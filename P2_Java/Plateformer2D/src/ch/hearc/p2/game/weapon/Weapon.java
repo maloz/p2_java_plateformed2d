@@ -16,13 +16,18 @@ import ch.hearc.p2.game.projectile.ProjectilePlayer;
 public class Weapon extends LevelObject {
 
     protected List<LevelObject> toAddList = new LinkedList<LevelObject>();
+
     protected Image arme;
+
     protected int munition;
+    protected int cadence;
+
     protected Facing way;
     protected Facing playerFacing;
+
     protected Sound tir;
+
     protected Random random;
-    protected int cadence;
 
     /*------------------------------------------------------------------*\
     |*				Constructeurs			  	*|

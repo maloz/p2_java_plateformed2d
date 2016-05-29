@@ -37,20 +37,27 @@ public abstract class LevelState extends BasicGameState {
     protected float shakeY = 0f;
 
     protected Level level;
+
     protected String startinglevel;
+
     protected Player player;
     protected PlayerController playerController;
+
     protected Physics physics;
+
     protected StateBasedGame sbg;
+
     protected Hud hud;
+
     protected Music musiclvl;
+
     protected boolean isPause;
+
     protected Image cursor;
 
     protected ArrayList<Ennemie> ennemies;
     protected ArrayList<Objective> objectives;
 
-    protected int shakeTime = Level.SHAKE_DELAY;
     protected Weapon weapon;
 
     protected long time1;
@@ -58,6 +65,7 @@ public abstract class LevelState extends BasicGameState {
 
     protected int ID;
     protected int nextLevel;
+    protected int shakeTime = Level.SHAKE_DELAY;
 
     /*------------------------------------------------------------------*\
     |*				Constructeurs			  	*|
@@ -174,7 +182,7 @@ public abstract class LevelState extends BasicGameState {
 	    if (e.getLife() <= 0) {
 		{
 		    e.setMaximumFallSpeed(0.8f);
-		    e.dead(true);
+		    e.setDead(true);
 		    e.setXVelocity(0);
 		}
 	    }

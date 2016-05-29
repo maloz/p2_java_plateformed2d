@@ -10,6 +10,7 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 public class MuzzleFlash extends LevelObject {
 
     private Animation animation;
+    
     protected long time1;
     protected long time2;
 

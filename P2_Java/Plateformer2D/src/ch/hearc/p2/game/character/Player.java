@@ -20,21 +20,25 @@ public class Player extends Character {
 
     private List<LevelObject> toAddList = new LinkedList<LevelObject>();
     private List<Weapon> weapons;
-    private int point;
+    private HashMap<Facing, Image> jumpSprite;
+
     private boolean key;
+
     private Sound jump;
     private Sound coin;
-    private HashMap<Facing, Image> jumpSprite;
+
     private long damage1;
     private long damage2;
+
     private int weaponIndex;
     private int height;
     private int width;
+    private int point;
 
     /*------------------------------------------------------------------*\
     |*				Constructeurs			  	*|
     \*------------------------------------------------------------------*/
-    
+
     public Player(float x, float y) throws SlickException {
 	super(x, y);
 	weapons = new LinkedList<Weapon>();
@@ -73,7 +77,7 @@ public class Player extends Character {
 	jump = new Sound("ressources/audio/sound/jump.ogg");
 	coin = new Sound("ressources/audio/sound/coin.ogg");
     }
-    
+
     /*------------------------------------------------------------------*\
     |*				Methodes Public		 	  	*|
     \*------------------------------------------------------------------*/
@@ -152,11 +156,11 @@ public class Player extends Character {
 	    damage2 = System.currentTimeMillis();
 	}
     }
-    
+
     /*-----------------------*\
     |*		Set	     *|
     \*-----------------------*/
-    
+
     public void setKey(boolean key) {
 	this.key = key;
     }
@@ -168,7 +172,7 @@ public class Player extends Character {
     public void setWeapon(int index) {
 	this.weaponIndex = index;
     }
-    
+
     public void setPoint(int i) {
 	point = i;
     }
@@ -176,7 +180,7 @@ public class Player extends Character {
     /*-----------------------*\
     |*		Get	     *|
     \*-----------------------*/
-    
+
     public boolean hasKey() {
 	return key;
     }
@@ -184,7 +188,6 @@ public class Player extends Character {
     public int getWeaponIndex() {
 	return weaponIndex;
     }
-    
 
     public Weapon getWeapon() {
 	return weapons.get(weaponIndex);
@@ -193,6 +196,5 @@ public class Player extends Character {
     public int getPoint() {
 	return point;
     }
-
 
 }

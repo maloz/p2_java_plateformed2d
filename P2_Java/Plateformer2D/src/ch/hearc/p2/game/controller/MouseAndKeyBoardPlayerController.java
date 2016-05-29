@@ -14,6 +14,7 @@ public class MouseAndKeyBoardPlayerController extends PlayerController {
 
     private long time1;
     private long time2;
+    
     private Robot robot;
 
     /*------------------------------------------------------------------*\

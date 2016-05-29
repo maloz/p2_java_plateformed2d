@@ -16,7 +16,6 @@ public class Bat extends Ennemie {
 
 	super(x, y);
 	dead = false;
-	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	sprites = setSprite(new Image("ressources/character/ennemi/bat.png"),
 		sprites);

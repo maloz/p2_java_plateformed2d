@@ -6,6 +6,7 @@ public class Tile {
 
     protected int x;
     protected int y;
+
     protected String type;
 
     protected BoundingShape boundingShape;

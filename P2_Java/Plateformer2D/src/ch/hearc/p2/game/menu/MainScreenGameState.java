@@ -17,19 +17,24 @@ import ch.hearc.p2.game.WindowGame;
 public class MainScreenGameState extends BasicGameState {
 
     public static final int ID = 0;
+    
     private Image background;
     private Image jouer;
     private Image niveaux;
     private Image options;
     private Image quitter;
     private Image cursor;
+    
     private StateBasedGame game;
+    
     private Music sound;
 
     // Pour les clicks
     private Sound click;
     private Sound rollover;
+    
     private Input i;
+    
     private boolean in;
 
     /*------------------------------------------------------------------*\

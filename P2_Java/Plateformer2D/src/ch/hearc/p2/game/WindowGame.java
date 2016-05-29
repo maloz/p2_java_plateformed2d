@@ -34,7 +34,6 @@ public class WindowGame extends StateBasedGame {
     public static int WINDOW_HEIGHT;
     public static boolean FULLSCREEN;
 
-    // 1280x720 is our base, we use 70x70
     public static float SCALE_W;
     public static float SCALE_H;
 

@@ -10,6 +10,7 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 public class Projectile extends LevelObject {
 
     protected Animation animation;
+    
     protected int damage;
 
     /*------------------------------------------------------------------*\

@@ -15,16 +15,21 @@ import ch.hearc.p2.game.WindowGame;
 public class GameOver extends BasicGameState {
 
     public static final int ID = 40;
+
     private Image background;
     private Image quitter;
+
     private StateBasedGame game;
+
     private Image cursor;
+
     private Music deadMusic;
 
-    // Pour les clicks
     private Sound click;
     private Sound rollover;
+
     private Input i;
+
     private boolean in;
 
     /*------------------------------------------------------------------*\

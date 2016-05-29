@@ -24,10 +24,14 @@ import ch.hearc.p2.game.weapon.MuzzleFlash;
 public class Physics {
 
     private final float gravity = 0.0023f;
+
     private String level;
+
     private TiledMap map;
+
     private boolean isFinished = false;
     private boolean needShake = false;
+
     private ArrayList<LevelObject> removeQueue;
     private ArrayList<LevelObject> addQueue;
 

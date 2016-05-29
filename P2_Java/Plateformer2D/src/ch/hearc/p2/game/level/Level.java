@@ -21,13 +21,12 @@ public class Level {
     private TiledMap map;
     private Player player;
 
-    // a list of all characters present somewhere on this map
     private ArrayList<Character> characters;
+    private ArrayList<LevelObject> levelObjects;
 
     private Tile[][] tiles;
     private Tile[][] limite;
     private Tile[][] end;
-    private ArrayList<LevelObject> levelObjects;
 
     private Image background;
 

@@ -14,6 +14,7 @@ import ch.hearc.p2.game.WindowGame;
 public class LevelScreenGameState extends BasicGameState {
 
     public static final int ID = 11;
+
     private Image background;
     private Image niveau1;
     private Image niveau2;
@@ -24,10 +25,11 @@ public class LevelScreenGameState extends BasicGameState {
     private Image retour;
     private Image cursor;
 
-    // Pour les clicks
     private Sound click;
     private Sound rollover;
+
     private Input i;
+
     private boolean in;
 
     private StateBasedGame game;

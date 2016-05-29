@@ -11,54 +11,54 @@ import ch.hearc.p2.game.level.LevelObject;
 
 public abstract class Character extends LevelObject {
 
-    protected HashMap<Facing, Image> sprites;
     protected int life;
-    protected HashMap<Facing, Animation> movingAnimations;
+
     protected Facing facing;
+
+    protected Image deadPicture;
+
     protected boolean moving = false;
+    protected boolean dead;
+    protected boolean hited;
+
+    protected HashMap<Facing, Image> sprites;
+    protected HashMap<Facing, Animation> movingAnimations;
+    protected HashMap<Facing, Image> hitedSprites;
+    protected HashMap<Facing, Animation> hitedMovingAnimations;
+
     protected float accelerationSpeed = 1;
     protected float decelerationSpeed = 1;
     protected float maximumSpeed = 1;
-    protected boolean dead;
-    protected Image deadPicture;
-    protected boolean hited;
-    protected HashMap<Facing, Image> hitedSprites; 
-    protected HashMap<Facing, Animation> hitedMovingAnimations;
+
     protected long time1;
     protected long time2;
-    
+
     /*------------------------------------------------------------------*\
     |*				Constructeurs			  	*|
     \*------------------------------------------------------------------*/
-    
+
     public Character(float x, float y) throws SlickException {
 	super(x, y);
 	time1 = System.currentTimeMillis();
 	time2 = System.currentTimeMillis();
 	dead = false;
 	hited = false;
-	// in case we forget to set the image, we don't want the game to crash,
-	// but it still has to be obvious that something was forgotten
-	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"), sprites); //image par défaut
-	deadPicture = new Image("ressources/character/ennemi/bee.png"); //image par défaut
-	
-	hitedSprites = setSprite(new Image("ressources/character/ennemi/bee_hit.png"), hitedSprites); //image par défaut
-	//hitedMovingAnimations = new Image("ressources/bee_dead.png");
-	
-	
-	// default direction will be right
+
+	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"), sprites);
+	deadPicture = new Image("ressources/character/ennemi/bee.png");
+	hitedSprites = setSprite(new Image("ressources/character/ennemi/bee_hit.png"), hitedSprites);
+
 	facing = Facing.RIGHT;
     }
-    
+
     /*------------------------------------------------------------------*\
     |*				Methodes Protected		    	*|
     \*------------------------------------------------------------------*/
 
-
-    protected HashMap<Facing, Animation> setMovingAnimation(Image[] images, int frameDuration, HashMap<Facing, Animation> movingAnim) {
+    protected HashMap<Facing, Animation> setMovingAnimation(Image[] images, int frameDuration,
+	    HashMap<Facing, Animation> movingAnim) {
 	movingAnim = new HashMap<Facing, Animation>();
 
-	// we can just put the right facing in with the default images
 	movingAnim.put(Facing.RIGHT, new Animation(images, frameDuration));
 
 	Animation facingLeftAnimation = new Animation();
@@ -76,13 +76,12 @@ public abstract class Character extends LevelObject {
 	sprite.put(Facing.LEFT, i.getFlippedCopy(true, false));
 	return sprite;
     }
-    
+
     /*------------------------------------------------------------------*\
     |*				Methodes Public		 	  	*|
     \*------------------------------------------------------------------*/
 
     public void damage(int value) {
-	
 	this.life -= value;
     }
 
@@ -98,7 +97,7 @@ public abstract class Character extends LevelObject {
 		x_velocity = 0;
 	}
     }
-    
+
     public void jump() {
 	if (onGround)
 	    y_velocity = -1f;
@@ -132,54 +131,52 @@ public abstract class Character extends LevelObject {
     public void render(int offset_x, int offset_y) {
 
 	time1 = System.currentTimeMillis();
-	
+
 	if (dead == false && hited == false) {
 	    if (movingAnimations != null && moving) {
 		movingAnimations.get(facing).draw(x - offset_x, y - offset_y);
 	    } else {
 		sprites.get(facing).draw(x - offset_x, y - offset_y);
 	    }
-	} else if(hited == true && dead == false)
-	{
-	    
+	} else if (hited == true && dead == false) {
+
 	    if (hitedMovingAnimations != null && moving) {
 		hitedMovingAnimations.get(facing).draw(x - offset_x, y - offset_y);
 	    } else {
 		hitedSprites.get(facing).draw(x - offset_x, y - offset_y);
-	    }   
-	    if(time1 - time2 > 50)
-		    hited = false;
-	}
-	else
-	    deadPicture.draw(x -offset_x, y - offset_y);
-	
+	    }
+	    if (time1 - time2 > 50)
+		hited = false;
+	} else
+	    deadPicture.draw(x - offset_x, y - offset_y);
+
     }
-    public void hit()
-    {
+
+    public void hit() {
 	time2 = System.currentTimeMillis();
 	hited = true;
     }
-    
+
     /*------------------------------*\
     |*		    Set	   	    *|
     \*------------------------------*/
-    
+
     public void setMoving(boolean b) {
 	moving = b;
     }
-    
+
     public void setLife(int life) {
 	this.life = life;
     }
-    
+
     /*------------------------------*\
     |*		    Get	   	    *|
     \*------------------------------*/
-    
+
     public int getLife() {
 	return life;
     }
-    
+
     /*------------------------------*\
     |*		    Is	   	    *|
     \*------------------------------*/
@@ -187,6 +184,5 @@ public abstract class Character extends LevelObject {
     public boolean isMoving() {
 	return moving;
     }
-
 
 }

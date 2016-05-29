@@ -5,12 +5,12 @@ import ch.hearc.p2.game.physics.BoundingShape;
 
 public abstract class LevelObject {
 
-    protected float x;
-    protected float y;
     protected BoundingShape boundingShape;
 
     protected float x_velocity = 0;
     protected float y_velocity = 0;
+    protected float x;
+    protected float y;
     protected float maximumFallSpeed = 1;
 
     protected boolean onGround = true;

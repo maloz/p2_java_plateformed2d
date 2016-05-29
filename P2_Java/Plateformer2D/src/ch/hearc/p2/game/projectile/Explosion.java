@@ -7,8 +7,10 @@ import org.newdawn.slick.SlickException;
 import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Explosion extends Projectile {
+    
     protected long time1;
     protected long time2;
+    
     protected Animation animation;
 
     /*------------------------------------------------------------------*\

@@ -16,7 +16,6 @@ public class Abeille extends Ennemie {
 
 	super(x, y);
 	dead = false;
-	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	sprites = setSprite(new Image("ressources/character/ennemi/bee.png"), sprites);
 	movingAnimations = setMovingAnimation(new Image[] { new Image("ressources/character/ennemi/bee.png"),

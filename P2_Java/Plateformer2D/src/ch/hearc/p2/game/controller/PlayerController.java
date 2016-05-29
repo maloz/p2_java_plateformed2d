@@ -8,6 +8,7 @@ import org.newdawn.slick.Input;
 public abstract class PlayerController {
 
         protected Player player;
+        
         protected Level level;
         
         /*------------------------------------------------------------------*\

@@ -16,16 +16,19 @@ public class PauseGameState extends BasicGameState {
 
     public static final int ID = 50;
     public static int ID_Last;
+
     private Image background;
     private Image quitter;
     private Image reprendre;
-    private StateBasedGame game;
     private Image cursor;
 
-    // Pour les clicks
+    private StateBasedGame game;
+
     private Sound click;
     private Sound rollover;
+
     private Input i;
+
     private boolean in;
 
     /*------------------------------------------------------------------*\

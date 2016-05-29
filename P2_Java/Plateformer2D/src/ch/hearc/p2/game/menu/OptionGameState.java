@@ -24,18 +24,20 @@ public class OptionGameState extends BasicGameState {
     private Image retour;
     private Image selected;
     private Image background;
-    private StateBasedGame game;
     private Image cursor;
-    private boolean isResoltionChanged;
+
+    private StateBasedGame game;
 
     private int y1Selected;
     private int y2Selected;
 
-    // Pour les clicks
     private Sound click;
     private Sound rollover;
+
     private Input i;
+
     private boolean in;
+    private boolean isResoltionChanged;
 
     /*------------------------------------------------------------------*\
     |*				Constructeurs			    	*|

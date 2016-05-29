@@ -16,7 +16,6 @@ public class Ghost extends Ennemie {
 
 	super(x, y);
 	dead = false;
-	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	sprites = setSprite(new Image("ressources/character/ennemi/ghost_normal.png"), sprites);
 	movingAnimations = setMovingAnimation(new Image[] { new Image("ressources/character/ennemi/ghost_normal.png"),

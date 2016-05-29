@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;ch.hearc.p2.game.character.Ennemie.dead(...)&apos; to &apos;setDead&apos;&#x0D;&#x0A;- Original project: &apos;Plateformer2D&apos;&#x0D;&#x0A;- Original element: &apos;ch.hearc.p2.game.character.Ennemie.dead(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;ch.hearc.p2.game.character.Ennemie.setDead(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;dead&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;ch.hearc.p2.game.character{Ennemie.java[Ennemie~dead~QBoolean;" name="setDead" references="true" stamp="1464543433973" version="1.0"/>
+</session>

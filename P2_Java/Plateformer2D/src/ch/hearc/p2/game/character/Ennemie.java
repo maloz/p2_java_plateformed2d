@@ -23,7 +23,6 @@ public class Ennemie extends Character {
 	super(x, y);
 	rand = new Random();
 	toAddList = new LinkedList<LevelObject>();
-	// setSprite(new Image("ressources/sprites/p2_walk01.png"));
 
 	boundingShape = new AABoundingRect(x, y, 45, 45);
 
@@ -67,7 +66,7 @@ public class Ennemie extends Character {
 	this.maximumFallSpeed = maximumFallSpeed;
     }
 
-    public void dead(Boolean b) {
+    public void setDead(Boolean b) {
 	this.dead = b;
     }
 
