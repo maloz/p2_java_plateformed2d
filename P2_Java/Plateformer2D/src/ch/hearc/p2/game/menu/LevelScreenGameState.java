@@ -1,11 +1,13 @@
 package ch.hearc.p2.game.menu;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.gui.AbstractComponent;
+import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -15,24 +17,18 @@ public class LevelScreenGameState extends BasicGameState {
 
     public static final int ID = 11;
 
+    private SlickButton niveau1;
+    private SlickButton niveau2;
+    private SlickButton niveau3;
+    private SlickButton niveau4;
+    private SlickButton niveau5;
+    private SlickButton niveau6;
+    private SlickButton retour;
+
     private Image background;
-    private Image niveau1;
-    private Image niveau2;
-    private Image niveau3;
-    private Image niveau4;
-    private Image niveau5;
-    private Image niveau6;
-    private Image retour;
     private Image cursor;
 
-    private Sound click;
     private Sound rollover;
-
-    private Input i;
-
-    private boolean in;
-
-    private StateBasedGame game;
 
     /*------------------------------------------------------------------*\
     |*				Constructeurs			    	*|
@@ -48,22 +44,122 @@ public class LevelScreenGameState extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-	this.game = game;
-	this.background = new Image("ressources/background/background.jpg");
-	retour = new Image("ressources/menu/retour.jpg");
-	niveau1 = new Image("ressources/menu/niveaux/niveau1.jpg");
-	niveau2 = new Image("ressources/menu/niveaux/niveau2.jpg");
-	niveau3 = new Image("ressources/menu/niveaux/niveau3.jpg");
-	niveau4 = new Image("ressources/menu/niveaux/niveau4.jpg");
-	niveau5 = new Image("ressources/menu/niveaux/niveau5.jpg");
-	niveau6 = new Image("ressources/menu/niveaux/niveau6.jpg");
+	// Background image
+	background = new Image("ressources/background/background.jpg");
+
+	// Cursor image
 	cursor = new Image("ressources/cursor/hand_cursor.png");
 
-	// Pour les clics
-	i = container.getInput();
-	in = false;
-	click = new Sound("ressources/audio/sound/click.ogg");
+	// Sound
 	rollover = new Sound("ressources/audio/sound/rollover.ogg");
+
+	// Color for button when mous is over
+	Color color = new Color(255, 157, 67, 180);
+
+	// Button level "1"
+	Image niveau1Image = new Image("ressources/menu/niveaux/niveau1.jpg");
+
+	niveau1 = new SlickButton(container, niveau1Image, 450, 300, niveau1Image.getWidth(), niveau1Image.getHeight(),
+		new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(101);
+		    }
+		});
+
+	niveau1.setMouseOverColor(color);
+	niveau1.setMouseDownSound(rollover);
+
+	// Button level "2"
+	Image niveau2Image = new Image("ressources/menu/niveaux/niveau2.jpg");
+
+	niveau2 = new SlickButton(container, niveau2Image, 650, 300, niveau2Image.getWidth(), niveau2Image.getHeight(),
+		new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(102);
+		    }
+		});
+
+	niveau2.setMouseOverColor(color);
+	niveau2.setMouseDownSound(rollover);
+
+	// Button level "3"
+	Image niveau3Image = new Image("ressources/menu/niveaux/niveau3.jpg");
+
+	niveau3 = new SlickButton(container, niveau3Image, 850, 300, niveau3Image.getWidth(), niveau3Image.getHeight(),
+		new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(103);
+		    }
+		});
+
+	niveau3.setMouseOverColor(color);
+	niveau3.setMouseDownSound(rollover);
+
+	// Button level "4"
+	Image niveau4Image = new Image("ressources/menu/niveaux/niveau4.jpg");
+
+	niveau4 = new SlickButton(container, niveau4Image, 1050, 300, niveau4Image.getWidth(), niveau4Image.getHeight(),
+		new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(104);
+		    }
+		});
+
+	niveau4.setMouseOverColor(color);
+	niveau4.setMouseDownSound(rollover);
+
+	// Button level "5"
+	Image niveau5Image = new Image("ressources/menu/niveaux/niveau5.jpg");
+
+	niveau5 = new SlickButton(container, niveau5Image, 1250, 300, niveau5Image.getWidth(), niveau5Image.getHeight(),
+		new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(105);
+		    }
+		});
+
+	niveau5.setMouseOverColor(color);
+	niveau5.setMouseDownSound(rollover);
+
+	// Button level "6"
+	Image niveau6Image = new Image("ressources/menu/niveaux/niveau6.jpg");
+
+	niveau6 = new SlickButton(container, niveau6Image, 1450, 300, niveau6Image.getWidth(), niveau6Image.getHeight(),
+		new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(106);
+		    }
+		});
+
+	niveau6.setMouseOverColor(color);
+	niveau6.setMouseDownSound(rollover);
+
+	// Button "Retour"
+	Image retourImage = new Image("ressources/menu/retour.jpg");
+
+	retour = new SlickButton(container, retourImage, WindowGame.BASE_WINDOW_WIDTH / 2 - retourImage.getWidth() / 2,
+		550, retourImage.getWidth(), retourImage.getHeight(), new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(0);
+		    }
+		});
+
+	retour.setMouseOverColor(color);
+	retour.setMouseDownSound(rollover);
     }
 
     @Override
@@ -73,41 +169,7 @@ public class LevelScreenGameState extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-
-	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
-	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
-
-	if (x > 550 && x < 550 + niveau1.getWidth() && y > 300 && y < 300 + niveau1.getHeight()) { // Lvl1
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (x > 750 && x < 750 + niveau2.getWidth() && y > 300 && y < 300 + niveau2.getHeight()) { // Lvl2
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (x > 950 && x < 950 + niveau3.getWidth() && y > 300 && y < 300 + niveau3.getHeight()) { // Lvl3
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (x > 1150 && x < 1150 + niveau4.getWidth() && y > 300 && y < 300 + niveau4.getHeight()) { // Lvl4
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (x > 1350 && x < 1350 + niveau5.getWidth() && y > 300 && y < 300 + niveau5.getHeight()) { // Lvl5
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (x > 550 && x < 550 + niveau6.getWidth() && y > 480 && y < 300 + niveau6.getHeight()) { // Lvl6
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else if (x > 550 && x < 550 + retour.getWidth() && y > 750 && y < 750 + retour.getHeight()) { // RetourAuHome
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else {
-	    in = false;
-	}
+	// empty
     }
 
     @Override
@@ -116,38 +178,14 @@ public class LevelScreenGameState extends BasicGameState {
 
 	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
 
-	g.drawImage(niveau1, 550, 300);
-	g.drawImage(niveau2, 750, 300);
-	g.drawImage(niveau3, 950, 300);
-	g.drawImage(niveau4, 1150, 300);
-	g.drawImage(niveau5, 1350, 300);
-	g.drawImage(niveau6, 550, 480);
+	niveau1.render(container, g);
+	niveau2.render(container, g);
+	niveau3.render(container, g);
+	niveau4.render(container, g);
+	niveau5.render(container, g);
+	niveau6.render(container, g);
 
-	g.drawImage(retour, 550, 750);
-    }
-
-    @Override
-    public void mouseClicked(int button, int x, int y, int clickCount) {
-	click.play();
-
-	x *= 1 / WindowGame.SCALE_W;
-	y *= 1 / WindowGame.SCALE_H;
-
-	if (x > 550 && x < 550 + niveau1.getWidth() && y > 300 && y < 300 + niveau1.getHeight()) { // Lvl1
-	    game.enterState(101);
-	} else if (x > 750 && x < 750 + niveau2.getWidth() && y > 300 && y < 300 + niveau2.getHeight()) { // Lvl2
-	    game.enterState(102);
-	} else if (x > 950 && x < 950 + niveau3.getWidth() && y > 300 && y < 300 + niveau3.getHeight()) { // Lvl3
-	    game.enterState(103);
-	} else if (x > 1150 && x < 1150 + niveau4.getWidth() && y > 300 && y < 300 + niveau4.getHeight()) { // Lvl4
-	    game.enterState(104);
-	} else if (x > 1350 && x < 1350 + niveau5.getWidth() && y > 300 && y < 300 + niveau5.getHeight()) { // Lvl5
-	    game.enterState(105);
-	} else if (x > 550 && x < 550 + niveau6.getWidth() && y > 480 && y < 300 + niveau6.getHeight()) { // Lvl6
-	    game.enterState(106);
-	} else if (x > 550 && x < 550 + retour.getWidth() && y > 750 && y < 750 + retour.getHeight()) { // RetourAuHome
-	    game.enterState(0);
-	}
+	retour.render(container, g);
     }
 
     /*------------------------------*\

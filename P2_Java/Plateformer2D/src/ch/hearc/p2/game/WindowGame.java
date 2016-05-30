@@ -74,11 +74,11 @@ public class WindowGame extends StateBasedGame {
     \*------------------------------------------------------------------*/
 
     public static void initStaticValues() {
-	WINDOW_WIDTH = PREFERENCES.getInt("width", 1920);
-	WINDOW_HEIGHT = PREFERENCES.getInt("height", 1080);
+	WINDOW_WIDTH = PREFERENCES.getInt("width", 800);
+	WINDOW_HEIGHT = PREFERENCES.getInt("height", 600);
 	SCALE_W = 1 / ((CAMERA_TILES_W * TILE_SIZE) / WINDOW_WIDTH);
 	SCALE_H = 1 / ((CAMERA_TILES_H * TILE_SIZE) / WINDOW_HEIGHT);
-	FULLSCREEN = PREFERENCES.getBoolean("fullscreen", true);
+	FULLSCREEN = PREFERENCES.getBoolean("fullscreen", false);
     }
 
     public static void main(String[] args) throws SlickException {
@@ -87,8 +87,6 @@ public class WindowGame extends StateBasedGame {
 
 	// set the size of the display to the width and height and fullscreen or
 	// not
-	System.out.println(WINDOW_WIDTH);
-	System.out.println(WINDOW_HEIGHT);
 	app.setDisplayMode(WindowGame.WINDOW_WIDTH, WindowGame.WINDOW_HEIGHT, WindowGame.FULLSCREEN);
 	app.setShowFPS(true);
 	// this will attempt to create a framerate of approximately 60 frames

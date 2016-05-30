@@ -1,12 +1,14 @@
 package ch.hearc.p2.game.menu;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.gui.AbstractComponent;
+import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -17,25 +19,18 @@ import ch.hearc.p2.game.WindowGame;
 public class MainScreenGameState extends BasicGameState {
 
     public static final int ID = 0;
-    
+
     private Image background;
-    private Image jouer;
-    private Image niveaux;
-    private Image options;
-    private Image quitter;
     private Image cursor;
-    
-    private StateBasedGame game;
-    
+
+    private SlickButton jouer;
+    private SlickButton niveaux;
+    private SlickButton options;
+    private SlickButton quitter;
+
     private Music sound;
 
-    // Pour les clicks
-    private Sound click;
     private Sound rollover;
-    
-    private Input i;
-    
-    private boolean in;
 
     /*------------------------------------------------------------------*\
     |*				Constructeurs			    	*|
@@ -52,21 +47,81 @@ public class MainScreenGameState extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 
-	this.game = game;
-	this.background = new Image("ressources/background/background.jpg");
-	cursor = new Image("ressources/cursor/hand_cursor.png");
-	jouer = new Image("ressources/menu/jouer.png");
-	niveaux = new Image("ressources/menu/niveaux.png");
-	options = new Image("ressources/menu/options.png");
-	quitter = new Image("ressources/menu/quitter.png");
+	// Background image
+	background = new Image("ressources/background/background.jpg");
 
-	// Pour les clics
-	i = container.getInput();
-	in = false;
+	// Cursor image
+	cursor = new Image("ressources/cursor/hand_cursor.png");
+
+	// Sounds
 	sound = new Music("ressources/audio/music/home.ogg");
-	click = new Sound("ressources/audio/sound/click.ogg");
 	rollover = new Sound("ressources/audio/sound/rollover.ogg");
 
+	// Color for button when mous is over
+	Color color = new Color(255, 157, 67, 180);
+
+	// Button "jouer"
+	Image jouerImage = new Image("ressources/menu/jouer.png");
+
+	jouer = new SlickButton(container, jouerImage, WindowGame.BASE_WINDOW_WIDTH / 2 - jouerImage.getWidth() / 2,
+		250, jouerImage.getWidth(), jouerImage.getHeight(), new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(101, new FadeOutTransition(), new FadeInTransition());
+		    }
+		});
+
+	jouer.setMouseDownSound(rollover);
+	jouer.setMouseOverColor(color);
+
+	// Button "niveaux"
+	Image niveauxImage = new Image("ressources/menu/niveaux.png");
+
+	niveaux = new SlickButton(container, niveauxImage,
+		WindowGame.BASE_WINDOW_WIDTH / 2 - niveauxImage.getWidth() / 2, 400, niveauxImage.getWidth(),
+		niveauxImage.getHeight(), new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(11);
+		    }
+		});
+
+	niveaux.setMouseDownSound(rollover);
+	niveaux.setMouseOverColor(color);
+
+	// Button "options"
+	Image optionsImage = new Image("ressources/menu/options.png");
+
+	options = new SlickButton(container, optionsImage,
+		WindowGame.BASE_WINDOW_WIDTH / 2 - optionsImage.getWidth() / 2, 550, optionsImage.getWidth(),
+		optionsImage.getHeight(), new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			game.enterState(60);
+		    }
+		});
+
+	options.setMouseDownSound(rollover);
+	options.setMouseOverColor(color);
+
+	// Button "quitter"
+	Image quitterImage = new Image("ressources/menu/quitter.png");
+
+	quitter = new SlickButton(container, quitterImage,
+		WindowGame.BASE_WINDOW_WIDTH / 2 - quitterImage.getWidth() / 2, 700, quitterImage.getWidth(),
+		quitterImage.getHeight(), new ComponentListener() {
+
+		    @Override
+		    public void componentActivated(AbstractComponent arg0) {
+			System.exit(0);
+		    }
+		});
+
+	quitter.setMouseDownSound(rollover);
+	quitter.setMouseOverColor(color);
     }
 
     @Override
@@ -75,50 +130,6 @@ public class MainScreenGameState extends BasicGameState {
 
 	if (sound.playing() == false)
 	    sound.loop(1, 0.4f);
-    }
-
-    @Override
-    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-
-	int x = (int) (i.getMouseX() * (1 / WindowGame.SCALE_W));
-	int y = (int) (i.getMouseY() * (1 / WindowGame.SCALE_H));
-
-	// Menu - jouer
-	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + jouer.getWidth() / 2 && y > 250
-		&& y < 250 + jouer.getHeight()) {
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	}
-
-	// Menu - niveau
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + niveaux.getWidth() / 2 && y > 400
-		&& y < 400 + niveaux.getHeight()) {
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	}
-
-	// Menu - options
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + options.getWidth() / 2 && y > 550
-		&& y < 550 + options.getHeight()) {
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	}
-
-	// Menu - quitter
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 700
-		&& y < 700 + quitter.getHeight()) {
-	    if (in == false)
-		rollover.play();
-	    in = true;
-	} else
-	    in = false;
     }
 
     /**
@@ -131,51 +142,15 @@ public class MainScreenGameState extends BasicGameState {
 
 	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
 
-	g.drawImage(jouer, WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2, 250);
-	g.drawImage(niveaux, WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2, 400);
-	g.drawImage(options, WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2, 550);
-	g.drawImage(quitter, WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2, 700);
-
+	jouer.render(container, g);
+	niveaux.render(container, g);
+	options.render(container, g);
+	quitter.render(container, g);
     }
 
     @Override
-    public void mouseClicked(int button, int x, int y, int clickCount) {
-	click.play();
-
-	x *= 1 / WindowGame.SCALE_W;
-	y *= 1 / WindowGame.SCALE_H;
-
-	if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - jouer.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + jouer.getWidth() / 2 && y > 250
-		&& y < 250 + jouer.getHeight()) {
-
-	    game.enterState(101, new FadeOutTransition(), new FadeInTransition());
-	    // game.enterState(101, new FadeOutTransition(), new
-	    // BlobbyTransition(new Color(255,255,255)));
-	    // Remove l'ancien state et le replace pour un nouveau pour reset
-	    // l'état du lvl
-	}
-
-	// Menu - niveau
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - niveaux.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + niveaux.getWidth() / 2 && y > 400
-		&& y < 400 + niveaux.getHeight()) {
-	    game.enterState(11);
-	}
-
-	// Menu - options
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - options.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + options.getWidth() / 2 && y > 550
-		&& y < 550 + options.getHeight()) {
-	    game.enterState(60);
-	}
-
-	// Menu - quitter
-	else if (x > WindowGame.BASE_WINDOW_WIDTH / 2 - quitter.getWidth() / 2
-		&& x < WindowGame.BASE_WINDOW_WIDTH / 2 + quitter.getWidth() / 2 && y > 700
-		&& y < 700 + quitter.getHeight()) {
-	    System.exit(0);
-	}
+    public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
+	// empty
     }
 
     /*------------------------------*\
