@@ -112,7 +112,7 @@ public class Weapon extends LevelObject {
 
 	    munition--;
 
-	    tir.play();
+	    tir.play(1, 1);
 
 	}
     }

@@ -16,7 +16,7 @@ public class Mitraillette extends Weapon {
     public Mitraillette(float x, float y) throws SlickException {
 	super(x, y);
 	munition = 900;
-	cadence = 200;
+	cadence = 125;
 
 	tir = new Sound("ressources/audio/sound/shoot.ogg");
 	arme = new Image("ressources/tiles/item/raygun.png");
@@ -73,7 +73,7 @@ public class Mitraillette extends Weapon {
 
 	    munition--;
 
-	    tir.play();
+	    tir.play(1, 0.75f);
 
 	}
     }

@@ -110,7 +110,7 @@ public class Player extends Character {
 
     public void addPoint(int i) {
 	point += i;
-	coin.play(1, (float) 0.75);
+	coin.play(1, (float) 0.3);
     }
 
     @Override

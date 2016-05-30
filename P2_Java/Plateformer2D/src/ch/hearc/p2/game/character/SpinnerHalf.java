@@ -26,7 +26,7 @@ public class SpinnerHalf extends Ennemie {
 	hitedSprites = setSprite(spinner_hit, hitedSprites);
 	hitedMovingAnimations = setMovingAnimation(new Image[] { spinner_hit, spinner_hit }, 80, hitedMovingAnimations);
 
-	boundingShape = new AABoundingRect(x, y, 63, 31);
+	boundingShape = new AABoundingRect(x, y, 63, 30);
 	deadPicture = new Image("ressources/character/ennemi/spinnerHalf_dead.png");
 
 	life = 5;

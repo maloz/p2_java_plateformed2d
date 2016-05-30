@@ -29,7 +29,7 @@
  </layer>
  <layer name="CollisionLayer" width="50" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2VwQ2AIAxFux0TOKl3B8C7CzCGF72YmKbFWigW4uEn9gDl8b8lAEAYRFPn+jl8aWSOGdXpVHzQxHyvijMlxTqpH7tSeJ8o6FU7V9gXDQ+1vvTuS/yoJYpNkzuc2QB01j1zcH7gLFgyaTgk2aM4OKY34vpa+uHt/7Ccu1/mygvHPW+9clxnz70ptTg2dGeLIUPLuUv1wzNYUkvf+JYcmrolR65nbxwHLHca96APAAA=
+   H4sIAAAAAAAAC+2VwQ2AIAxFux0TMKlb4N0FGMOLXkhM0yIUioV4+Ik9YPv83+IAwC0iP7l+DltamWNDdbwVXuSZ510wUxScK/XjFAq/JxT06p0r7IuEhzrf+u1b/Oglik2SO5xZB3TWLXNwfuAsaDJJOEqyR3FwTDXi+mr6Ye3/0Ny7X+bKCsczb7NypNlzd0ovjgN0di/FMHLvpj2FZ6qtS+94TQ7cT1KP5Mj1nI3jAhvZ1iOgDwAA
   </data>
  </layer>
  <layer name="End" width="50" height="20">
