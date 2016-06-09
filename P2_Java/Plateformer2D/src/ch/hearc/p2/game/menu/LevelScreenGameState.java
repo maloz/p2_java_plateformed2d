@@ -174,10 +174,13 @@ public class LevelScreenGameState extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	// Scale the render for the selected resolution
 	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
+	// Render background
 	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
 
+	// Render the buttons
 	niveau1.render(container, g);
 	niveau2.render(container, g);
 	niveau3.render(container, g);
@@ -192,6 +195,10 @@ public class LevelScreenGameState extends BasicGameState {
     |*		Get		    *|
     \*------------------------------*/
 
+    /**
+     * The ID is used for identify the state. This will be used when a state has
+     * to come bakc to the previous state.
+     */
     @Override
     public int getID() {
 	return ID;

@@ -132,16 +132,15 @@ public class MainScreenGameState extends BasicGameState {
 	    sound.loop(1, 0.4f);
     }
 
-    /**
-     * Contenons nous d'afficher l'image de fond. Le text est placé
-     * approximativement au centre.
-     */
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	// Scale the render for the selected resolution
 	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
+	// Render background
 	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
 
+	// Render the buttons
 	jouer.render(container, g);
 	niveaux.render(container, g);
 	options.render(container, g);
@@ -158,8 +157,8 @@ public class MainScreenGameState extends BasicGameState {
     \*------------------------------*/
 
     /**
-     * L'identifiant permet d'identifier les différentes boucles. Pour passer de
-     * l'une à l'autre.
+     * The ID is used for identify the state. This will be used when a state has
+     * to come bakc to the previous state.
      */
     @Override
     public int getID() {

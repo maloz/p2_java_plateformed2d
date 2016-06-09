@@ -212,15 +212,19 @@ public class OptionGameState extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
 	container.setMouseCursor(cursor, 0, 0);
+
 	placeSelectedIcon();
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	// Scale the render for the selected resolution
 	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
+	// Render background
 	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
 
+	// Render the buttons
 	res1920x1080.render(container, g);
 	res1280x720.render(container, g);
 	res1024x768.render(container, g);
@@ -233,6 +237,7 @@ public class OptionGameState extends BasicGameState {
 	if (isResoltionChanged)
 	    quitter.render(container, g);
 
+	// Render the selected icon
 	g.drawImage(selected, WindowGame.BASE_WINDOW_WIDTH / 2 + 220, y1Selected);
 	g.drawImage(selected, WindowGame.BASE_WINDOW_WIDTH / 2 + 220, y2Selected);
     }
@@ -246,6 +251,10 @@ public class OptionGameState extends BasicGameState {
     |*		Get		    *|
     \*------------------------------*/
 
+    /**
+     * The ID is used for identify the state. This will be used when a state has
+     * to come bakc to the previous state.
+     */
     @Override
     public int getID() {
 	return ID;
@@ -255,6 +264,10 @@ public class OptionGameState extends BasicGameState {
     |*				Methodes Private		   	*|
     \*------------------------------------------------------------------*/
 
+    /**
+     * Set the value of y1Selected and y2Selected for place them beside the
+     * selected resolution
+     */
     private void placeSelectedIcon() {
 	switch (WindowGame.WINDOW_WIDTH) {
 	case 1920:
@@ -281,10 +294,27 @@ public class OptionGameState extends BasicGameState {
 	    y2Selected = fenetre.getY();
     }
 
+    /**
+     * Change the display parametre of the game. Change will be saved in the
+     * user preferences and will be applicated in the next start
+     * 
+     * @param b
+     *            : If this boolean is true the game will be set in fullscreen,
+     *            else the game will be in windowed
+     */
     private void changeDisplay(Boolean b) {
 	WindowGame.PREFERENCES.putBoolean("fullscreen", b);
     }
 
+    /**
+     * Change the resolution of the game. Changes will be saved in the user
+     * preferences and will be applicated in the next start
+     * 
+     * @param w
+     *            : Width of the game
+     * @param h
+     *            : height of the game
+     */
     private void changeResolution(int w, int h) {
 	WindowGame.PREFERENCES.putInt("width", w);
 	WindowGame.PREFERENCES.putInt("height", h);

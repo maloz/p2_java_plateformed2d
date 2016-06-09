@@ -20,8 +20,13 @@ import ch.hearc.p2.game.state.Level5;
 import ch.hearc.p2.game.state.Level6;
 
 public class WindowGame extends StateBasedGame {
+
+    // The following variables will be used in differents classes for render the
+    // game in the correct resolution
+
     public static final Preferences PREFERENCES = Preferences.userNodeForPackage(WindowGame.class);
 
+    // This is the bases sizes of our game
     public static final int TILE_SIZE = 70;
 
     public static final int BASE_WINDOW_WIDTH = 1920;
@@ -34,6 +39,8 @@ public class WindowGame extends StateBasedGame {
     public static int WINDOW_HEIGHT;
     public static boolean FULLSCREEN;
 
+    // These values will be used for scaling the render. They depends of the
+    // bases resolution and the actual resoultion.
     public static float SCALE_W;
     public static float SCALE_H;
 
@@ -73,25 +80,27 @@ public class WindowGame extends StateBasedGame {
     |*				Methodes Static		    		*|
     \*------------------------------------------------------------------*/
 
+    // In this method we get the saved preferences of the user
     public static void initStaticValues() {
+
 	WINDOW_WIDTH = PREFERENCES.getInt("width", 800);
 	WINDOW_HEIGHT = PREFERENCES.getInt("height", 600);
+
 	SCALE_W = 1 / ((CAMERA_TILES_W * TILE_SIZE) / WINDOW_WIDTH);
 	SCALE_H = 1 / ((CAMERA_TILES_H * TILE_SIZE) / WINDOW_HEIGHT);
+
 	FULLSCREEN = PREFERENCES.getBoolean("fullscreen", false);
     }
 
     public static void main(String[] args) throws SlickException {
 	initStaticValues();
+
 	AppGameContainer app = new AppGameContainer(new WindowGame());
 
-	// set the size of the display to the width and height and fullscreen or
+	// Set the size of the display to the width and height and fullscreen or
 	// not
 	app.setDisplayMode(WindowGame.WINDOW_WIDTH, WindowGame.WINDOW_HEIGHT, WindowGame.FULLSCREEN);
-	app.setShowFPS(true);
-	// this will attempt to create a framerate of approximately 60 frames
-	// per second
-	// app.setTargetFrameRate(10);
+
 	app.start();
     }
 

@@ -71,17 +71,22 @@ public class GameOver extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+	// Change the image of the cursor when we enter in the state
+	container.setMouseCursor(cursor, 0, 0);
+
 	if (!deadMusic.playing())
 	    deadMusic.loop(1, 0.4f);
-	container.setMouseCursor(cursor, 0, 0);
+
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 	g.scale(WindowGame.SCALE_W, WindowGame.SCALE_H);
 
+	// Render background
 	background.draw(0, 0, WindowGame.BASE_WINDOW_WIDTH, WindowGame.BASE_WINDOW_HEIGHT);
 
+	// Render the button
 	quitter.render(container, g);
     }
 
@@ -90,6 +95,10 @@ public class GameOver extends BasicGameState {
 	// empty
     }
 
+    /**
+     * The ID is used for identify the state. This will be used when a state has
+     * to come bakc to the previous state.
+     */
     @Override
     public int getID() {
 	return ID;
