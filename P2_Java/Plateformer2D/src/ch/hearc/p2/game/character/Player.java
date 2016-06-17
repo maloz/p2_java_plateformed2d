@@ -18,7 +18,6 @@ import ch.hearc.p2.game.weapon.Weapon;
 
 public class Player extends Character {
 
-    private List<LevelObject> toAddList = new LinkedList<LevelObject>();
     private List<Weapon> weapons;
     private HashMap<Facing, Image> jumpSprite;
 
@@ -100,13 +99,7 @@ public class Player extends Character {
 	    x_velocity -= 0.15;
     }
 
-    public List<LevelObject> getToAddList() {
-	return toAddList;
-    }
 
-    public void clearList() {
-	toAddList.clear();
-    }
 
     public void addPoint(int i) {
 	point += i;

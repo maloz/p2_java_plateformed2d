@@ -1,7 +1,6 @@
 package ch.hearc.p2.game.character;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 import org.newdawn.slick.SlickException;
@@ -11,7 +10,6 @@ import ch.hearc.p2.game.physics.AABoundingRect;
 
 public class Ennemie extends Character {
 
-    protected List<LevelObject> toAddList;
     protected Random rand;
 
     /*------------------------------------------------------------------*\
@@ -44,14 +42,6 @@ public class Ennemie extends Character {
 
     public void shoot() throws SlickException {
 
-    }
-
-    public List<LevelObject> getToAddList() {
-	return toAddList;
-    }
-
-    public void clearToAddList() {
-	toAddList.clear();
     }
 
     public void moveRandom() {

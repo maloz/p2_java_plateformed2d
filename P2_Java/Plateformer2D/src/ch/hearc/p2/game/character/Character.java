@@ -1,6 +1,7 @@
 package ch.hearc.p2.game.character;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
@@ -25,6 +26,8 @@ public abstract class Character extends LevelObject {
     protected HashMap<Facing, Animation> movingAnimations;
     protected HashMap<Facing, Image> hitedSprites;
     protected HashMap<Facing, Animation> hitedMovingAnimations;
+
+    protected List<LevelObject> toAddList;
 
     protected float accelerationSpeed = 1;
     protected float decelerationSpeed = 1;
@@ -80,6 +83,14 @@ public abstract class Character extends LevelObject {
     /*------------------------------------------------------------------*\
     |*				Methodes Public		 	  	*|
     \*------------------------------------------------------------------*/
+
+    public List<LevelObject> getToAddList() {
+	return toAddList;
+    }
+
+    public void clearToAddList() {
+	toAddList.clear();
+    }
 
     public void damage(int value) {
 	this.life -= value;
