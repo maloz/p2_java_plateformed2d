@@ -25,8 +25,6 @@ public class Physics {
 
     private final float gravity = 0.0023f;
 
-    private String level;
-
     private TiledMap map;
 
     private boolean isFinished = false;
@@ -39,9 +37,8 @@ public class Physics {
     |*				Constructeurs			    	*|
     \*------------------------------------------------------------------*/
 
-    public Physics(String startinglevel) throws SlickException {
-	this.level = startinglevel;
-	map = new TiledMap("ressources/level/" + level + ".tmx");
+    public Physics(Level level) throws SlickException {
+	map = level.getMap();
     }
 
     /*------------------------------------------------------------------*\

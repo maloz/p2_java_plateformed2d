@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="ch.hearc.p2.game.physics.Physics"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.level.tile.Tile"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.Game"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.Player"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="ch.hearc.p2.game.character.SnakeLava"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.state.Level5"/>
 <fullyQualifiedTypeName name="ch.hearc.p2.game.state.Level4"/>
+<fullyQualifiedTypeName name="ch.hearc.p2.game.menu.SlickButton"/>
 </qualifiedTypeNameHistroy>

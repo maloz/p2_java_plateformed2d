@@ -78,6 +78,8 @@ public class WindowGame extends StateBasedGame {
 	WINDOW_HEIGHT = PREFERENCES.getInt("height", 600);
 	SCALE_W = 1 / ((CAMERA_TILES_W * TILE_SIZE) / WINDOW_WIDTH);
 	SCALE_H = 1 / ((CAMERA_TILES_H * TILE_SIZE) / WINDOW_HEIGHT);
+	System.out.println(SCALE_W);
+	System.out.println(SCALE_H);
 	FULLSCREEN = PREFERENCES.getBoolean("fullscreen", false);
     }
 
@@ -88,10 +90,10 @@ public class WindowGame extends StateBasedGame {
 	// set the size of the display to the width and height and fullscreen or
 	// not
 	app.setDisplayMode(WindowGame.WINDOW_WIDTH, WindowGame.WINDOW_HEIGHT, WindowGame.FULLSCREEN);
-	app.setShowFPS(true);
+	//app.setShowFPS(true);
 	// this will attempt to create a framerate of approximately 60 frames
 	// per second
-	// app.setTargetFrameRate(10);
+	app.setTargetFrameRate(150);
 	app.start();
     }
 

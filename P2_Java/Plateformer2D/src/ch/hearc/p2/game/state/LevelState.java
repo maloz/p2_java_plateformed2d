@@ -116,7 +116,7 @@ public abstract class LevelState extends BasicGameState {
 	// MouseAndKeyBoardPlayerController
 	playerController = new MouseAndKeyBoardPlayerController(player, level);
 
-	physics = new Physics(startinglevel);
+	physics = new Physics(level);
 
 	for (Ennemie e : ennemies) {
 	    level.addCharacter(e);
