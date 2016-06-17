@@ -9,7 +9,7 @@ import org.newdawn.slick.gui.MouseOverArea;
 import ch.hearc.p2.game.WindowGame;
 
 public class SlickButton extends MouseOverArea {
-    
+
     /*------------------------------------------------------------------*\
     |*				Constructeurs			    	*|
     \*------------------------------------------------------------------*/
@@ -18,10 +18,15 @@ public class SlickButton extends MouseOverArea {
 	    ComponentListener listener) {
 	super(container, image, x, y, width, height, listener);
     }
-    
+
     /*------------------------------------------------------------------*\
     |*				Methodes Public		 	    	*|
     \*------------------------------------------------------------------*/
+
+    /*
+     * We override these methods for apply the correct scale on the cursor
+     * coordonates
+     */
 
     @Override
     public void mouseMoved(int oldx, int oldy, int newx, int newy) {
